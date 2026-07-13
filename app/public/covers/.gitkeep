@@ -1,0 +1,3 @@
+Place cover images here as {bookId}.jpg (see app/public/data/books.json for the
+list of ids). Until an image exists for a given id, the app falls back to a
+generated placeholder cover automatically.
