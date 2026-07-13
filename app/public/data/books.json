@@ -1,0 +1,72 @@
+[
+  {
+    "id": "anne-of-green-gables",
+    "title": "Anne of Green Gables",
+    "author": "Lucy Maud Montgomery",
+    "totalWords": 102527,
+    "cover": "anne-of-green-gables.jpg"
+  },
+  {
+    "id": "pride-and-prejudice",
+    "title": "Pride and Prejudice",
+    "author": "Jane Austen",
+    "totalWords": 121571,
+    "cover": "pride-and-prejudice.jpg"
+  },
+  {
+    "id": "the-secret-garden",
+    "title": "The Secret Garden",
+    "author": "Frances Hodgson Burnett",
+    "totalWords": 80712,
+    "cover": "the-secret-garden.jpg"
+  },
+  {
+    "id": "a-little-princess",
+    "title": "A Little Princess",
+    "author": "Frances Hodgson Burnett",
+    "totalWords": 66243,
+    "cover": "a-little-princess.jpg"
+  },
+  {
+    "id": "the-wonderful-wizard-of-oz",
+    "title": "The Wonderful Wizard of Oz",
+    "author": "L. Frank Baum",
+    "totalWords": 39585,
+    "cover": "the-wonderful-wizard-of-oz.jpg"
+  },
+  {
+    "id": "peter-pan",
+    "title": "Peter Pan",
+    "author": "J. M. Barrie",
+    "totalWords": 47439,
+    "cover": "peter-pan.jpg"
+  },
+  {
+    "id": "alices-adventures-in-wonderland",
+    "title": "Alice's Adventures in Wonderland",
+    "author": "Lewis Carroll",
+    "totalWords": 26449,
+    "cover": "alices-adventures-in-wonderland.jpg"
+  },
+  {
+    "id": "heidi",
+    "title": "Heidi",
+    "author": "Johanna Spyri",
+    "totalWords": 91720,
+    "cover": "heidi.jpg"
+  },
+  {
+    "id": "daddy-long-legs",
+    "title": "Daddy-Long-Legs",
+    "author": "Jean Webster",
+    "totalWords": 36969,
+    "cover": "daddy-long-legs.jpg"
+  },
+  {
+    "id": "the-wind-in-the-willows",
+    "title": "The Wind in the Willows",
+    "author": "Kenneth Grahame",
+    "totalWords": 58432,
+    "cover": "the-wind-in-the-willows.jpg"
+  }
+]
