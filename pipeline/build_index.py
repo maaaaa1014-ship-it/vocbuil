@@ -69,6 +69,8 @@ def main():
 
     books_meta = []
     lemma_freq: dict[str, int] = {}
+    lemma_cap_mid: dict[str, int] = {}
+    lemma_occurrences: dict[str, int] = {}
 
     for book in BOOKS:
         clean_path = CLEAN_DIR / f"{book.id}.txt"
@@ -104,6 +106,13 @@ def main():
                     continue
                 lemmas_in_sentence.add(lemma)
 
+                # Proper-noun heuristic: capitalized mid-sentence (not the
+                # sentence's first word), tallied per raw occurrence so the
+                # preset builder can filter out character/place names.
+                lemma_occurrences[lemma] = lemma_occurrences.get(lemma, 0) + 1
+                if tok.i != sent.start and tok.text[:1].isupper():
+                    lemma_cap_mid[lemma] = lemma_cap_mid.get(lemma, 0) + 1
+
             for lemma in lemmas_in_sentence:
                 lemma_freq[lemma] = lemma_freq.get(lemma, 0) + 1
                 bucket = index.setdefault(lemma, [])
@@ -113,7 +122,7 @@ def main():
 
         out_path = OUT_DIR / f"index-{book.id}.json"
         out_path.write_text(
-            json.dumps(index, ensure_ascii=False, separators=(",", ":")),
+            json.dumps(index, ensure_ascii=False, separators=(",", ":"), sort_keys=True),
             encoding="utf-8",
         )
         print(
@@ -140,9 +149,19 @@ def main():
 
     freq_path = ROOT / "lemma_freq.json"
     freq_path.write_text(
-        json.dumps(lemma_freq, ensure_ascii=False), encoding="utf-8"
+        json.dumps(lemma_freq, ensure_ascii=False, sort_keys=True), encoding="utf-8"
     )
     print(f"wrote {freq_path} ({len(lemma_freq)} lemmas, pipeline-internal)", file=sys.stderr)
+
+    proper_noun_ratio = {
+        lemma: round(lemma_cap_mid.get(lemma, 0) / count, 4)
+        for lemma, count in lemma_occurrences.items()
+    }
+    cap_path = ROOT / "lemma_proper_noun_ratio.json"
+    cap_path.write_text(
+        json.dumps(proper_noun_ratio, ensure_ascii=False, sort_keys=True), encoding="utf-8"
+    )
+    print(f"wrote {cap_path} (pipeline-internal, for preset filtering)", file=sys.stderr)
 
 
 if __name__ == "__main__":
