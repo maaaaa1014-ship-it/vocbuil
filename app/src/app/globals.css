@@ -1,0 +1,62 @@
+@import "tailwindcss";
+
+:root {
+  --color-paper: #f6f1e4;
+  --color-paper-dim: #ede5d1;
+  --color-ink: #2c2a22;
+  --color-ink-soft: #5b5644;
+  --color-green: #1f3d2e;
+  --color-green-soft: #33553f;
+  --color-gold: #b3924a;
+}
+
+@theme inline {
+  --color-paper: var(--color-paper);
+  --color-paper-dim: var(--color-paper-dim);
+  --color-ink: var(--color-ink);
+  --color-ink-soft: var(--color-ink-soft);
+  --color-green: var(--color-green);
+  --color-green-soft: var(--color-green-soft);
+  --color-gold: var(--color-gold);
+  --font-serif: var(--font-playfair), "Hiragino Mincho ProN", "Yu Mincho", serif;
+  --font-sans: -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN",
+    "Hiragino Sans", "Yu Gothic", "Segoe UI", Roboto, sans-serif;
+}
+
+html {
+  color-scheme: light;
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+}
+
+@keyframes confetti-fall {
+  0% {
+    transform: translateY(-10vh) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(60vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@keyframes glow-pulse {
+  0%, 100% {
+    box-shadow: 0 0 12px 2px rgba(179, 146, 74, 0.35);
+  }
+  50% {
+    box-shadow: 0 0 22px 6px rgba(179, 146, 74, 0.6);
+  }
+}
+
+.animate-confetti {
+  animation: confetti-fall linear forwards;
+}
+
+.animate-glow {
+  animation: glow-pulse 2.4s ease-in-out infinite;
+}
