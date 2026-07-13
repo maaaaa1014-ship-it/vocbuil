@@ -13,13 +13,21 @@ export default function ShelfPage() {
   }, []);
 
   return (
-    <main className="mx-auto max-w-md px-5 pt-10 pb-8 flex flex-col gap-6">
-      <header className="text-center flex flex-col gap-1">
-        <h1 className="font-serif text-3xl font-semibold text-green">本棚</h1>
-        <p className="text-sm text-ink-soft">読むほどに、表紙が目覚めていく</p>
+    <main className="mx-auto max-w-md px-5 pt-12 pb-10 flex flex-col gap-8">
+      <header className="text-center flex flex-col gap-3">
+        <p className="font-serif text-[11px] tracking-[0.35em] text-gold uppercase">
+          Private Library
+        </p>
+        <h1 className="font-serif text-4xl font-semibold text-green tracking-[0.3em] pl-[0.3em]">
+          書架
+        </h1>
+        <div className="ornament-rule text-sm" aria-hidden>
+          ❦
+        </div>
+        <p className="text-[13px] text-ink-soft">読むほどに、表紙が目を覚ます</p>
       </header>
 
-      <div className="grid grid-cols-2 gap-x-4 gap-y-6">
+      <div className="grid grid-cols-2 gap-x-5 gap-y-8">
         {books.map((book) => (
           <BookCover key={book.id} book={book} />
         ))}

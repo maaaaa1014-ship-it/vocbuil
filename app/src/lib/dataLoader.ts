@@ -1,8 +1,8 @@
-import type { BookIndex, BookMeta } from "./types";
+import type { BookIndex, BookMeta, UserWord } from "./types";
 
 let booksCache: BookMeta[] | null = null;
 const indexCache = new Map<string, BookIndex>();
-const presetCache = new Map<string, string[]>();
+const presetCache = new Map<string, UserWord[]>();
 
 export async function loadBooks(): Promise<BookMeta[]> {
   if (booksCache) return booksCache;
@@ -39,12 +39,13 @@ export async function loadAllIndexes(
   return result;
 }
 
-export async function loadPreset(tier: "intermediate" | "advanced"): Promise<string[]> {
+export async function loadPreset(tier: "intermediate" | "advanced"): Promise<UserWord[]> {
   const cached = presetCache.get(tier);
   if (cached) return cached;
   const res = await fetch(`/data/preset-${tier}.json`);
   if (!res.ok) throw new Error(`failed to load preset-${tier}.json`);
-  const data = (await res.json()) as string[];
-  presetCache.set(tier, data);
-  return data;
+  const data = (await res.json()) as { word: string; meaning?: string }[];
+  const words: UserWord[] = data.map((e) => ({ word: e.word, meaning: e.meaning }));
+  presetCache.set(tier, words);
+  return words;
 }

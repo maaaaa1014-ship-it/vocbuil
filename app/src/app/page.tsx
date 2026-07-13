@@ -47,10 +47,7 @@ export default function HomePage() {
     try {
       const preset = await loadPreset(tier);
       const label = tier === "intermediate" ? "中級" : "上級";
-      applyWords(
-        preset.map((word) => ({ word })),
-        `${label}プリセット(${preset.length}語)を読み込みました。`
-      );
+      applyWords(preset, `${label}プリセット(${preset.length}語)を読み込みました。`);
     } finally {
       setBusy(false);
     }
@@ -61,16 +58,24 @@ export default function HomePage() {
   }
 
   return (
-    <main className="mx-auto max-w-md px-5 pt-10 pb-8 flex flex-col gap-8">
-      <header className="text-center flex flex-col gap-1">
-        <h1 className="font-serif text-3xl font-semibold text-green">再読</h1>
-        <p className="text-sm text-ink-soft">
-          勉強中の単語に、名著の中で再会する多読体験
+    <main className="mx-auto max-w-md px-5 pt-12 pb-10 flex flex-col gap-9">
+      <header className="text-center flex flex-col gap-3">
+        <p className="font-serif text-[11px] tracking-[0.35em] text-gold uppercase">
+          Reading &amp; Reunion
+        </p>
+        <h1 className="font-serif text-4xl font-semibold text-green tracking-[0.3em] pl-[0.3em]">
+          再読
+        </h1>
+        <div className="ornament-rule text-sm" aria-hidden>
+          ❦
+        </div>
+        <p className="text-[13px] text-ink-soft leading-relaxed">
+          勉強中の単語に、名著の一節でもういちど出会う
         </p>
       </header>
 
-      <section className="rounded-2xl bg-white/60 border border-ink/10 p-5 flex flex-col gap-3">
-        <h2 className="font-serif text-lg text-ink">単語リスト</h2>
+      <section className="plate-frame rounded-sm p-6 flex flex-col gap-3">
+        <h2 className="font-serif text-lg text-wine tracking-wider">単語帖</h2>
         <p className="text-sm text-ink-soft">
           {words.length > 0
             ? `${words.length} 語が登録されています。`
@@ -81,7 +86,7 @@ export default function HomePage() {
             {words.slice(0, 12).map((w) => (
               <span
                 key={w.word}
-                className="text-xs bg-paper-dim border border-ink/10 rounded-full px-2.5 py-1 text-ink-soft"
+                className="text-xs bg-paper-dim border border-gold/30 rounded-sm px-2.5 py-1 text-ink-soft font-serif"
               >
                 {w.word}
               </span>
@@ -97,17 +102,19 @@ export default function HomePage() {
           <button
             type="button"
             onClick={handleClear}
-            className="self-start text-xs text-ink-soft underline underline-offset-2"
+            className="self-start text-xs text-ink-soft underline underline-offset-2 decoration-gold/60"
           >
             リストをクリア
           </button>
         )}
       </section>
 
-      <section className="flex flex-col gap-3">
-        <h2 className="font-serif text-lg text-ink">単語を用意する</h2>
+      <section className="flex flex-col gap-4">
+        <h2 className="ornament-rule font-serif text-base text-ink tracking-[0.2em]">
+          単語を用意する
+        </h2>
 
-        <div className="rounded-2xl bg-white/60 border border-ink/10 p-5 flex flex-col gap-3">
+        <div className="plate-frame rounded-sm p-6 flex flex-col gap-3">
           <p className="text-sm text-ink-soft">
             CSVをアップロード(1列目=英単語、2列目=意味)
           </p>
@@ -120,42 +127,44 @@ export default function HomePage() {
               const file = e.target.files?.[0];
               if (file) handleFile(file);
             }}
-            className="text-sm file:mr-3 file:rounded-full file:border-0 file:bg-green file:text-paper file:px-4 file:py-2 file:text-sm file:font-medium file:cursor-pointer cursor-pointer"
+            className="text-sm file:mr-3 file:rounded-sm file:border file:border-green file:bg-green file:text-paper file:px-4 file:py-2 file:text-sm file:font-serif file:tracking-wider file:cursor-pointer cursor-pointer"
           />
         </div>
 
-        <div className="rounded-2xl bg-white/60 border border-ink/10 p-5 flex flex-col gap-3">
+        <div className="plate-frame rounded-sm p-6 flex flex-col gap-3">
           <p className="text-sm text-ink-soft">プリセットで始める</p>
           <div className="flex gap-3">
             <button
               type="button"
               disabled={busy}
               onClick={() => handlePreset("intermediate")}
-              className="flex-1 rounded-full border border-green text-green py-2.5 text-sm font-medium disabled:opacity-50"
+              className="flex-1 rounded-sm border border-green text-green py-2.5 text-sm font-serif tracking-widest disabled:opacity-50"
             >
-              中級プリセット
+              中級 五百語
             </button>
             <button
               type="button"
               disabled={busy}
               onClick={() => handlePreset("advanced")}
-              className="flex-1 rounded-full border border-green text-green py-2.5 text-sm font-medium disabled:opacity-50"
+              className="flex-1 rounded-sm border border-wine text-wine py-2.5 text-sm font-serif tracking-widest disabled:opacity-50"
             >
-              上級プリセット
+              上級 五百語
             </button>
           </div>
         </div>
 
-        {status && <p className="text-sm text-green text-center">{status}</p>}
+        {status && (
+          <p className="text-sm text-green text-center leading-relaxed">{status}</p>
+        )}
       </section>
 
       <button
         type="button"
         disabled={words.length === 0}
         onClick={() => router.push("/session")}
-        className="rounded-full bg-green text-paper py-3.5 text-base font-semibold shadow-sm disabled:opacity-40 disabled:cursor-not-allowed"
+        className="rounded-sm bg-green text-paper py-4 text-base font-serif tracking-[0.25em] shadow-sm disabled:opacity-40 disabled:cursor-not-allowed"
       >
-        読書セッションを始める
+        読書をはじめる
       </button>
     </main>
   );

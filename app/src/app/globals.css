@@ -1,26 +1,33 @@
 @import "tailwindcss";
 
 :root {
-  --color-paper: #f6f1e4;
-  --color-paper-dim: #ede5d1;
-  --color-ink: #2c2a22;
-  --color-ink-soft: #5b5644;
-  --color-green: #1f3d2e;
-  --color-green-soft: #33553f;
-  --color-gold: #b3924a;
+  --color-paper: #f5efdf;
+  --color-paper-dim: #eae1c9;
+  --color-card: #fbf7ec;
+  --color-ink: #33291f;
+  --color-ink-soft: #6d5f4b;
+  --color-green: #1e3b2c;
+  --color-green-soft: #35543f;
+  --color-wine: #6e2b35;
+  --color-gold: #a98637;
+  --color-gold-soft: #c8b078;
 }
 
 @theme inline {
   --color-paper: var(--color-paper);
   --color-paper-dim: var(--color-paper-dim);
+  --color-card: var(--color-card);
   --color-ink: var(--color-ink);
   --color-ink-soft: var(--color-ink-soft);
   --color-green: var(--color-green);
   --color-green-soft: var(--color-green-soft);
+  --color-wine: var(--color-wine);
   --color-gold: var(--color-gold);
-  --font-serif: var(--font-playfair), "Hiragino Mincho ProN", "Yu Mincho", serif;
-  --font-sans: -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN",
-    "Hiragino Sans", "Yu Gothic", "Segoe UI", Roboto, sans-serif;
+  --color-gold-soft: var(--color-gold-soft);
+  --font-serif: var(--font-playfair), "Hiragino Mincho ProN", "Yu Mincho",
+    "Noto Serif JP", serif;
+  --font-sans: "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP",
+    "Hiragino Kaku Gothic ProN", serif;
 }
 
 html {
@@ -28,10 +35,66 @@ html {
 }
 
 body {
-  background: var(--color-paper);
   color: var(--color-ink);
   font-family: var(--font-sans);
+  background-color: var(--color-paper);
+  /* Faint aged-paper mottling, pure CSS */
+  background-image:
+    radial-gradient(ellipse at 15% 8%, rgba(169, 134, 55, 0.06), transparent 45%),
+    radial-gradient(ellipse at 85% 90%, rgba(110, 43, 53, 0.05), transparent 50%),
+    radial-gradient(ellipse at 70% 20%, rgba(30, 59, 44, 0.04), transparent 40%);
+  background-attachment: fixed;
 }
+
+/* --- Ornaments ------------------------------------------------------- */
+
+/* A centered hairline with a fleuron in the middle: ── ❦ ── */
+.ornament-rule {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--color-gold);
+}
+.ornament-rule::before,
+.ornament-rule::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(
+    to var(--rule-dir, right),
+    transparent,
+    var(--color-gold-soft)
+  );
+}
+.ornament-rule::before {
+  --rule-dir: right;
+}
+.ornament-rule::after {
+  --rule-dir: left;
+}
+
+/* Double frame used on cards, like an old bookplate */
+.plate-frame {
+  background: var(--color-card);
+  border: 1px solid rgba(169, 134, 55, 0.55);
+  box-shadow:
+    inset 0 0 0 3px var(--color-card),
+    inset 0 0 0 4px rgba(169, 134, 55, 0.35),
+    0 2px 8px rgba(51, 41, 31, 0.08);
+}
+
+/* Drop cap for the reading card */
+.drop-cap::first-letter {
+  font-family: var(--font-serif);
+  font-size: 2.6em;
+  line-height: 0.85;
+  float: left;
+  padding-right: 0.09em;
+  padding-top: 0.04em;
+  color: var(--color-wine);
+}
+
+/* --- Animations ------------------------------------------------------ */
 
 @keyframes confetti-fall {
   0% {
@@ -45,11 +108,12 @@ body {
 }
 
 @keyframes glow-pulse {
-  0%, 100% {
-    box-shadow: 0 0 12px 2px rgba(179, 146, 74, 0.35);
+  0%,
+  100% {
+    box-shadow: 0 0 12px 2px rgba(169, 134, 55, 0.4);
   }
   50% {
-    box-shadow: 0 0 22px 6px rgba(179, 146, 74, 0.6);
+    box-shadow: 0 0 22px 7px rgba(169, 134, 55, 0.65);
   }
 }
 

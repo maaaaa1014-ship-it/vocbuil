@@ -42,7 +42,10 @@ export default function SessionPage() {
         readState[bookId]?.sentences.includes(sentence) ?? false;
 
       const candidates = buildCandidateCards(words, indexes, bookList, isAlreadyRead);
-      const picked = pickSessionCards(candidates, 10);
+      const progressByBook = new Map(
+        Object.entries(readState).map(([bookId, entry]) => [bookId, entry.sentences.length])
+      );
+      const picked = pickSessionCards(candidates, 10, 3, progressByBook);
 
       setBooks(bookList);
       setCards(picked);
@@ -78,16 +81,18 @@ export default function SessionPage() {
   if (loadState === "empty") {
     return (
       <main className="mx-auto max-w-md px-5 pt-24 flex flex-col items-center gap-5 text-center">
-        <h1 className="font-serif text-2xl text-green">一致するセンテンスがありません</h1>
-        <p className="text-sm text-ink-soft">
+        <h1 className="font-serif text-2xl text-green tracking-wider">
+          一致するセンテンスがありません
+        </h1>
+        <p className="text-sm text-ink-soft leading-relaxed">
           登録した単語がまだ本の中で見つからなかったか、すでに読み終えています。
-          単語リストを増やすか、本棚で進捗を確認してみてください。
+          単語リストを増やすか、書架で進捗を確認してみてください。
         </p>
         <Link
           href="/"
-          className="rounded-full bg-green text-paper px-6 py-3 text-sm font-semibold"
+          className="rounded-sm bg-green text-paper px-8 py-3 text-sm font-serif tracking-widest"
         >
-          ホームに戻る
+          単語帖に戻る
         </Link>
       </main>
     );
@@ -100,22 +105,32 @@ export default function SessionPage() {
     const uniqueLemmas = new Set(cards.map((c) => c.lemma));
     return (
       <main className="mx-auto max-w-md px-5 pt-20 flex flex-col items-center gap-6 text-center">
-        <h1 className="font-serif text-3xl text-green">おつかれさまでした</h1>
-        <p className="text-ink-soft text-sm">
-          {readCount} 個のセンテンスを読み、{uniqueLemmas.size} 語・{uniqueBooks.size} 冊の本と再会しました。
+        <p className="text-gold text-lg" aria-hidden>
+          ❦
         </p>
-        <div className="flex flex-col gap-3 w-full">
+        <h1 className="font-serif text-3xl text-green tracking-[0.15em]">
+          おつかれさまでした
+        </h1>
+        <div className="ornament-rule w-full text-xs" aria-hidden>
+          ◆
+        </div>
+        <p className="text-ink-soft text-sm leading-relaxed">
+          {readCount} の一節を読み、
+          <br />
+          {uniqueLemmas.size} 語・{uniqueBooks.size} 冊の本と再会しました。
+        </p>
+        <div className="flex flex-col gap-3 w-full mt-2">
           <Link
             href="/shelf"
-            className="rounded-full bg-green text-paper py-3 text-sm font-semibold"
+            className="rounded-sm bg-green text-paper py-3.5 text-sm font-serif tracking-[0.25em]"
           >
-            本棚を見る
+            書架を見る
           </Link>
           <Link
             href="/"
-            className="rounded-full border border-green text-green py-3 text-sm font-semibold"
+            className="rounded-sm border border-green text-green py-3.5 text-sm font-serif tracking-[0.25em]"
           >
-            ホームに戻る
+            単語帖に戻る
           </Link>
         </div>
       </main>
@@ -127,17 +142,20 @@ export default function SessionPage() {
   return (
     <main className="mx-auto max-w-md px-5 pt-6 pb-8 flex flex-col gap-6">
       <div className="flex items-center justify-between">
-        <Link href="/" className="text-xs text-ink-soft underline underline-offset-2">
+        <Link
+          href="/"
+          className="text-xs text-ink-soft underline underline-offset-2 decoration-gold/60"
+        >
           ✕ やめる
         </Link>
-        <p className="text-xs text-ink-soft">
+        <p className="text-xs text-ink-soft font-serif tracking-widest">
           {cardIndex + 1} / {cards.length}
         </p>
       </div>
 
-      <div className="w-full h-1 rounded-full bg-paper-dim overflow-hidden">
+      <div className="w-full h-px bg-gold/25 relative">
         <div
-          className="h-full bg-gold transition-all duration-300"
+          className="absolute inset-y-0 left-0 -top-px h-[3px] bg-gold transition-all duration-300"
           style={{ width: `${(cardIndex / cards.length) * 100}%` }}
         />
       </div>
@@ -153,7 +171,7 @@ export default function SessionPage() {
       <button
         type="button"
         onClick={handleRead}
-        className="rounded-full bg-green text-paper py-3.5 text-base font-semibold shadow-sm mt-4"
+        className="rounded-sm bg-green text-paper py-4 text-base font-serif tracking-[0.25em] shadow-sm mt-4"
       >
         読めた ✓
       </button>

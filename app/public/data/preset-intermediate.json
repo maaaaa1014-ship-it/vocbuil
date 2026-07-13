@@ -1,502 +1,2002 @@
 [
-  "accept",
-  "actually",
-  "addition",
-  "advance",
-  "advantage",
-  "adventure",
-  "advice",
-  "agree",
-  "ahead",
-  "aid",
-  "allow",
-  "animal",
-  "answer",
-  "appeal",
-  "appear",
-  "apple",
-  "apply",
-  "approach",
-  "argument",
-  "army",
-  "assembly",
-  "assist",
-  "assistance",
-  "attack",
-  "attention",
-  "authority",
-  "avoid",
-  "aware",
-  "bag",
-  "ball",
-  "band",
-  "bar",
-  "basket",
-  "bath",
-  "battle",
-  "bear",
-  "beat",
-  "beautiful",
-  "bed",
-  "bedroom",
-  "begin",
-  "behavior",
-  "believe",
-  "benefit",
-  "bid",
-  "bird",
-  "birthday",
-  "block",
-  "blood",
-  "blow",
-  "boat",
-  "bob",
-  "boy",
-  "brain",
-  "branch",
-  "break",
-  "breakfast",
-  "breast",
-  "bridge",
-  "bring",
-  "brother",
-  "brown",
-  "build",
-  "bureau",
-  "bush",
-  "button",
-  "camp",
-  "campus",
-  "capital",
-  "carry",
-  "cast",
-  "cat",
-  "cause",
-  "cent",
-  "certain",
-  "certainly",
-  "chain",
-  "chair",
-  "chance",
-  "character",
-  "charge",
-  "chief",
-  "choice",
-  "civil",
-  "claim",
-  "clean",
-  "clearly",
-  "clock",
-  "coffee",
-  "cold",
-  "colour",
-  "comfort",
-  "command",
-  "communication",
-  "completely",
-  "condition",
-  "conduct",
-  "connect",
-  "connection",
-  "consider",
-  "contain",
-  "continue",
-  "cool",
-  "corner",
-  "correct",
-  "count",
-  "couple",
-  "cream",
-  "critical",
-  "cross",
-  "cup",
-  "custom",
-  "cut",
-  "dance",
-  "dark",
-  "daughter",
-  "dead",
-  "deal",
-  "debt",
-  "deep",
-  "degree",
-  "demand",
-  "depth",
-  "desk",
-  "detail",
-  "determine",
-  "diamond",
-  "die",
-  "difference",
-  "difficult",
-  "dinner",
-  "direction",
-  "directly",
-  "discover",
-  "discuss",
-  "distance",
-  "doctor",
-  "dog",
-  "dollar",
-  "domestic",
-  "door",
-  "double",
-  "dream",
-  "dress",
-  "drink",
-  "driver",
-  "drop",
-  "dry",
-  "duty",
-  "earth",
-  "easily",
-  "eat",
-  "edge",
-  "effect",
-  "effort",
-  "engine",
-  "enjoy",
-  "entire",
-  "equal",
-  "especially",
-  "etc",
-  "evening",
-  "evil",
-  "exactly",
-  "excellent",
-  "exchange",
-  "exercise",
-  "expect",
-  "express",
-  "expression",
-  "extra",
-  "extreme",
-  "eye",
-  "fail",
-  "fair",
-  "faith",
-  "fall",
-  "farm",
-  "fashion",
-  "fat",
-  "father",
-  "favorite",
-  "fear",
-  "feature",
-  "feed",
-  "feeling",
-  "female",
-  "fight",
-  "fill",
-  "finally",
-  "fine",
-  "finish",
-  "firm",
-  "fish",
-  "fit",
-  "fix",
-  "flash",
-  "flat",
-  "flight",
-  "floor",
-  "flow",
-  "flower",
-  "fly",
-  "follow",
-  "foot",
-  "force",
-  "foreign",
-  "forest",
-  "forward",
-  "frame",
-  "frank",
-  "freedom",
-  "frequently",
-  "fresh",
-  "friendly",
-  "fully",
-  "funny",
-  "furniture",
-  "gain",
-  "generally",
-  "glass",
-  "golden",
-  "grand",
-  "grant",
-  "ground",
-  "grow",
-  "guess",
-  "guest",
-  "hair",
-  "hall",
-  "handle",
-  "happen",
-  "happy",
-  "healthy",
-  "hear",
-  "heavy",
-  "height",
-  "hide",
-  "highly",
-  "hill",
-  "hire",
-  "hit",
-  "hold",
-  "hole",
-  "hope",
-  "horse",
-  "hour",
-  "huge",
-  "ice",
-  "idea",
-  "immediately",
-  "importance",
-  "improve",
-  "inch",
-  "influence",
-  "inn",
-  "inside",
-  "instance",
-  "instant",
-  "instead",
-  "intelligence",
-  "interview",
-  "introduction",
-  "iron",
-  "joint",
-  "judge",
-  "jump",
-  "justice",
-  "kind",
-  "kitchen",
-  "lack",
-  "lady",
-  "late",
-  "lead",
-  "leader",
-  "leave",
-  "length",
-  "letter",
-  "likely",
-  "limit",
-  "listen",
-  "load",
-  "manage",
-  "manner",
-  "marriage",
-  "master",
-  "match",
-  "matter",
-  "maybe",
-  "mean",
-  "measure",
-  "medicine",
-  "mental",
-  "mid",
-  "middle",
-  "mind",
-  "minister",
-  "minute",
-  "mix",
-  "moment",
-  "moon",
-  "morning",
-  "mother",
-  "motor",
-  "mount",
-  "mountain",
-  "mouse",
-  "movement",
-  "native",
-  "nearly",
-  "necessary",
-  "nice",
-  "object",
-  "officer",
-  "opinion",
-  "opportunity",
-  "orange",
-  "outside",
-  "owner",
-  "pack",
-  "package",
-  "pain",
-  "pair",
-  "palm",
-  "parent",
-  "particular",
-  "particularly",
-  "partner",
-  "pass",
-  "patch",
-  "path",
-  "patient",
-  "peace",
-  "perfect",
-  "perform",
-  "permission",
-  "permit",
-  "pet",
-  "pick",
-  "piece",
-  "pink",
-  "plant",
-  "platform",
-  "pocket",
-  "police",
-  "pool",
-  "poor",
-  "pop",
-  "powerful",
-  "presence",
-  "pretty",
-  "prevent",
-  "principal",
-  "probably",
-  "produce",
-  "progress",
-  "proof",
-  "proper",
-  "proposal",
-  "purpose",
-  "quarter",
-  "quickly",
-  "race",
-  "rain",
-  "rank",
-  "rare",
-  "ray",
-  "reach",
-  "ready",
-  "reason",
-  "reasonable",
-  "recommend",
-  "regular",
-  "relative",
-  "relief",
-  "remain",
-  "remove",
-  "represent",
-  "require",
-  "reserve",
-  "resolution",
-  "respect",
-  "responsible",
-  "rest",
-  "rich",
-  "ride",
-  "ring",
-  "rise",
-  "river",
-  "roll",
-  "root",
-  "rose",
-  "round",
-  "row",
-  "royal",
-  "rule",
-  "safe",
-  "scene",
-  "scheme",
-  "scientific",
-  "screen",
-  "sea",
-  "season",
-  "seat",
-  "secret",
-  "secretary",
-  "secure",
-  "sense",
-  "separate",
-  "serve",
-  "seven",
-  "shape",
-  "sheet",
-  "ship",
-  "signal",
-  "silver",
-  "simply",
-  "situation",
-  "skin",
-  "skip",
-  "sky",
-  "sleep",
-  "slow",
-  "smart",
-  "snow",
-  "soft",
-  "solid",
-  "son",
-  "song",
-  "soon",
-  "sorry",
-  "soul",
-  "speak",
-  "speech",
-  "spend",
-  "spirit",
-  "spot",
-  "spring",
-  "square",
-  "stage",
-  "stand",
-  "station",
-  "stone",
-  "stop",
-  "straight",
-  "stream",
-  "strength",
-  "string",
-  "strong",
-  "success",
-  "suggest",
-  "summer",
-  "supply",
-  "surface",
-  "sweet",
-  "task",
-  "tea",
-  "teacher",
-  "thank",
-  "tip",
-  "tom",
-  "tool",
-  "touch",
-  "train",
-  "tree",
-  "trial",
-  "trip",
-  "truck",
-  "trust",
-  "truth",
-  "turn",
-  "understand",
-  "unknown",
-  "useful",
-  "vacation",
-  "valley",
-  "village",
-  "vision",
-  "voice",
-  "wait",
-  "walk",
-  "wall",
-  "waste",
-  "wear",
-  "wed",
-  "wife",
-  "wild",
-  "win",
-  "wind",
-  "wine",
-  "winter",
-  "wish",
-  "woman",
-  "wonderful",
-  "wood",
-  "worth",
-  "writer",
-  "wrong",
-  "yesterday",
-  "youth"
+ {
+  "word": "accept",
+  "meaning": "受け入れる、承諾する / to agree to take something offered"
+ },
+ {
+  "word": "actually",
+  "meaning": "実際に、本当は / in fact, really"
+ },
+ {
+  "word": "addition",
+  "meaning": "追加、足し算 / something added; adding"
+ },
+ {
+  "word": "advance",
+  "meaning": "前進する、進歩 / to move forward; progress"
+ },
+ {
+  "word": "advantage",
+  "meaning": "利点、有利 / a helpful or favorable condition"
+ },
+ {
+  "word": "adventure",
+  "meaning": "冒険 / an exciting or risky experience"
+ },
+ {
+  "word": "advice",
+  "meaning": "助言、忠告 / an opinion about what to do"
+ },
+ {
+  "word": "agree",
+  "meaning": "同意する / to have the same opinion"
+ },
+ {
+  "word": "ahead",
+  "meaning": "前方に、先に / in front; in the future"
+ },
+ {
+  "word": "aid",
+  "meaning": "援助(する) / help or support"
+ },
+ {
+  "word": "allow",
+  "meaning": "許す、可能にする / to permit"
+ },
+ {
+  "word": "animal",
+  "meaning": "動物 / a living creature, not a plant"
+ },
+ {
+  "word": "answer",
+  "meaning": "答え(る) / a reply to a question"
+ },
+ {
+  "word": "appeal",
+  "meaning": "訴える、魅力 / to make an earnest request; attraction"
+ },
+ {
+  "word": "appear",
+  "meaning": "現れる、~のように見える / to become visible; to seem"
+ },
+ {
+  "word": "apple",
+  "meaning": "リンゴ / a round red or green fruit"
+ },
+ {
+  "word": "apply",
+  "meaning": "適用する、申し込む / to use; to make a request"
+ },
+ {
+  "word": "approach",
+  "meaning": "近づく、取り組み方 / to come near; a method"
+ },
+ {
+  "word": "argument",
+  "meaning": "口論、主張 / a disagreement; a reason given"
+ },
+ {
+  "word": "army",
+  "meaning": "軍隊 / a large organized military force"
+ },
+ {
+  "word": "assembly",
+  "meaning": "集会、集合 / a gathering of people"
+ },
+ {
+  "word": "assist",
+  "meaning": "手伝う / to help"
+ },
+ {
+  "word": "assistance",
+  "meaning": "援助、手助け / help or support"
+ },
+ {
+  "word": "attack",
+  "meaning": "攻撃(する) / a violent attempt to hurt"
+ },
+ {
+  "word": "attention",
+  "meaning": "注意、注目 / careful watching or listening"
+ },
+ {
+  "word": "authority",
+  "meaning": "権威、当局 / the power to give orders"
+ },
+ {
+  "word": "avoid",
+  "meaning": "避ける / to keep away from"
+ },
+ {
+  "word": "aware",
+  "meaning": "気づいている / knowing about something"
+ },
+ {
+  "word": "bag",
+  "meaning": "袋、かばん / a container made of soft material"
+ },
+ {
+  "word": "ball",
+  "meaning": "ボール、舞踏会 / a round object; a formal dance party"
+ },
+ {
+  "word": "band",
+  "meaning": "一団、帯、楽団 / a group; a strip; musicians"
+ },
+ {
+  "word": "bar",
+  "meaning": "棒、横木、酒場 / a long rigid piece; a place serving drinks"
+ },
+ {
+  "word": "basket",
+  "meaning": "かご / a container woven from thin strips"
+ },
+ {
+  "word": "bath",
+  "meaning": "入浴、風呂 / washing the body in water"
+ },
+ {
+  "word": "battle",
+  "meaning": "戦い / a fight between armed forces"
+ },
+ {
+  "word": "bear",
+  "meaning": "耐える、運ぶ、クマ / to endure; to carry; a large animal"
+ },
+ {
+  "word": "beat",
+  "meaning": "打つ、打ち負かす / to hit repeatedly; to defeat"
+ },
+ {
+  "word": "beautiful",
+  "meaning": "美しい / very pleasing to look at"
+ },
+ {
+  "word": "bed",
+  "meaning": "ベッド、寝床、花壇 / a place for sleeping; a garden plot"
+ },
+ {
+  "word": "bedroom",
+  "meaning": "寝室 / a room for sleeping"
+ },
+ {
+  "word": "begin",
+  "meaning": "始める、始まる / to start"
+ },
+ {
+  "word": "behavior",
+  "meaning": "ふるまい、行動 / the way one acts"
+ },
+ {
+  "word": "believe",
+  "meaning": "信じる / to accept as true"
+ },
+ {
+  "word": "benefit",
+  "meaning": "利益、恩恵 / a helpful or good effect"
+ },
+ {
+  "word": "bid",
+  "meaning": "命じる、告げる、入札 / to command or say (archaic); an offer"
+ },
+ {
+  "word": "bird",
+  "meaning": "鳥 / a feathered animal that can usually fly"
+ },
+ {
+  "word": "birthday",
+  "meaning": "誕生日 / the anniversary of one's birth"
+ },
+ {
+  "word": "block",
+  "meaning": "かたまり、区画、ふさぐ / a solid piece; to obstruct"
+ },
+ {
+  "word": "blood",
+  "meaning": "血 / the red liquid in the body"
+ },
+ {
+  "word": "blow",
+  "meaning": "吹く、打撃 / to send out air; a hard hit"
+ },
+ {
+  "word": "boat",
+  "meaning": "小舟、ボート / a small vessel for traveling on water"
+ },
+ {
+  "word": "bob",
+  "meaning": "ひょいと動く、上下に揺れる / to move quickly up and down"
+ },
+ {
+  "word": "boy",
+  "meaning": "男の子 / a male child"
+ },
+ {
+  "word": "brain",
+  "meaning": "脳、頭脳 / the organ used for thinking"
+ },
+ {
+  "word": "branch",
+  "meaning": "枝、支店 / a part of a tree; a division"
+ },
+ {
+  "word": "break",
+  "meaning": "壊す、休憩 / to separate into pieces; a pause"
+ },
+ {
+  "word": "breakfast",
+  "meaning": "朝食 / the first meal of the day"
+ },
+ {
+  "word": "breast",
+  "meaning": "胸 / the front of the chest"
+ },
+ {
+  "word": "bridge",
+  "meaning": "橋 / a structure crossing a river or road"
+ },
+ {
+  "word": "bring",
+  "meaning": "持ってくる、連れてくる / to carry to a place"
+ },
+ {
+  "word": "brother",
+  "meaning": "兄、弟 / a male sibling"
+ },
+ {
+  "word": "brown",
+  "meaning": "茶色(の) / the color of earth or wood"
+ },
+ {
+  "word": "build",
+  "meaning": "建てる / to make by putting parts together"
+ },
+ {
+  "word": "bureau",
+  "meaning": "書き物机、たんす / a writing desk; a chest of drawers"
+ },
+ {
+  "word": "bush",
+  "meaning": "低木、茂み / a low thick plant"
+ },
+ {
+  "word": "button",
+  "meaning": "ボタン(をとめる) / a small fastener on clothes"
+ },
+ {
+  "word": "camp",
+  "meaning": "野営(する)、キャンプ / a place with temporary shelter"
+ },
+ {
+  "word": "campus",
+  "meaning": "(大学の)構内 / the grounds of a college"
+ },
+ {
+  "word": "capital",
+  "meaning": "首都、資本、大文字 / a chief city; money; uppercase letter"
+ },
+ {
+  "word": "carry",
+  "meaning": "運ぶ / to hold and take somewhere"
+ },
+ {
+  "word": "cast",
+  "meaning": "投げる、配役 / to throw; the actors in a play"
+ },
+ {
+  "word": "cat",
+  "meaning": "猫 / a small furry pet animal"
+ },
+ {
+  "word": "cause",
+  "meaning": "原因、引き起こす / what makes something happen"
+ },
+ {
+  "word": "cent",
+  "meaning": "セント(貨幣単位) / a coin worth 1/100 of a dollar"
+ },
+ {
+  "word": "certain",
+  "meaning": "確かな、ある~ / sure; particular but unnamed"
+ },
+ {
+  "word": "certainly",
+  "meaning": "確かに、もちろん / surely, without doubt"
+ },
+ {
+  "word": "chain",
+  "meaning": "鎖、連鎖 / a series of connected metal rings"
+ },
+ {
+  "word": "chair",
+  "meaning": "椅子 / a seat for one person with a back"
+ },
+ {
+  "word": "chance",
+  "meaning": "機会、偶然 / an opportunity; luck"
+ },
+ {
+  "word": "character",
+  "meaning": "性格、人物、登場人物 / one's nature; a person in a story"
+ },
+ {
+  "word": "charge",
+  "meaning": "請求する、責任、突進 / to ask as a price; duty; to rush"
+ },
+ {
+  "word": "chief",
+  "meaning": "主要な、長 / most important; a leader"
+ },
+ {
+  "word": "choice",
+  "meaning": "選択 / the act of choosing"
+ },
+ {
+  "word": "civil",
+  "meaning": "礼儀正しい、市民の / polite; relating to citizens"
+ },
+ {
+  "word": "claim",
+  "meaning": "主張する、要求する / to state as true; to demand"
+ },
+ {
+  "word": "clean",
+  "meaning": "清潔な、掃除する / free from dirt; to remove dirt"
+ },
+ {
+  "word": "clearly",
+  "meaning": "はっきりと / in a plain, easy-to-see way"
+ },
+ {
+  "word": "clock",
+  "meaning": "時計 / an instrument that shows the time"
+ },
+ {
+  "word": "coffee",
+  "meaning": "コーヒー / a hot dark drink made from beans"
+ },
+ {
+  "word": "cold",
+  "meaning": "寒い、冷たい、風邪 / low in temperature; an illness"
+ },
+ {
+  "word": "colour",
+  "meaning": "色 (color) / what we see as red, blue, etc."
+ },
+ {
+  "word": "comfort",
+  "meaning": "慰め(る)、快適さ / to make less sad; ease"
+ },
+ {
+  "word": "command",
+  "meaning": "命令(する) / an order given with authority"
+ },
+ {
+  "word": "communication",
+  "meaning": "伝達、意思疎通 / sharing information"
+ },
+ {
+  "word": "completely",
+  "meaning": "完全に / totally, in every way"
+ },
+ {
+  "word": "condition",
+  "meaning": "状態、条件 / the state something is in"
+ },
+ {
+  "word": "conduct",
+  "meaning": "行い、導く / behavior; to lead or guide"
+ },
+ {
+  "word": "connect",
+  "meaning": "つなぐ / to join together"
+ },
+ {
+  "word": "connection",
+  "meaning": "つながり、関係 / a link or relationship"
+ },
+ {
+  "word": "consider",
+  "meaning": "よく考える、みなす / to think about carefully"
+ },
+ {
+  "word": "contain",
+  "meaning": "含む、抑える / to hold inside; to control"
+ },
+ {
+  "word": "continue",
+  "meaning": "続ける、続く / to keep on doing"
+ },
+ {
+  "word": "cool",
+  "meaning": "涼しい、冷静な / slightly cold; calm"
+ },
+ {
+  "word": "corner",
+  "meaning": "角、隅 / where two lines or walls meet"
+ },
+ {
+  "word": "correct",
+  "meaning": "正しい、訂正する / right; to fix errors"
+ },
+ {
+  "word": "count",
+  "meaning": "数える、伯爵 / to say numbers in order; a nobleman"
+ },
+ {
+  "word": "couple",
+  "meaning": "一組、夫婦、二三の / two together; a few"
+ },
+ {
+  "word": "cream",
+  "meaning": "クリーム、乳脂 / the thick part of milk"
+ },
+ {
+  "word": "critical",
+  "meaning": "重大な、批判的な / very important; finding fault"
+ },
+ {
+  "word": "cross",
+  "meaning": "横切る、十字架、不機嫌な / to go across; annoyed"
+ },
+ {
+  "word": "cup",
+  "meaning": "カップ、茶わん / a small container for drinking"
+ },
+ {
+  "word": "custom",
+  "meaning": "習慣、風習 / a usual way of behaving"
+ },
+ {
+  "word": "cut",
+  "meaning": "切る / to divide with something sharp"
+ },
+ {
+  "word": "dance",
+  "meaning": "踊る、ダンス / to move the body to music"
+ },
+ {
+  "word": "dark",
+  "meaning": "暗い、闇 / with little or no light"
+ },
+ {
+  "word": "daughter",
+  "meaning": "娘 / a female child"
+ },
+ {
+  "word": "dead",
+  "meaning": "死んでいる / no longer alive"
+ },
+ {
+  "word": "deal",
+  "meaning": "取引、大いに、扱う / an agreement; a large amount; to handle"
+ },
+ {
+  "word": "debt",
+  "meaning": "借金、負債 / money that is owed"
+ },
+ {
+  "word": "deep",
+  "meaning": "深い / going far down"
+ },
+ {
+  "word": "degree",
+  "meaning": "程度、学位、度 / an amount or level; a university title"
+ },
+ {
+  "word": "demand",
+  "meaning": "要求(する) / to ask firmly"
+ },
+ {
+  "word": "depth",
+  "meaning": "深さ、奥行き / how deep something is"
+ },
+ {
+  "word": "desk",
+  "meaning": "机 / a table for writing or study"
+ },
+ {
+  "word": "detail",
+  "meaning": "細部、詳細 / a small part of a whole"
+ },
+ {
+  "word": "determine",
+  "meaning": "決定する、決意する / to decide firmly"
+ },
+ {
+  "word": "diamond",
+  "meaning": "ダイヤモンド / a very hard precious stone"
+ },
+ {
+  "word": "die",
+  "meaning": "死ぬ / to stop living"
+ },
+ {
+  "word": "difference",
+  "meaning": "違い / the way things are not the same"
+ },
+ {
+  "word": "difficult",
+  "meaning": "難しい / not easy"
+ },
+ {
+  "word": "dinner",
+  "meaning": "夕食、正餐 / the main meal of the day"
+ },
+ {
+  "word": "direction",
+  "meaning": "方向、指示 / where something is heading; guidance"
+ },
+ {
+  "word": "directly",
+  "meaning": "直接に、まっすぐに / with nothing in between; at once"
+ },
+ {
+  "word": "discover",
+  "meaning": "発見する / to find for the first time"
+ },
+ {
+  "word": "discuss",
+  "meaning": "話し合う / to talk about"
+ },
+ {
+  "word": "distance",
+  "meaning": "距離、遠方 / the space between two places"
+ },
+ {
+  "word": "doctor",
+  "meaning": "医者 / a person who treats sick people"
+ },
+ {
+  "word": "dog",
+  "meaning": "犬 / a common four-legged pet animal"
+ },
+ {
+  "word": "dollar",
+  "meaning": "ドル / a unit of money"
+ },
+ {
+  "word": "domestic",
+  "meaning": "家庭の、国内の / of the home; within a country"
+ },
+ {
+  "word": "door",
+  "meaning": "ドア、戸 / an entrance that opens and closes"
+ },
+ {
+  "word": "double",
+  "meaning": "二倍(の)、二重の / twice as much"
+ },
+ {
+  "word": "dream",
+  "meaning": "夢(を見る) / images during sleep; a hope"
+ },
+ {
+  "word": "dress",
+  "meaning": "服、着る、着飾る / clothing; to put on clothes"
+ },
+ {
+  "word": "drink",
+  "meaning": "飲む、飲み物 / to swallow liquid"
+ },
+ {
+  "word": "driver",
+  "meaning": "御者、運転手 / a person who drives"
+ },
+ {
+  "word": "drop",
+  "meaning": "落とす、しずく / to let fall; a small amount of liquid"
+ },
+ {
+  "word": "dry",
+  "meaning": "乾いた、乾かす / not wet"
+ },
+ {
+  "word": "duty",
+  "meaning": "義務、務め / what one must do"
+ },
+ {
+  "word": "earth",
+  "meaning": "地球、大地、土 / the world; the ground; soil"
+ },
+ {
+  "word": "easily",
+  "meaning": "簡単に / without difficulty"
+ },
+ {
+  "word": "eat",
+  "meaning": "食べる / to take food into the body"
+ },
+ {
+  "word": "edge",
+  "meaning": "端、縁、刃 / the outer limit; the sharp side"
+ },
+ {
+  "word": "effect",
+  "meaning": "効果、結果 / a change caused by something"
+ },
+ {
+  "word": "effort",
+  "meaning": "努力 / hard work toward a goal"
+ },
+ {
+  "word": "engine",
+  "meaning": "エンジン、機関車 / a machine that produces power"
+ },
+ {
+  "word": "enjoy",
+  "meaning": "楽しむ / to take pleasure in"
+ },
+ {
+  "word": "entire",
+  "meaning": "全体の / whole, complete"
+ },
+ {
+  "word": "equal",
+  "meaning": "等しい、平等な / the same in amount or value"
+ },
+ {
+  "word": "especially",
+  "meaning": "特に / more than usual"
+ },
+ {
+  "word": "etc",
+  "meaning": "~など / and other similar things"
+ },
+ {
+  "word": "evening",
+  "meaning": "夕方、晩 / the end of the day"
+ },
+ {
+  "word": "evil",
+  "meaning": "邪悪な、悪 / very bad, wicked"
+ },
+ {
+  "word": "exactly",
+  "meaning": "正確に、まさに / precisely"
+ },
+ {
+  "word": "excellent",
+  "meaning": "優れた / extremely good"
+ },
+ {
+  "word": "exchange",
+  "meaning": "交換(する) / to give and receive in return"
+ },
+ {
+  "word": "exercise",
+  "meaning": "運動、練習 / physical activity; practice"
+ },
+ {
+  "word": "expect",
+  "meaning": "期待する、予期する / to think something will happen"
+ },
+ {
+  "word": "express",
+  "meaning": "表現する、急行の / to show in words; fast"
+ },
+ {
+  "word": "expression",
+  "meaning": "表情、表現 / the look on a face; wording"
+ },
+ {
+  "word": "extra",
+  "meaning": "余分の、特別の / more than usual"
+ },
+ {
+  "word": "extreme",
+  "meaning": "極端な、極度の / very great; farthest"
+ },
+ {
+  "word": "eye",
+  "meaning": "目 / the organ used for seeing"
+ },
+ {
+  "word": "fail",
+  "meaning": "失敗する / to not succeed"
+ },
+ {
+  "word": "fair",
+  "meaning": "公平な、金髪の、美しい / just; light-colored; lovely"
+ },
+ {
+  "word": "faith",
+  "meaning": "信頼、信仰 / strong trust or belief"
+ },
+ {
+  "word": "fall",
+  "meaning": "落ちる、秋 / to drop down; autumn"
+ },
+ {
+  "word": "farm",
+  "meaning": "農場 / land for growing crops or raising animals"
+ },
+ {
+  "word": "fashion",
+  "meaning": "流行、方法 / a popular style; a manner"
+ },
+ {
+  "word": "fat",
+  "meaning": "太った、脂肪 / having much flesh; oily substance"
+ },
+ {
+  "word": "father",
+  "meaning": "父 / a male parent"
+ },
+ {
+  "word": "favorite",
+  "meaning": "お気に入りの / liked best"
+ },
+ {
+  "word": "fear",
+  "meaning": "恐れ(る) / a feeling of being afraid"
+ },
+ {
+  "word": "feature",
+  "meaning": "特徴、顔立ち / a noticeable part; the face"
+ },
+ {
+  "word": "feed",
+  "meaning": "食べ物を与える / to give food to"
+ },
+ {
+  "word": "feeling",
+  "meaning": "感情、感覚 / an emotion; a sensation"
+ },
+ {
+  "word": "female",
+  "meaning": "女性(の)、雌(の) / of the sex that bears young"
+ },
+ {
+  "word": "fight",
+  "meaning": "戦う、けんか / to use force against; a battle"
+ },
+ {
+  "word": "fill",
+  "meaning": "満たす / to make full"
+ },
+ {
+  "word": "finally",
+  "meaning": "ついに、最後に / at last"
+ },
+ {
+  "word": "fine",
+  "meaning": "見事な、元気な、細かい / very good; well; thin"
+ },
+ {
+  "word": "finish",
+  "meaning": "終える / to complete"
+ },
+ {
+  "word": "firm",
+  "meaning": "堅い、断固とした / solid; determined"
+ },
+ {
+  "word": "fish",
+  "meaning": "魚、釣りをする / an animal that lives in water"
+ },
+ {
+  "word": "fit",
+  "meaning": "合う、発作 / to be the right size; a sudden burst"
+ },
+ {
+  "word": "fix",
+  "meaning": "固定する、直す / to fasten; to repair"
+ },
+ {
+  "word": "flash",
+  "meaning": "ひらめき、閃光 / a sudden bright light"
+ },
+ {
+  "word": "flat",
+  "meaning": "平らな / smooth and level"
+ },
+ {
+  "word": "flight",
+  "meaning": "飛行、逃走 / flying; running away"
+ },
+ {
+  "word": "floor",
+  "meaning": "床 / the surface you walk on indoors"
+ },
+ {
+  "word": "flow",
+  "meaning": "流れ(る) / to move like water"
+ },
+ {
+  "word": "flower",
+  "meaning": "花 / the colorful part of a plant"
+ },
+ {
+  "word": "fly",
+  "meaning": "飛ぶ、ハエ / to move through the air; an insect"
+ },
+ {
+  "word": "follow",
+  "meaning": "ついて行く、従う / to go after; to obey"
+ },
+ {
+  "word": "foot",
+  "meaning": "足、ふもと / the end of the leg; the bottom"
+ },
+ {
+  "word": "force",
+  "meaning": "力、強いる / power; to make someone do"
+ },
+ {
+  "word": "foreign",
+  "meaning": "外国の / from another country"
+ },
+ {
+  "word": "forest",
+  "meaning": "森林 / a large area of trees"
+ },
+ {
+  "word": "forward",
+  "meaning": "前方へ / toward the front"
+ },
+ {
+  "word": "frame",
+  "meaning": "枠、骨組み / a border; a structure"
+ },
+ {
+  "word": "frank",
+  "meaning": "率直な / open and honest in speech"
+ },
+ {
+  "word": "freedom",
+  "meaning": "自由 / being free"
+ },
+ {
+  "word": "frequently",
+  "meaning": "しばしば / often"
+ },
+ {
+  "word": "fresh",
+  "meaning": "新鮮な、すがすがしい / new; cool and clean"
+ },
+ {
+  "word": "friendly",
+  "meaning": "親しみのある / kind and pleasant"
+ },
+ {
+  "word": "fully",
+  "meaning": "完全に、十分に / completely"
+ },
+ {
+  "word": "funny",
+  "meaning": "おかしい、奇妙な / amusing; strange"
+ },
+ {
+  "word": "furniture",
+  "meaning": "家具 / tables, chairs, beds, etc."
+ },
+ {
+  "word": "gain",
+  "meaning": "得る、増す / to obtain; to increase"
+ },
+ {
+  "word": "generally",
+  "meaning": "一般に、たいてい / usually; in most cases"
+ },
+ {
+  "word": "glass",
+  "meaning": "ガラス、コップ、鏡 / a hard clear material; a cup; a mirror"
+ },
+ {
+  "word": "golden",
+  "meaning": "金色の、貴重な / of gold color; precious"
+ },
+ {
+  "word": "grand",
+  "meaning": "壮大な、立派な / large and impressive"
+ },
+ {
+  "word": "grant",
+  "meaning": "与える、認める / to give or allow"
+ },
+ {
+  "word": "ground",
+  "meaning": "地面 / the surface of the earth"
+ },
+ {
+  "word": "grow",
+  "meaning": "成長する、育てる / to become bigger"
+ },
+ {
+  "word": "guess",
+  "meaning": "推測する / to give an answer without being sure"
+ },
+ {
+  "word": "guest",
+  "meaning": "客 / a person who is invited"
+ },
+ {
+  "word": "hair",
+  "meaning": "髪、毛 / the strands growing on the head"
+ },
+ {
+  "word": "hall",
+  "meaning": "広間、廊下 / a large room; a passage"
+ },
+ {
+  "word": "handle",
+  "meaning": "扱う、取っ手 / to deal with; a part to hold"
+ },
+ {
+  "word": "happen",
+  "meaning": "起こる / to take place"
+ },
+ {
+  "word": "happy",
+  "meaning": "幸せな / feeling pleasure or joy"
+ },
+ {
+  "word": "healthy",
+  "meaning": "健康な / in good health"
+ },
+ {
+  "word": "hear",
+  "meaning": "聞く、聞こえる / to notice sound with the ears"
+ },
+ {
+  "word": "heavy",
+  "meaning": "重い / weighing a lot"
+ },
+ {
+  "word": "height",
+  "meaning": "高さ、身長 / how tall something is"
+ },
+ {
+  "word": "hide",
+  "meaning": "隠す、隠れる / to put out of sight"
+ },
+ {
+  "word": "highly",
+  "meaning": "非常に、高く / very; with high regard"
+ },
+ {
+  "word": "hill",
+  "meaning": "丘 / a raised area of land, smaller than a mountain"
+ },
+ {
+  "word": "hire",
+  "meaning": "雇う、賃借りする / to pay for work or use"
+ },
+ {
+  "word": "hit",
+  "meaning": "打つ、当たる / to strike"
+ },
+ {
+  "word": "hold",
+  "meaning": "持つ、抱く、開催する / to keep in the hands"
+ },
+ {
+  "word": "hole",
+  "meaning": "穴 / an opening or empty space"
+ },
+ {
+  "word": "hope",
+  "meaning": "希望(する) / to want and expect something good"
+ },
+ {
+  "word": "horse",
+  "meaning": "馬 / a large animal used for riding"
+ },
+ {
+  "word": "hour",
+  "meaning": "時間、1時間 / sixty minutes"
+ },
+ {
+  "word": "huge",
+  "meaning": "巨大な / extremely large"
+ },
+ {
+  "word": "ice",
+  "meaning": "氷 / frozen water"
+ },
+ {
+  "word": "idea",
+  "meaning": "考え、思いつき / a thought or plan in the mind"
+ },
+ {
+  "word": "immediately",
+  "meaning": "すぐに / at once, without delay"
+ },
+ {
+  "word": "importance",
+  "meaning": "重要性 / being important"
+ },
+ {
+  "word": "improve",
+  "meaning": "改善する / to make or become better"
+ },
+ {
+  "word": "inch",
+  "meaning": "インチ(約2.5cm) / a small unit of length"
+ },
+ {
+  "word": "influence",
+  "meaning": "影響(を与える) / the power to change someone or something"
+ },
+ {
+  "word": "inn",
+  "meaning": "宿屋 / a small hotel, often in the country"
+ },
+ {
+  "word": "inside",
+  "meaning": "内側(に) / the inner part"
+ },
+ {
+  "word": "instance",
+  "meaning": "例、場合 / an example or case"
+ },
+ {
+  "word": "instant",
+  "meaning": "瞬間、即座の / a moment; immediate"
+ },
+ {
+  "word": "instead",
+  "meaning": "その代わりに / in place of"
+ },
+ {
+  "word": "intelligence",
+  "meaning": "知性、知恵 / the ability to learn and understand"
+ },
+ {
+  "word": "interview",
+  "meaning": "面会、面談 / a formal meeting and conversation"
+ },
+ {
+  "word": "introduction",
+  "meaning": "紹介、導入 / presenting someone; a beginning"
+ },
+ {
+  "word": "iron",
+  "meaning": "鉄、アイロン / a strong metal; a tool for pressing clothes"
+ },
+ {
+  "word": "joint",
+  "meaning": "関節、継ぎ目、共同の / where parts join; shared"
+ },
+ {
+  "word": "judge",
+  "meaning": "判断する、裁判官 / to form an opinion; a court official"
+ },
+ {
+  "word": "jump",
+  "meaning": "跳ぶ / to push off the ground into the air"
+ },
+ {
+  "word": "justice",
+  "meaning": "正義、公正 / fairness; the law"
+ },
+ {
+  "word": "kind",
+  "meaning": "親切な、種類 / gentle and caring; a type"
+ },
+ {
+  "word": "kitchen",
+  "meaning": "台所 / a room for cooking"
+ },
+ {
+  "word": "lack",
+  "meaning": "不足(する) / to be without"
+ },
+ {
+  "word": "lady",
+  "meaning": "婦人、貴婦人 / a polite word for a woman"
+ },
+ {
+  "word": "late",
+  "meaning": "遅い、遅れた、故~ / after the usual time; dead"
+ },
+ {
+  "word": "lead",
+  "meaning": "導く、先頭 / to guide; the front position"
+ },
+ {
+  "word": "leader",
+  "meaning": "指導者 / a person who leads"
+ },
+ {
+  "word": "leave",
+  "meaning": "去る、残す / to go away; to let stay"
+ },
+ {
+  "word": "length",
+  "meaning": "長さ / how long something is"
+ },
+ {
+  "word": "letter",
+  "meaning": "手紙、文字 / a written message; a character of the alphabet"
+ },
+ {
+  "word": "likely",
+  "meaning": "ありそうな、たぶん / probable; probably"
+ },
+ {
+  "word": "limit",
+  "meaning": "限界、制限(する) / the greatest amount allowed"
+ },
+ {
+  "word": "listen",
+  "meaning": "聞く、耳を傾ける / to pay attention to sound"
+ },
+ {
+  "word": "load",
+  "meaning": "荷物、積む / things carried; to put on"
+ },
+ {
+  "word": "manage",
+  "meaning": "なんとかやり遂げる、管理する / to succeed with difficulty; to control"
+ },
+ {
+  "word": "manner",
+  "meaning": "方法、態度、行儀 / a way of doing; behavior"
+ },
+ {
+  "word": "marriage",
+  "meaning": "結婚 / the union of two people as a couple"
+ },
+ {
+  "word": "master",
+  "meaning": "主人、名人、習得する / an owner or expert; to learn fully"
+ },
+ {
+  "word": "match",
+  "meaning": "試合、つり合う、マッチ / a contest; to go well together; a fire stick"
+ },
+ {
+  "word": "matter",
+  "meaning": "事柄、問題、重要である / a subject; to be important"
+ },
+ {
+  "word": "maybe",
+  "meaning": "たぶん / perhaps"
+ },
+ {
+  "word": "mean",
+  "meaning": "意味する、卑劣な / to signify; unkind"
+ },
+ {
+  "word": "measure",
+  "meaning": "測る、手段 / to find the size; an action taken"
+ },
+ {
+  "word": "medicine",
+  "meaning": "薬、医学 / something taken to treat illness"
+ },
+ {
+  "word": "mental",
+  "meaning": "精神の、心の / of the mind"
+ },
+ {
+  "word": "mid",
+  "meaning": "中央の、~の中ごろの / in the middle of"
+ },
+ {
+  "word": "middle",
+  "meaning": "真ん中 / the center"
+ },
+ {
+  "word": "mind",
+  "meaning": "心、気にする / the thinking part of a person; to object"
+ },
+ {
+  "word": "minister",
+  "meaning": "牧師、大臣 / a clergyman; a government official"
+ },
+ {
+  "word": "minute",
+  "meaning": "分、ちょっとの間 / sixty seconds; a moment"
+ },
+ {
+  "word": "mix",
+  "meaning": "混ぜる / to combine together"
+ },
+ {
+  "word": "moment",
+  "meaning": "瞬間 / a very short time"
+ },
+ {
+  "word": "moon",
+  "meaning": "月 / the bright object in the night sky"
+ },
+ {
+  "word": "morning",
+  "meaning": "朝 / the early part of the day"
+ },
+ {
+  "word": "mother",
+  "meaning": "母 / a female parent"
+ },
+ {
+  "word": "motor",
+  "meaning": "モーター、原動力 / a machine that produces motion"
+ },
+ {
+  "word": "mount",
+  "meaning": "登る、乗る / to climb up or get on"
+ },
+ {
+  "word": "mountain",
+  "meaning": "山 / a very high hill"
+ },
+ {
+  "word": "mouse",
+  "meaning": "ネズミ / a small rodent with a long tail"
+ },
+ {
+  "word": "movement",
+  "meaning": "動き、運動 / the act of moving"
+ },
+ {
+  "word": "native",
+  "meaning": "生まれ故郷の、土着の / of the place one was born"
+ },
+ {
+  "word": "nearly",
+  "meaning": "ほとんど、危うく / almost"
+ },
+ {
+  "word": "necessary",
+  "meaning": "必要な / needed"
+ },
+ {
+  "word": "nice",
+  "meaning": "すてきな、親切な / pleasant; kind"
+ },
+ {
+  "word": "object",
+  "meaning": "物、目的、反対する / a thing; a purpose; to be against"
+ },
+ {
+  "word": "officer",
+  "meaning": "将校、役人 / a person in command; an official"
+ },
+ {
+  "word": "opinion",
+  "meaning": "意見 / what one thinks about something"
+ },
+ {
+  "word": "opportunity",
+  "meaning": "機会、好機 / a good chance"
+ },
+ {
+  "word": "orange",
+  "meaning": "オレンジ(色) / a round citrus fruit; its color"
+ },
+ {
+  "word": "outside",
+  "meaning": "外側(に) / the outer part"
+ },
+ {
+  "word": "owner",
+  "meaning": "持ち主 / a person who owns something"
+ },
+ {
+  "word": "pack",
+  "meaning": "荷造りする、包み / to put into bags; a bundle"
+ },
+ {
+  "word": "package",
+  "meaning": "包み、小包 / a wrapped parcel"
+ },
+ {
+  "word": "pain",
+  "meaning": "痛み、苦痛 / an unpleasant feeling in the body"
+ },
+ {
+  "word": "pair",
+  "meaning": "一対、一組 / two things that go together"
+ },
+ {
+  "word": "palm",
+  "meaning": "手のひら、ヤシ / the inside of the hand; a tropical tree"
+ },
+ {
+  "word": "parent",
+  "meaning": "親 / a mother or father"
+ },
+ {
+  "word": "particular",
+  "meaning": "特定の、特にやかましい / specific; fussy"
+ },
+ {
+  "word": "particularly",
+  "meaning": "特に / especially"
+ },
+ {
+  "word": "partner",
+  "meaning": "相手、仲間 / a person you do something with"
+ },
+ {
+  "word": "pass",
+  "meaning": "通り過ぎる、手渡す、合格する / to go by; to hand over"
+ },
+ {
+  "word": "patch",
+  "meaning": "つぎ、小さな土地 / a piece of cloth for mending; a small area"
+ },
+ {
+  "word": "path",
+  "meaning": "小道 / a narrow way for walking"
+ },
+ {
+  "word": "patient",
+  "meaning": "忍耐強い、病人 / able to wait calmly; a sick person"
+ },
+ {
+  "word": "peace",
+  "meaning": "平和、安らぎ / freedom from war or worry"
+ },
+ {
+  "word": "perfect",
+  "meaning": "完全な、完璧な / with nothing wrong"
+ },
+ {
+  "word": "perform",
+  "meaning": "行う、演じる / to do; to act on stage"
+ },
+ {
+  "word": "permission",
+  "meaning": "許可 / being allowed to do something"
+ },
+ {
+  "word": "permit",
+  "meaning": "許す / to allow"
+ },
+ {
+  "word": "pet",
+  "meaning": "ペット、お気に入りの / an animal kept at home; favorite"
+ },
+ {
+  "word": "pick",
+  "meaning": "選ぶ、摘む / to choose; to gather flowers or fruit"
+ },
+ {
+  "word": "piece",
+  "meaning": "一片、部分 / a part of something"
+ },
+ {
+  "word": "pink",
+  "meaning": "ピンク(の) / a pale red color"
+ },
+ {
+  "word": "plant",
+  "meaning": "植物、植える / a living thing that grows in soil; to put in soil"
+ },
+ {
+  "word": "platform",
+  "meaning": "壇、プラットホーム / a raised surface; a place to board trains"
+ },
+ {
+  "word": "pocket",
+  "meaning": "ポケット / a small bag sewn into clothes"
+ },
+ {
+  "word": "police",
+  "meaning": "警察 / the people who enforce the law"
+ },
+ {
+  "word": "pool",
+  "meaning": "水たまり、池 / a small area of still water"
+ },
+ {
+  "word": "poor",
+  "meaning": "貧しい、かわいそうな / having little money; unlucky"
+ },
+ {
+  "word": "pop",
+  "meaning": "ひょいと動く、ポンと鳴る / to move or burst suddenly"
+ },
+ {
+  "word": "powerful",
+  "meaning": "強力な / having great power"
+ },
+ {
+  "word": "presence",
+  "meaning": "存在、居ること / being present"
+ },
+ {
+  "word": "pretty",
+  "meaning": "きれいな、かなり / attractive; quite"
+ },
+ {
+  "word": "prevent",
+  "meaning": "防ぐ / to stop from happening"
+ },
+ {
+  "word": "principal",
+  "meaning": "主要な、校長 / most important; a school head"
+ },
+ {
+  "word": "probably",
+  "meaning": "たぶん / most likely"
+ },
+ {
+  "word": "produce",
+  "meaning": "生み出す、生産する / to make or create"
+ },
+ {
+  "word": "progress",
+  "meaning": "進歩、前進 / moving forward; improvement"
+ },
+ {
+  "word": "proof",
+  "meaning": "証拠 / evidence that shows truth"
+ },
+ {
+  "word": "proper",
+  "meaning": "適切な、正式な / correct and suitable"
+ },
+ {
+  "word": "proposal",
+  "meaning": "提案、求婚 / a suggested plan; an offer of marriage"
+ },
+ {
+  "word": "purpose",
+  "meaning": "目的 / the reason for doing something"
+ },
+ {
+  "word": "quarter",
+  "meaning": "4分の1、15分 / one fourth; fifteen minutes"
+ },
+ {
+  "word": "quickly",
+  "meaning": "速く、すぐに / fast"
+ },
+ {
+  "word": "race",
+  "meaning": "競争、人種 / a contest of speed; a group of people"
+ },
+ {
+  "word": "rain",
+  "meaning": "雨(が降る) / water falling from clouds"
+ },
+ {
+  "word": "rank",
+  "meaning": "地位、階級 / a position in society or an order"
+ },
+ {
+  "word": "rare",
+  "meaning": "まれな、珍しい / not common"
+ },
+ {
+  "word": "ray",
+  "meaning": "光線 / a narrow beam of light"
+ },
+ {
+  "word": "reach",
+  "meaning": "着く、手を伸ばす / to arrive at; to stretch out"
+ },
+ {
+  "word": "ready",
+  "meaning": "用意ができた / prepared"
+ },
+ {
+  "word": "reason",
+  "meaning": "理由、理性 / why something happens; the power to think"
+ },
+ {
+  "word": "reasonable",
+  "meaning": "道理にかなった、手ごろな / fair and sensible"
+ },
+ {
+  "word": "recommend",
+  "meaning": "勧める / to suggest as good"
+ },
+ {
+  "word": "regular",
+  "meaning": "規則正しい、いつもの / happening at fixed times; usual"
+ },
+ {
+  "word": "relative",
+  "meaning": "親戚、相対的な / a family member; compared to others"
+ },
+ {
+  "word": "relief",
+  "meaning": "安心、軽減 / the feeling when worry ends"
+ },
+ {
+  "word": "remain",
+  "meaning": "残る、~のままである / to stay"
+ },
+ {
+  "word": "remove",
+  "meaning": "取り除く / to take away"
+ },
+ {
+  "word": "represent",
+  "meaning": "表す、代表する / to stand for"
+ },
+ {
+  "word": "require",
+  "meaning": "必要とする、要求する / to need"
+ },
+ {
+  "word": "reserve",
+  "meaning": "取っておく、遠慮 / to keep for later; shyness"
+ },
+ {
+  "word": "resolution",
+  "meaning": "決心、決議 / a firm decision"
+ },
+ {
+  "word": "respect",
+  "meaning": "尊敬(する) / to admire"
+ },
+ {
+  "word": "responsible",
+  "meaning": "責任のある / having a duty for something"
+ },
+ {
+  "word": "rest",
+  "meaning": "休息(する)、残り / to relax; what is left"
+ },
+ {
+  "word": "rich",
+  "meaning": "金持ちの、豊かな / having much money; abundant"
+ },
+ {
+  "word": "ride",
+  "meaning": "乗る / to travel on a horse or in a vehicle"
+ },
+ {
+  "word": "ring",
+  "meaning": "指輪、鳴る / a circle worn on the finger; to sound"
+ },
+ {
+  "word": "rise",
+  "meaning": "上がる、昇る / to go up"
+ },
+ {
+  "word": "river",
+  "meaning": "川 / a large natural stream of water"
+ },
+ {
+  "word": "roll",
+  "meaning": "転がる、巻く / to move by turning over"
+ },
+ {
+  "word": "root",
+  "meaning": "根、根源 / the underground part of a plant"
+ },
+ {
+  "word": "rose",
+  "meaning": "バラ / a beautiful flower with thorns"
+ },
+ {
+  "word": "round",
+  "meaning": "丸い、~の周りに / shaped like a circle; around"
+ },
+ {
+  "word": "row",
+  "meaning": "列、こぐ / a line of things; to move a boat with oars"
+ },
+ {
+  "word": "royal",
+  "meaning": "王の、王室の / of a king or queen"
+ },
+ {
+  "word": "rule",
+  "meaning": "規則、支配する / a law; to govern"
+ },
+ {
+  "word": "safe",
+  "meaning": "安全な / free from danger"
+ },
+ {
+  "word": "scene",
+  "meaning": "場面、光景 / a view; part of a play"
+ },
+ {
+  "word": "scheme",
+  "meaning": "計画、たくらみ / a plan, sometimes dishonest"
+ },
+ {
+  "word": "scientific",
+  "meaning": "科学の / relating to science"
+ },
+ {
+  "word": "screen",
+  "meaning": "ついたて、仕切り / a flat panel that hides or protects"
+ },
+ {
+  "word": "sea",
+  "meaning": "海 / the salt water covering the earth"
+ },
+ {
+  "word": "season",
+  "meaning": "季節 / spring, summer, autumn, or winter"
+ },
+ {
+  "word": "seat",
+  "meaning": "座席、座らせる / a place to sit"
+ },
+ {
+  "word": "secret",
+  "meaning": "秘密(の) / kept hidden from others"
+ },
+ {
+  "word": "secretary",
+  "meaning": "秘書、書記 / a person who handles letters and records"
+ },
+ {
+  "word": "secure",
+  "meaning": "安全な、確保する / safe; to obtain firmly"
+ },
+ {
+  "word": "sense",
+  "meaning": "感覚、分別 / a feeling; good judgment"
+ },
+ {
+  "word": "separate",
+  "meaning": "分ける、別々の / to divide; not together"
+ },
+ {
+  "word": "serve",
+  "meaning": "仕える、給仕する / to work for; to bring food"
+ },
+ {
+  "word": "seven",
+  "meaning": "7、7つの / the number 7"
+ },
+ {
+  "word": "shape",
+  "meaning": "形 / the outer form of something"
+ },
+ {
+  "word": "sheet",
+  "meaning": "シーツ、一枚 / a large cloth for a bed; a flat piece"
+ },
+ {
+  "word": "ship",
+  "meaning": "船 / a large boat for the sea"
+ },
+ {
+  "word": "signal",
+  "meaning": "合図、信号 / a sign that gives information"
+ },
+ {
+  "word": "silver",
+  "meaning": "銀(の) / a shiny gray precious metal"
+ },
+ {
+  "word": "simply",
+  "meaning": "単に、まったく / just; absolutely"
+ },
+ {
+  "word": "situation",
+  "meaning": "状況、立場 / the state of things"
+ },
+ {
+  "word": "skin",
+  "meaning": "皮膚、肌 / the outer covering of the body"
+ },
+ {
+  "word": "skip",
+  "meaning": "スキップする、飛ばす / to hop lightly; to leave out"
+ },
+ {
+  "word": "sky",
+  "meaning": "空 / the space above the earth"
+ },
+ {
+  "word": "sleep",
+  "meaning": "眠る、睡眠 / to rest with eyes closed"
+ },
+ {
+  "word": "slow",
+  "meaning": "遅い / not fast"
+ },
+ {
+  "word": "smart",
+  "meaning": "利口な、ずきずき痛む / clever; to sting"
+ },
+ {
+  "word": "snow",
+  "meaning": "雪(が降る) / white flakes falling in winter"
+ },
+ {
+  "word": "soft",
+  "meaning": "柔らかい、優しい / not hard; gentle"
+ },
+ {
+  "word": "solid",
+  "meaning": "固い、頑丈な / firm and strong"
+ },
+ {
+  "word": "son",
+  "meaning": "息子 / a male child"
+ },
+ {
+  "word": "song",
+  "meaning": "歌 / music with words"
+ },
+ {
+  "word": "soon",
+  "meaning": "すぐに、まもなく / in a short time"
+ },
+ {
+  "word": "sorry",
+  "meaning": "すまなく思う、気の毒で / feeling regret or pity"
+ },
+ {
+  "word": "soul",
+  "meaning": "魂、心 / the spirit of a person"
+ },
+ {
+  "word": "speak",
+  "meaning": "話す / to say words"
+ },
+ {
+  "word": "speech",
+  "meaning": "話し方、演説 / speaking; a formal talk"
+ },
+ {
+  "word": "spend",
+  "meaning": "費やす、過ごす / to use money or time"
+ },
+ {
+  "word": "spirit",
+  "meaning": "精神、元気、霊 / the soul; energy; a ghost"
+ },
+ {
+  "word": "spot",
+  "meaning": "場所、しみ / a place; a small mark"
+ },
+ {
+  "word": "spring",
+  "meaning": "春、泉、跳ぶ / the season after winter; a water source; to leap"
+ },
+ {
+  "word": "square",
+  "meaning": "四角、広場 / a shape with four equal sides; an open area in a town"
+ },
+ {
+  "word": "stage",
+  "meaning": "舞台、段階 / a platform for performing; a step in a process"
+ },
+ {
+  "word": "stand",
+  "meaning": "立つ、我慢する / to be upright; to bear"
+ },
+ {
+  "word": "station",
+  "meaning": "駅、持ち場 / a stopping place for trains; a position"
+ },
+ {
+  "word": "stone",
+  "meaning": "石 / a hard mineral material"
+ },
+ {
+  "word": "stop",
+  "meaning": "止まる、止める / to end movement"
+ },
+ {
+  "word": "straight",
+  "meaning": "まっすぐな / without bends"
+ },
+ {
+  "word": "stream",
+  "meaning": "小川、流れ / a small river; a flow"
+ },
+ {
+  "word": "strength",
+  "meaning": "力、強さ / being strong"
+ },
+ {
+  "word": "string",
+  "meaning": "ひも、糸 / a thin cord"
+ },
+ {
+  "word": "strong",
+  "meaning": "強い / having power"
+ },
+ {
+  "word": "success",
+  "meaning": "成功 / achieving what was wanted"
+ },
+ {
+  "word": "suggest",
+  "meaning": "提案する、ほのめかす / to offer an idea"
+ },
+ {
+  "word": "summer",
+  "meaning": "夏 / the warmest season"
+ },
+ {
+  "word": "supply",
+  "meaning": "供給(する) / to provide what is needed"
+ },
+ {
+  "word": "surface",
+  "meaning": "表面 / the outside or top layer"
+ },
+ {
+  "word": "sweet",
+  "meaning": "甘い、優しい / tasting like sugar; lovable"
+ },
+ {
+  "word": "task",
+  "meaning": "仕事、課題 / a piece of work to do"
+ },
+ {
+  "word": "tea",
+  "meaning": "紅茶、お茶 / a hot drink made from leaves"
+ },
+ {
+  "word": "teacher",
+  "meaning": "教師 / a person who teaches"
+ },
+ {
+  "word": "thank",
+  "meaning": "感謝する / to express gratitude"
+ },
+ {
+  "word": "tip",
+  "meaning": "先端、傾ける、助言 / the pointed end; to tilt; a hint"
+ },
+ {
+  "word": "tom",
+  "meaning": "雄猫 / a male cat"
+ },
+ {
+  "word": "tool",
+  "meaning": "道具 / an instrument used for work"
+ },
+ {
+  "word": "touch",
+  "meaning": "触れる、感動させる / to put a hand on; to move emotionally"
+ },
+ {
+  "word": "train",
+  "meaning": "列車、訓練する / a line of railway cars; to teach skills"
+ },
+ {
+  "word": "tree",
+  "meaning": "木 / a tall plant with a trunk and branches"
+ },
+ {
+  "word": "trial",
+  "meaning": "試み、試練、裁判 / a test; a hardship; a court case"
+ },
+ {
+  "word": "trip",
+  "meaning": "旅行、つまずく / a journey; to stumble"
+ },
+ {
+  "word": "truck",
+  "meaning": "手押し車、貨車 / a vehicle or cart for carrying goods"
+ },
+ {
+  "word": "trust",
+  "meaning": "信頼(する) / to believe in someone's honesty"
+ },
+ {
+  "word": "truth",
+  "meaning": "真実 / what is true"
+ },
+ {
+  "word": "turn",
+  "meaning": "曲がる、回る、順番 / to change direction; to rotate; one's chance"
+ },
+ {
+  "word": "understand",
+  "meaning": "理解する / to know the meaning of"
+ },
+ {
+  "word": "unknown",
+  "meaning": "未知の、無名の / not known"
+ },
+ {
+  "word": "useful",
+  "meaning": "役に立つ / helpful"
+ },
+ {
+  "word": "vacation",
+  "meaning": "休暇 / a time of rest from work or school"
+ },
+ {
+  "word": "valley",
+  "meaning": "谷 / low land between hills"
+ },
+ {
+  "word": "village",
+  "meaning": "村 / a small group of houses in the country"
+ },
+ {
+  "word": "vision",
+  "meaning": "視力、幻影、展望 / sight; something imagined"
+ },
+ {
+  "word": "voice",
+  "meaning": "声 / the sound made when speaking"
+ },
+ {
+  "word": "wait",
+  "meaning": "待つ / to stay until something happens"
+ },
+ {
+  "word": "walk",
+  "meaning": "歩く / to move on foot"
+ },
+ {
+  "word": "wall",
+  "meaning": "壁、塀 / an upright structure dividing spaces"
+ },
+ {
+  "word": "waste",
+  "meaning": "無駄にする、浪費 / to use carelessly"
+ },
+ {
+  "word": "wear",
+  "meaning": "着ている、すり減る / to have on the body; to become thin with use"
+ },
+ {
+  "word": "wed",
+  "meaning": "結婚する / to marry"
+ },
+ {
+  "word": "wife",
+  "meaning": "妻 / a married woman"
+ },
+ {
+  "word": "wild",
+  "meaning": "野生の、荒々しい / living in nature; not controlled"
+ },
+ {
+  "word": "win",
+  "meaning": "勝つ、勝ち取る / to be first in a contest; to gain"
+ },
+ {
+  "word": "wind",
+  "meaning": "風、巻く / moving air; to twist or coil"
+ },
+ {
+  "word": "wine",
+  "meaning": "ワイン、ぶどう酒 / an alcoholic drink made from grapes"
+ },
+ {
+  "word": "winter",
+  "meaning": "冬 / the coldest season"
+ },
+ {
+  "word": "wish",
+  "meaning": "願う、望み / to want; a desire"
+ },
+ {
+  "word": "woman",
+  "meaning": "女性 / an adult female person"
+ },
+ {
+  "word": "wonderful",
+  "meaning": "すばらしい / extremely good"
+ },
+ {
+  "word": "wood",
+  "meaning": "木材、森 / the material of trees; a small forest"
+ },
+ {
+  "word": "worth",
+  "meaning": "価値がある / deserving of"
+ },
+ {
+  "word": "writer",
+  "meaning": "作家、書き手 / a person who writes"
+ },
+ {
+  "word": "wrong",
+  "meaning": "間違った、悪い / not correct; bad"
+ },
+ {
+  "word": "yesterday",
+  "meaning": "昨日 / the day before today"
+ },
+ {
+  "word": "youth",
+  "meaning": "若さ、青年期、若者 / being young; a young person"
+ }
 ]
