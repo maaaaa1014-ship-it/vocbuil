@@ -73,9 +73,8 @@ export default function WelcomePage() {
   return (
     <main className="scene min-h-dvh flex flex-col">
       {step === 0 && (
-        <div className="flex-1 flex flex-col justify-between px-8 py-14 text-center animate-fade-up">
-          <div />
-          <div className="flex flex-col items-center gap-6">
+        <div className="flex-1 flex flex-col justify-between px-8 py-12 text-center animate-fade-up">
+          <div className="flex flex-col items-center gap-4 pt-4">
             <p className="font-serif text-[11px] tracking-[0.4em] text-gold-soft uppercase">
               Bookshard
             </p>
@@ -91,7 +90,43 @@ export default function WelcomePage() {
               inside real classic books.
             </p>
           </div>
-          <div className="flex flex-col items-center gap-6">
+
+          <div className="flex flex-col gap-5 text-left px-1" lang="en">
+            {[
+              {
+                n: "1",
+                title: "Choose your words",
+                body: "Pick a 500-word list, or upload your own.",
+              },
+              {
+                n: "2",
+                title: "Read short passages",
+                body: "Your words appear highlighted in classic books. Tap them for the meaning.",
+              },
+              {
+                n: "3",
+                title: "Collect the books",
+                body: "Every book you read joins your collection.",
+              },
+            ].map((s) => (
+              <div key={s.n} className="flex items-start gap-4">
+                <span
+                  className="shrink-0 w-8 h-8 rounded-full border border-gold/60 text-gold font-serif text-base flex items-center justify-center"
+                  aria-hidden
+                >
+                  {s.n}
+                </span>
+                <div>
+                  <p className="font-serif text-[15px] tracking-wide">{s.title}</p>
+                  <p className="text-xs text-paper/65 leading-relaxed mt-0.5">
+                    {s.body}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="flex flex-col items-center gap-5">
             <Dots step={0} />
             <button
               type="button"

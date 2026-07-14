@@ -11,7 +11,9 @@ import {
   getPendingFirstSession,
   getReadState,
   getWordList,
+  isWordHintSeen,
   markSentenceRead,
+  markWordHintSeen,
   setOnboarded,
 } from "@/lib/storage";
 import type { BookMeta, SessionCard as SessionCardType } from "@/lib/types";
@@ -27,6 +29,7 @@ export default function SessionPage() {
   const [readCount, setReadCount] = useState(0);
   const [progressMsg, setProgressMsg] = useState("");
   const [onboardingBook, setOnboardingBook] = useState<string | null>(null);
+  const [showWordHint, setShowWordHint] = useState(false);
 
   useEffect(() => {
     let cancelled = false;
@@ -73,6 +76,7 @@ export default function SessionPage() {
 
       setBooks(bookList);
       setCards(picked);
+      setShowWordHint(!isWordHintSeen());
       setLoadState(picked.length === 0 ? "empty" : "ready");
     }
 
@@ -87,14 +91,25 @@ export default function SessionPage() {
   const bookById = useMemo(() => new Map(books.map((b) => [b.id, b])), [books]);
   const currentCard = cards[cardIndex];
 
+  function dismissWordHint() {
+    if (!showWordHint) return;
+    markWordHintSeen();
+    setShowWordHint(false);
+  }
+
   function handleRead() {
     if (!currentCard) return;
     markSentenceRead(currentCard.bookId, currentCard.sentence, currentCard.lemma);
     setReadCount((n) => n + 1);
     const next = cardIndex + 1;
-    if (next >= cards.length && onboardingBook) {
-      clearPendingFirstSession();
-      setOnboarded();
+    if (next >= cards.length) {
+      // Completing a session retires the first-time word hint even if the
+      // user never tapped a word: they've now seen 10 cards of it.
+      dismissWordHint();
+      if (onboardingBook) {
+        clearPendingFirstSession();
+        setOnboarded();
+      }
     }
     setCardIndex(next);
   }
@@ -259,6 +274,19 @@ export default function SessionPage() {
         />
       </div>
 
+      {showWordHint && cardIndex === 0 && (
+        <div
+          className="animate-fade-up self-center rounded-full border border-gold/50 bg-paper-dim/80 px-4 py-2 text-xs text-ink-soft flex items-center gap-2"
+          lang="en"
+        >
+          <span aria-hidden>👆</span>
+          <span>
+            Tap a <span className="text-wine font-semibold">highlighted</span>{" "}
+            word to see its meaning
+          </span>
+        </div>
+      )}
+
       <SentenceCard
         key={currentCard.id}
         sentence={currentCard.sentence}
@@ -266,6 +294,8 @@ export default function SessionPage() {
         meanings={meanings}
         bookTitle={book?.title ?? currentCard.bookId}
         author={book?.author ?? ""}
+        hintActive={showWordHint && cardIndex === 0}
+        onWordTap={dismissWordHint}
       />
 
       <button

@@ -9,9 +9,21 @@ type Props = {
   meanings: Map<string, string | undefined>;
   bookTitle: string;
   author: string;
+  // First-time coach mark support: pulse the tappable words and report
+  // the first tap so the parent can retire the hint.
+  hintActive?: boolean;
+  onWordTap?: () => void;
 };
 
-export default function SentenceCard({ sentence, lemmas, meanings, bookTitle, author }: Props) {
+export default function SentenceCard({
+  sentence,
+  lemmas,
+  meanings,
+  bookTitle,
+  author,
+  hintActive = false,
+  onWordTap,
+}: Props) {
   const [activeLemma, setActiveLemma] = useState<string | null>(null);
   const segments = highlightSentence(sentence, lemmas);
   const activeMeaning = activeLemma ? meanings.get(activeLemma) : undefined;
@@ -27,8 +39,13 @@ export default function SentenceCard({ sentence, lemmas, meanings, bookTitle, au
             <button
               key={i}
               type="button"
-              onClick={() => setActiveLemma(seg.lemma ?? null)}
-              className="relative inline font-semibold text-wine underline decoration-gold decoration-2 underline-offset-4 cursor-pointer"
+              onClick={() => {
+                setActiveLemma(seg.lemma ?? null);
+                onWordTap?.();
+              }}
+              className={`relative inline font-semibold text-wine underline decoration-gold decoration-2 underline-offset-4 cursor-pointer ${
+                hintActive ? "animate-word-hint" : ""
+              }`}
             >
               {seg.text}
             </button>

@@ -7,6 +7,7 @@ const KEYS = {
   onboarded: "vocbuil.onboarded.v1",
   firstBook: "vocbuil.firstBook.v1",
   pendingFirstSession: "vocbuil.pendingFirstSession.v1",
+  wordHintSeen: "vocbuil.wordHintSeen.v1",
 } as const;
 
 // The very first book a user reads unlocks after only 10 sentences, so the
@@ -90,6 +91,17 @@ export function isOnboarded(): boolean {
 
 export function setOnboarded() {
   writeJson(KEYS.onboarded, true);
+}
+
+// One-time coach mark on the first reading card: "tap a highlighted word".
+// Marked seen once the user taps a word or finishes their first session,
+// so it never nags after the interaction has been discovered.
+export function isWordHintSeen(): boolean {
+  return readJson<boolean>(KEYS.wordHintSeen, false);
+}
+
+export function markWordHintSeen() {
+  writeJson(KEYS.wordHintSeen, true);
 }
 
 // While onboarding, the first session is pinned to one featured book;

@@ -252,6 +252,23 @@ body {
   animation: play-pulse 2.6s ease-in-out infinite;
 }
 
+/* Slow breathing wash behind tappable words while the first-time hint is
+   visible — draws the eye without any fast motion. */
+@keyframes word-hint-pulse {
+  0%,
+  100% {
+    background-color: transparent;
+  }
+  50% {
+    background-color: rgba(169, 134, 55, 0.22);
+  }
+}
+
+.animate-word-hint {
+  animation: word-hint-pulse 2.4s ease-in-out infinite;
+  border-radius: 0.2em;
+}
+
 .animate-fade-up {
   animation: fade-up 0.55s ease-out both;
 }
