@@ -14,6 +14,24 @@ const KEYS = {
 export const FIRST_BOOK_GOAL = 10;
 export const BOOK_GOAL = 30;
 
+// Design theme. Deliberately outside KEYS so data resets keep the choice.
+// "library" = dark green antique (A), "crystal" = glass and pastel (B).
+export type Theme = "library" | "crystal";
+const THEME_KEY = "vocbuil.theme.v1";
+export const DEFAULT_THEME: Theme = "crystal";
+
+export function getTheme(): Theme {
+  if (typeof window === "undefined") return DEFAULT_THEME;
+  const raw = window.localStorage.getItem(THEME_KEY);
+  return raw === "library" || raw === "crystal" ? raw : DEFAULT_THEME;
+}
+
+export function setTheme(theme: Theme) {
+  if (typeof window === "undefined") return;
+  window.localStorage.setItem(THEME_KEY, theme);
+  document.documentElement.dataset.theme = theme;
+}
+
 export type ReadState = Record<string, { sentences: string[]; lemmas: string[] }>;
 
 function isBrowser() {

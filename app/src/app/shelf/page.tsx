@@ -19,16 +19,16 @@ export default function ShelfPage() {
     >
       <header className="text-center flex flex-col gap-3">
         <p className="font-serif text-[11px] tracking-[0.35em] text-gold uppercase">
-          My Bookshelf
+          名作のかけら
         </p>
         <h1 className="font-serif text-4xl font-semibold text-green tracking-[0.1em]">
-          Bookshelf
+          Collection
         </h1>
         <div className="ornament-rule text-sm" aria-hidden>
-          ❦
+          ✦
         </div>
         <p className="text-[13px] text-ink-soft">
-          Every book you read becomes yours.
+          Every book you read joins your collection.
         </p>
       </header>
 

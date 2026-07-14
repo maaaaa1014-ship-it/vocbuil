@@ -169,7 +169,7 @@ export default function SessionPage() {
             <h1 className="font-serif text-2xl leading-relaxed">
               This book is now
               <br />
-              on your shelf.
+              in your collection.
             </h1>
             <div className="ornament-rule w-52 text-sm" aria-hidden>
               ◆
@@ -186,7 +186,7 @@ export default function SessionPage() {
               href="/shelf"
               className="rounded-sm bg-gold text-green py-4 text-base font-serif font-semibold tracking-[0.2em] shadow-lg"
             >
-              See my shelf
+              See my collection
             </Link>
             <Link
               href="/"
@@ -222,7 +222,7 @@ export default function SessionPage() {
             href="/shelf"
             className="rounded-sm bg-green text-paper py-3.5 text-sm font-serif tracking-[0.2em]"
           >
-            See my shelf
+            See my collection
           </Link>
           <Link
             href="/"

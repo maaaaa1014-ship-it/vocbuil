@@ -76,13 +76,13 @@ export default function WelcomePage() {
           <div />
           <div className="flex flex-col items-center gap-6">
             <p className="font-serif text-[11px] tracking-[0.4em] text-gold-soft uppercase">
-              Words in Context
+              Bookshard
             </p>
-            <h1 className="font-serif text-5xl font-semibold tracking-[0.3em] pl-[0.3em]">
-              再読
+            <h1 className="font-serif text-4xl font-semibold tracking-[0.2em] pl-[0.2em]">
+              名作のかけら
             </h1>
             <div className="ornament-rule w-40 text-base" aria-hidden>
-              ❦
+              ✦
             </div>
             <p className="text-[15px] leading-relaxed text-paper/85" lang="en">
               Meet the words you study
@@ -195,7 +195,7 @@ export default function WelcomePage() {
               <br />
               Read {FIRST_BOOK_GOAL} sentences, and this book
               <br />
-              becomes the first one on your shelf.
+              becomes the first piece in your collection.
             </p>
           </div>
 

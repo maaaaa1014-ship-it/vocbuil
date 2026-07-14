@@ -79,13 +79,13 @@ export default function HomePage() {
     >
       <header className="text-center flex flex-col gap-3">
         <p className="font-serif text-[11px] tracking-[0.35em] text-gold uppercase">
-          Words in Context
+          Bookshard
         </p>
-        <h1 className="font-serif text-4xl font-semibold text-green tracking-[0.3em] pl-[0.3em]">
-          再読
+        <h1 className="font-serif text-3xl font-semibold text-green tracking-[0.2em] pl-[0.2em]">
+          名作のかけら
         </h1>
         <div className="ornament-rule text-sm" aria-hidden>
-          ❦
+          ✦
         </div>
         <p className="text-[13px] text-ink-soft leading-relaxed">
           Meet the words you study inside real classic books.

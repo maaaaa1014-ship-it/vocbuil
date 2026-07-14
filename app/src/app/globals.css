@@ -255,3 +255,148 @@ body {
 .animate-fade-up {
   animation: fade-up 0.55s ease-out both;
 }
+
+/* ====================================================================== */
+/* Theme B: "Crystal" — glass, prism light, pastel, quiet luxury.         */
+/* Selected via <html data-theme="crystal">; theme A ("library") keeps    */
+/* the default values above. Most components restyle automatically        */
+/* because they consume the palette variables.                            */
+/* ====================================================================== */
+
+[data-theme="crystal"] {
+  --color-paper: #f6f8fc;
+  --color-paper-dim: #e8edf6;
+  --color-card: rgba(255, 255, 255, 0.62);
+  --color-ink: #3d4358;
+  --color-ink-soft: #7d849c;
+  --color-green: #56719e;
+  --color-green-soft: #7d92b5;
+  --color-wine: #7d6cab;
+  --color-gold: #b7a271;
+  --color-gold-soft: #d7c9a4;
+  --color-navy: #8aa3c4;
+  --color-teal: #79a5a0;
+}
+
+[data-theme="crystal"] body {
+  background-color: var(--color-paper);
+  /* Pale prism wash: ice blue, pearl, a hint of rose and lavender */
+  background-image:
+    radial-gradient(ellipse at 12% 5%, rgba(168, 199, 235, 0.35), transparent 50%),
+    radial-gradient(ellipse at 90% 15%, rgba(219, 190, 222, 0.28), transparent 45%),
+    radial-gradient(ellipse at 80% 95%, rgba(180, 214, 208, 0.3), transparent 50%),
+    radial-gradient(ellipse at 15% 85%, rgba(240, 214, 199, 0.25), transparent 45%);
+  background-attachment: fixed;
+}
+
+/* Frosted glass cards with a soft inner highlight instead of the gold
+   bookplate frame */
+[data-theme="crystal"] .plate-frame {
+  background: var(--color-card);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  border-radius: 1.5rem;
+  box-shadow:
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.9),
+    0 8px 28px rgba(97, 114, 152, 0.14);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+/* Rounder geometry everywhere: override the Tailwind radius utilities the
+   components already use */
+[data-theme="crystal"] .rounded-sm {
+  border-radius: 1.1rem;
+}
+[data-theme="crystal"] .rounded-md {
+  border-radius: 1.4rem;
+}
+
+[data-theme="crystal"] .ornament-rule {
+  color: #a394cd;
+}
+[data-theme="crystal"] .ornament-rule::before,
+[data-theme="crystal"] .ornament-rule::after {
+  background: linear-gradient(
+    to var(--rule-dir, right),
+    transparent,
+    rgba(163, 148, 205, 0.55)
+  );
+}
+
+/* Night-sky crystal scene: deep blue with slow-breathing prism light,
+   like a jewel photographed on dark velvet */
+[data-theme="crystal"] .scene {
+  background: linear-gradient(170deg, #262c47 0%, #2c3354 55%, #353152 100%);
+}
+[data-theme="crystal"] .scene::before {
+  background: radial-gradient(
+    circle at 35% 65%,
+    rgba(196, 181, 233, 0.4),
+    rgba(140, 168, 220, 0.14) 55%,
+    transparent 75%
+  );
+  animation: scene-breathe 9s ease-in-out infinite;
+}
+[data-theme="crystal"] .scene::after {
+  background: radial-gradient(
+    circle at 60% 30%,
+    rgba(226, 186, 201, 0.35),
+    rgba(160, 205, 197, 0.16) 55%,
+    transparent 75%
+  );
+  animation: scene-breathe 11s ease-in-out infinite reverse;
+}
+
+@keyframes scene-breathe {
+  0%,
+  100% {
+    opacity: 0.8;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-2%);
+  }
+}
+
+/* Glass buttons on scene screens: the gold CTA becomes translucent
+   frosted glass with a champagne tint */
+[data-theme="crystal"] .scene .bg-gold {
+  background: rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  color: #f2ecff;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow:
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.35),
+    0 8px 24px rgba(20, 24, 46, 0.35);
+}
+
+[data-theme="crystal"] .paper-blobs::before {
+  background: radial-gradient(
+    circle at 40% 60%,
+    rgba(168, 199, 235, 0.35),
+    transparent 70%
+  );
+}
+[data-theme="crystal"] .paper-blobs::after {
+  background: radial-gradient(
+    circle at 60% 40%,
+    rgba(219, 190, 222, 0.3),
+    transparent 70%
+  );
+}
+
+/* Softer sparkle for a fully collected book */
+[data-theme="crystal"] .animate-glow {
+  animation: crystal-glow 3.2s ease-in-out infinite;
+}
+@keyframes crystal-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 14px 3px rgba(163, 148, 205, 0.45);
+  }
+  50% {
+    box-shadow: 0 0 26px 8px rgba(140, 168, 220, 0.6);
+  }
+}
