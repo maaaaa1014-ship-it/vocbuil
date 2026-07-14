@@ -1,4 +1,4 @@
-import type { BookIndex, BookMeta, UserWord } from "./types";
+import type { BookIndex, BookMeta, PresetTier, UserWord } from "./types";
 
 let booksCache: BookMeta[] | null = null;
 const indexCache = new Map<string, BookIndex>();
@@ -39,7 +39,7 @@ export async function loadAllIndexes(
   return result;
 }
 
-export async function loadPreset(tier: "intermediate" | "advanced"): Promise<UserWord[]> {
+export async function loadPreset(tier: PresetTier): Promise<UserWord[]> {
   const cached = presetCache.get(tier);
   if (cached) return cached;
   const res = await fetch(`/data/preset-${tier}.json`);

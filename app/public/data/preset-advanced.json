@@ -100,6 +100,10 @@
   "meaning": "後方へ / toward the back"
  },
  {
+  "word": "bacon",
+  "meaning": "ベーコン / smoked or salted meat from a pig"
+ },
+ {
   "word": "badly",
   "meaning": "ひどく / in a bad way; very much"
  },
@@ -624,10 +628,6 @@
   "meaning": "尊重(する) / great respect"
  },
  {
-  "word": "etiquette",
-  "meaning": "礼儀作法 / the accepted rules of polite behavior"
- },
- {
   "word": "evident",
   "meaning": "明らかな / easy to see or understand"
  },
@@ -798,6 +798,10 @@
  {
   "word": "goat",
   "meaning": "ヤギ / a horned farm animal"
+ },
+ {
+  "word": "goodbye",
+  "meaning": "さようなら / a word said when leaving"
  },
  {
   "word": "goodness",
@@ -1018,10 +1022,6 @@
  {
   "word": "keen",
   "meaning": "熱心な、鋭い / very eager; sharp"
- },
- {
-  "word": "keeper",
-  "meaning": "番人 / a person who looks after something"
  },
  {
   "word": "knit",
@@ -1292,10 +1292,6 @@
   "meaning": "舗道 / a paved path for walking"
  },
  {
-  "word": "peg",
-  "meaning": "くぎ、洗濯ばさみ / a small pin used to fasten or hang things"
- },
- {
   "word": "pencil",
   "meaning": "鉛筆 / a thin tool for writing or drawing"
  },
@@ -1506,6 +1502,10 @@
  {
   "word": "rope",
   "meaning": "ロープ、綱 / thick strong cord"
+ },
+ {
+  "word": "roughly",
+  "meaning": "おおよそ、荒っぽく / approximately; in a rough way"
  },
  {
   "word": "rub",

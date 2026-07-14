@@ -1,4 +1,4 @@
-"""Build app/public/data/preset-intermediate.json and preset-advanced.json.
+"""Build app/public/data/preset-{intermediate,advanced,expert}.json.
 
 We want ~500 words per tier that actually occur often in this 10-book
 corpus, so the "start with a preset" flow immediately produces matches.
@@ -13,17 +13,22 @@ corpus:
 
   intermediate: candidate ranks 1001-3000
   advanced:     candidate ranks 8001-13000
+  expert:       candidate ranks 10001-20000, minus words already
+                claimed by intermediate/advanced
 
 The advanced range was moved from an initial 3001-8000 after that pass
-read as too easy/high-frequency. Merely adding 8001-13000 to the existing
-3001-8000 pool did not help: ranking the union by raw corpus frequency
-still surfaces mostly rank-3000-ish words, since those are inherently
-more frequent, drowning out the harder tail. So the advanced tier now
-draws only from 8001-13000, a band of genuinely rarer vocabulary.
+read as too easy/high-frequency. Merely adding a wider range to an
+existing pool doesn't help on its own: ranking the union by raw corpus
+frequency still surfaces mostly the lower/more-frequent end, since those
+words are inherently more common, drowning out the harder tail. So each
+tier after the first draws from a band that does not (much) overlap the
+previous tier's actual range, and expert's wide 10001-20000 net still
+lands on genuinely rare vocabulary because the exclusion set removes
+everything advanced already took from the front of that range.
 
 This keeps the same intent -- common-but-not-basic vocabulary, then
-rarer vocabulary -- while working within the network constraints of
-this environment.
+rarer, then rarer still -- while working within the network constraints
+of this environment.
 
 Usage: python3 build_preset.py
 """
@@ -53,13 +58,19 @@ CANDIDATE_POOL_URL = (
 TARGET_COUNT = 500
 MIN_CORPUS_OCCURRENCES = 3
 
-# Known tokenizer/lemmatizer artifacts that are not real standalone words
-# (e.g. "doo" from "cock-a-doodle-doo" split on the hyphen).
-EXCLUDE_WORDS = {"doo"}
+# Known tokenizer/lemmatizer artifacts and dialect/contraction fragments
+# that are not real standalone words to study:
+#   doo    - from "cock-a-doodle-doo" split on the hyphen
+#   sha    - from "sha'n't" (shan't) split on the apostrophe
+#   tha, yer - Yorkshire/Cockney dialect for "you"/"your" (Secret Garden,
+#              A Little Princess dialogue)
+#   dunno  - informal contraction of "don't know"
+EXCLUDE_WORDS = {"doo", "sha", "tha", "yer", "dunno"}
 
 TIERS = [
     {"name": "intermediate", "rank_start": 1000, "rank_end": 3000},  # rank 1001-3000
     {"name": "advanced", "rank_start": 8000, "rank_end": 13000},  # rank 8001-13000
+    {"name": "expert", "rank_start": 10000, "rank_end": 20000},  # rank 10001-20000
 ]
 
 

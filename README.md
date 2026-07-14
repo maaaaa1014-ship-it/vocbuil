@@ -16,7 +16,7 @@ cd pipeline
 pip install -r requirements.txt
 python3 download_books.py   # pipeline/raw, pipeline/clean にテキストを取得
 python3 build_index.py      # app/public/data/index-*.json, books.json を生成
-python3 build_preset.py     # app/public/data/preset-intermediate.json, preset-advanced.json を生成
+python3 build_preset.py     # app/public/data/preset-{intermediate,advanced,expert}.json を生成
 ```
 
 生成物は `app/public/data/` に配置され、`app/` はそれを静的に読み込む。索引を作り直したときは `app/public/data/*.json` を再コミットする。

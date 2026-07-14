@@ -18,6 +18,8 @@ export type UserWord = {
   meaning?: string;
 };
 
+export type PresetTier = "intermediate" | "advanced" | "expert";
+
 export type SessionCard = {
   id: string; // stable id: `${bookId}::${sentence}`
   bookId: string;

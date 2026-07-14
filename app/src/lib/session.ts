@@ -16,6 +16,10 @@ export function buildCandidateCards(
     for (const w of words) {
       const entries = index[w.word];
       if (!entries) continue;
+      // Only one card per (book, word): take the first unread, not-yet-used
+      // sentence and stop, so the same word never repeats within a book's
+      // session. Which sentence that is naturally advances over time since
+      // already-read ones are skipped.
       for (const entry of entries) {
         if (isAlreadyRead(book.id, entry.sentence)) continue;
         const id = `${book.id}::${entry.sentence}`;
@@ -29,6 +33,7 @@ export function buildCandidateCards(
           position: entry.position,
           meaning: meaningByWord.get(w.word),
         });
+        break;
       }
     }
   }
