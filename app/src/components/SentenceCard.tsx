@@ -9,6 +9,10 @@ type Props = {
   meanings: Map<string, string | undefined>;
   bookTitle: string;
   author: string;
+  // The card's studied word with its exact surface form in this sentence
+  // (e.g. "meant" for lemma "mean"), guaranteeing it gets highlighted even
+  // when the suffix heuristic can't derive the inflection.
+  featured?: { form?: string; lemma: string };
   // Word taps bubble up (with the tapped lemma) so the session can retire
   // the first-time hint and record the lookup in the learned-words log.
   hintActive?: boolean;
@@ -21,11 +25,14 @@ export default function SentenceCard({
   meanings,
   bookTitle,
   author,
+  featured,
   hintActive = false,
   onWordTap,
 }: Props) {
   const [activeLemma, setActiveLemma] = useState<string | null>(null);
-  const segments = highlightSentence(sentence, lemmas);
+  const exactForms =
+    featured?.form ? [{ form: featured.form, lemma: featured.lemma }] : [];
+  const segments = highlightSentence(sentence, lemmas, exactForms);
   const activeMeaning = activeLemma ? meanings.get(activeLemma) : undefined;
 
   return (

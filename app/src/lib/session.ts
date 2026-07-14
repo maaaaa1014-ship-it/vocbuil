@@ -1,13 +1,21 @@
 import type { BookIndex, BookMeta, SessionCard, UserWord } from "./types";
 
+function assemblePassage(entry: { s: string; n?: string; o?: "b" }): string {
+  if (!entry.n) return entry.s;
+  return entry.o === "b" ? `${entry.n} ${entry.s}` : `${entry.s} ${entry.n}`;
+}
+
 export function buildCandidateCards(
   words: UserWord[],
   indexes: Map<string, BookIndex>,
   books: BookMeta[],
-  isAlreadyRead: (bookId: string, sentence: string) => boolean
+  isSeen: (bookId: string, sentenceKey: string) => boolean
 ): SessionCard[] {
   const meaningByWord = new Map(words.map((w) => [w.word, w.meaning]));
-  const seenSentenceIds = new Set<string>();
+  // Every sentence any chosen candidate displays (cores AND neighbors), so
+  // one card's context sentence can never become another card's core --
+  // that was how the same sentence used to appear twice in a session.
+  const usedKeys = new Set<string>();
   const cards: SessionCard[] = [];
 
   for (const book of books) {
@@ -16,25 +24,36 @@ export function buildCandidateCards(
     for (const w of words) {
       const entries = index[w.word];
       if (!entries) continue;
-      // Only one card per (book, word): take the first unread, not-yet-used
-      // sentence and stop, so the same word never repeats within a book's
-      // session. Which sentence that is naturally advances over time since
-      // already-read ones are skipped.
-      for (const entry of entries) {
-        if (isAlreadyRead(book.id, entry.sentence)) continue;
-        const id = `${book.id}::${entry.sentence}`;
-        if (seenSentenceIds.has(id)) continue;
-        seenSentenceIds.add(id);
-        cards.push({
-          id,
-          bookId: book.id,
-          lemma: w.word,
-          sentence: entry.sentence,
-          position: entry.position,
-          meaning: meaningByWord.get(w.word),
-        });
-        break;
-      }
+      // Only one card per (book, word), so the same word never repeats
+      // within a book's session. Never re-feature a core sentence the user
+      // has already seen (as a core or as a neighbor, in any past session
+      // or in this batch); among the fresh ones, prefer an entry whose
+      // context sentence is also completely fresh.
+      const fresh = entries.filter(
+        (e) => !isSeen(book.id, e.s) && !usedKeys.has(`${book.id}::${e.s}`)
+      );
+      const entry =
+        fresh.find(
+          (e) =>
+            !e.n ||
+            (!isSeen(book.id, e.n) && !usedKeys.has(`${book.id}::${e.n}`))
+        ) ??
+        fresh.find((e) => !e.n || !usedKeys.has(`${book.id}::${e.n}`)) ??
+        fresh[0];
+      if (!entry) continue;
+      usedKeys.add(`${book.id}::${entry.s}`);
+      if (entry.n) usedKeys.add(`${book.id}::${entry.n}`);
+      cards.push({
+        id: `${book.id}::${entry.s}`,
+        bookId: book.id,
+        lemma: w.word,
+        sentence: assemblePassage(entry),
+        core: entry.s,
+        neighbor: entry.n,
+        form: entry.f,
+        position: entry.p,
+        meaning: meaningByWord.get(w.word),
+      });
     }
   }
   return cards;

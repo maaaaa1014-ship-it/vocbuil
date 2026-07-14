@@ -133,10 +133,14 @@ def main():
             if not sentence_text:
                 continue
 
-            # Show the qualifying sentence plus a neighbor from the source
-            # text, so each card reads as a short passage with context
-            # instead of one isolated line. The matched word still lives in
-            # `sentence_text`; the neighbor only adds surrounding context.
+            # Each card shows the qualifying sentence plus a neighbor from
+            # the source text, so it reads as a short passage with context.
+            # The matched word lives in the core sentence; the neighbor only
+            # adds surrounding context. Core ("s") and neighbor ("n") are
+            # stored separately (with "o":"b" when the neighbor comes
+            # before) so the app can assemble the passage for display but
+            # track read-state per real sentence, preventing the same
+            # sentence from resurfacing inside a different passage.
             # Prefer the next sentence, falling back to the previous one if
             # the next isn't usable (e.g. a chapter heading); skip a
             # neighbor entirely rather than glue in a heading fragment.
@@ -146,23 +150,28 @@ def main():
             prev_text = clean_sentence_text(prev_sent.text) if prev_sent else ""
 
             if is_usable_neighbor(next_text):
-                passage_text = f"{sentence_text} {next_text}".strip()
+                neighbor_text, neighbor_before = next_text, False
             elif is_usable_neighbor(prev_text):
-                passage_text = f"{prev_text} {sentence_text}".strip()
+                neighbor_text, neighbor_before = prev_text, True
             else:
-                passage_text = sentence_text
+                neighbor_text, neighbor_before = "", False
 
             position = round(sent.start_char / total_len, 4)
             sentence_count += 1
 
-            lemmas_in_sentence = set()
+            # Surface form per lemma ("f"): the exact word as it appears in
+            # this sentence (e.g. "meant" for lemma "mean"), so the app can
+            # always highlight the studied word even for irregular forms
+            # the client-side suffix heuristic cannot derive.
+            lemma_forms: dict[str, str] = {}
             for tok in words:
                 if tok.is_stop:
                     continue
                 lemma = tok.lemma_.lower().strip()
                 if len(lemma) < MIN_LEMMA_LEN or not lemma.isalpha():
                     continue
-                lemmas_in_sentence.add(lemma)
+                if lemma not in lemma_forms:
+                    lemma_forms[lemma] = tok.text
 
                 # Proper-noun heuristic: capitalized mid-sentence (not the
                 # sentence's first word), tallied per raw occurrence so the
@@ -171,12 +180,17 @@ def main():
                 if tok.i != sent.start and tok.text[:1].isupper():
                     lemma_cap_mid[lemma] = lemma_cap_mid.get(lemma, 0) + 1
 
-            for lemma in lemmas_in_sentence:
+            for lemma, form in lemma_forms.items():
                 lemma_freq[lemma] = lemma_freq.get(lemma, 0) + 1
                 bucket = index.setdefault(lemma, [])
                 if len(bucket) >= MAX_SENTENCES_PER_LEMMA_PER_BOOK:
                     continue
-                bucket.append({"sentence": passage_text, "position": position})
+                entry = {"s": sentence_text, "p": position, "f": form}
+                if neighbor_text:
+                    entry["n"] = neighbor_text
+                    if neighbor_before:
+                        entry["o"] = "b"
+                bucket.append(entry)
 
         out_path = OUT_DIR / f"index-{book.id}.json"
         out_path.write_text(
