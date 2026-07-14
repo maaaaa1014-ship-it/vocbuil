@@ -9,23 +9,25 @@ reachable here). As a stand-in "frequency band" we use ranks from a
 Google 20000 English word frequency list (a well-known general frequency
 list, extended edition of the "Google 10000" list):
 
-  intermediate: candidate ranks 1001-3000, top 500 by CORPUS frequency
-  advanced:     candidate ranks 8001-13000, top 500 by CORPUS frequency
-  expert:       candidate rank 10001+ (open-ended), top 500 by RANK
-                (i.e. the rarest-in-general-English words that still
-                appear at least twice in the corpus)
+  intermediate: candidate ranks 1001-3000,  top 500 by CORPUS frequency
+  advanced:     candidate ranks 8001-13000, top 500 by RANK (hardest first)
+  expert:       candidate rank 8001+ (open-ended, minus whatever advanced
+                already took), top 500 by RANK (hardest first)
 
-intermediate/advanced rank the candidates by how often they occur IN THE
-CORPUS, which is right for "common enough to practice" but wrong for
-"hard": sorting a rank band by corpus frequency surfaces whichever words
-happen to recur most in 19th-century narration (whisper, splendid,
-curiosity...), which reads as easy even from a nominally rare rank band,
-because it's optimizing for recurrence, not rarity. expert instead sorts
-by GENERAL-ENGLISH RANK descending across the entire rest of the word
-list, so it actually finds the rarest words in the corpus (magistrate,
-ascertain, incumbent, solicitor, voluntarily, restraint...) rather than
-merely-uncommon-but-recurring ones. Its occurrence floor is lower (2
-instead of 3) since genuinely rare words don't recur often by definition.
+intermediate ranks its candidates by how often they occur IN THE CORPUS,
+which is right for "common enough to practice" -- the goal there is
+everyday recurring vocabulary. advanced and expert instead sort by
+GENERAL-ENGLISH RANK descending: sorting a rank band by corpus frequency
+surfaces whichever words happen to recur most in 19th-century narration
+(whisper, splendid, curiosity...), which reads as easy even from a
+nominally rare rank band, because it optimizes for recurrence, not
+rarity. Ranking by general-English rank instead finds the words that are
+objectively rarest and still appear in the corpus at all (magistrate,
+ascertain, incumbent, solicitor, voluntarily, restraint...). advanced
+draws from the narrower 8001-13000 band (min 3 occurrences) and expert
+from the much wider tail beyond that (min 2 occurrences, since genuinely
+rare words don't recur often by definition), so expert ends up harder
+than advanced simply because it pulls from rarer rank territory.
 
 Usage: python3 build_preset.py
 """
@@ -75,7 +77,7 @@ TIERS = [
         "name": "advanced",
         "rank_start": 8000,
         "rank_end": 13000,  # rank 8001-13000
-        "sort_by": "frequency",
+        "sort_by": "rank",  # hardest (rarest in general English) first
         "min_occurrences": 3,
     },
     {

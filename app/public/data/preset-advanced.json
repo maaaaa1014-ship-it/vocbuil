@@ -20,16 +20,8 @@
   "meaning": "一致、与える / agreement; to give formally"
  },
  {
-  "word": "acknowledge",
-  "meaning": "認める / to admit that something is true"
- },
- {
   "word": "affair",
   "meaning": "出来事、事柄 / an event or matter"
- },
- {
-  "word": "algebra",
-  "meaning": "代数 / a branch of mathematics with letters and numbers"
  },
  {
   "word": "alike",
@@ -60,6 +52,10 @@
   "meaning": "足首 / the joint between the foot and leg"
  },
  {
+  "word": "aperture",
+  "meaning": "すきま、開口部 / a small opening"
+ },
+ {
   "word": "appetite",
   "meaning": "食欲 / a desire to eat"
  },
@@ -72,8 +68,16 @@
   "meaning": "眠って / sleeping"
  },
  {
+  "word": "assorted",
+  "meaning": "各種の / of different kinds, mixed"
+ },
+ {
   "word": "asylum",
   "meaning": "保護施設、避難所 / a place of shelter or protection"
+ },
+ {
+  "word": "athlete",
+  "meaning": "運動選手 / a person trained in sports"
  },
  {
   "word": "attic",
@@ -116,16 +120,12 @@
   "meaning": "はげた / having no hair on the head"
  },
  {
-  "word": "balloon",
-  "meaning": "風船、気球 / a bag that floats when filled with gas"
+  "word": "banker",
+  "meaning": "銀行家 / a person who works at a bank"
  },
  {
   "word": "banquet",
   "meaning": "宴会 / a large formal meal"
- },
- {
-  "word": "barely",
-  "meaning": "かろうじて / only just; almost not"
  },
  {
   "word": "bark",
@@ -134,10 +134,6 @@
  {
   "word": "barn",
   "meaning": "納屋 / a farm building for animals or crops"
- },
- {
-  "word": "barrel",
-  "meaning": "たる / a large round container"
  },
  {
   "word": "bead",
@@ -156,10 +152,6 @@
   "meaning": "最愛の / dearly loved"
  },
  {
-  "word": "bind",
-  "meaning": "縛る、結びつける / to tie together"
- },
- {
   "word": "bite",
   "meaning": "かむ / to cut with the teeth"
  },
@@ -176,8 +168,16 @@
   "meaning": "祝福する / to ask God's favor for"
  },
  {
+  "word": "blessing",
+  "meaning": "恵み、祝福 / something that brings happiness or luck"
+ },
+ {
   "word": "blink",
   "meaning": "まばたきする / to close and open the eyes quickly"
+ },
+ {
+  "word": "bliss",
+  "meaning": "至福 / perfect happiness"
  },
  {
   "word": "bloom",
@@ -196,6 +196,14 @@
   "meaning": "悩ませる、面倒 / to annoy; trouble"
  },
  {
+  "word": "bounce",
+  "meaning": "跳ねる / to spring back after hitting something"
+ },
+ {
+  "word": "bouquet",
+  "meaning": "花束 / a bunch of flowers"
+ },
+ {
   "word": "brave",
   "meaning": "勇敢な / not afraid of danger"
  },
@@ -208,12 +216,16 @@
   "meaning": "そよ風 / a light wind"
  },
  {
-  "word": "briefly",
-  "meaning": "手短に / for a short time"
+  "word": "brightness",
+  "meaning": "明るさ / the quality of giving off light"
  },
  {
   "word": "brook",
   "meaning": "小川 / a small stream"
+ },
+ {
+  "word": "brutal",
+  "meaning": "残忍な / very cruel or violent"
  },
  {
   "word": "bucket",
@@ -236,12 +248,8 @@
   "meaning": "破裂する、突然~する / to break open suddenly"
  },
  {
-  "word": "bye",
-  "meaning": "さようなら / goodbye"
- },
- {
-  "word": "cage",
-  "meaning": "かご、おり / a box with bars for keeping animals"
+  "word": "caller",
+  "meaning": "訪問者、発信者 / a person who visits or telephones"
  },
  {
   "word": "cannon",
@@ -260,16 +268,8 @@
   "meaning": "馬車 / a vehicle pulled by horses"
  },
  {
-  "word": "caution",
-  "meaning": "用心、警告する / great care to avoid danger"
- },
- {
   "word": "cease",
   "meaning": "やめる / to stop happening or doing"
- },
- {
-  "word": "characteristic",
-  "meaning": "特徴、特有の / a typical feature; typical"
  },
  {
   "word": "charitable",
@@ -278,10 +278,6 @@
  {
   "word": "cheer",
   "meaning": "元気づける、歓声 / to encourage with shouts"
- },
- {
-  "word": "cheque",
-  "meaning": "小切手 (check) / a printed form for paying money"
  },
  {
   "word": "chill",
@@ -296,8 +292,8 @@
   "meaning": "聖歌隊 / a group of singers"
  },
  {
-  "word": "chorus",
-  "meaning": "合唱、繰り返し / a group singing together; a repeated part of a song"
+  "word": "circus",
+  "meaning": "サーカス / a traveling show with performers and animals"
  },
  {
   "word": "clever",
@@ -310,6 +306,10 @@
  {
   "word": "climb",
   "meaning": "登る / to go up using hands and feet"
+ },
+ {
+  "word": "closet",
+  "meaning": "戸棚、クローゼット / a small storage room or cupboard"
  },
  {
   "word": "clutch",
@@ -340,20 +340,8 @@
   "meaning": "意識のある / awake and aware"
  },
  {
-  "word": "consequence",
-  "meaning": "結果 / a result of an action"
- },
- {
-  "word": "consequently",
-  "meaning": "その結果 / as a result"
- },
- {
   "word": "considerably",
   "meaning": "かなり / by a large amount"
- },
- {
-  "word": "consist",
-  "meaning": "~から成る / to be made up of"
  },
  {
   "word": "continually",
@@ -372,6 +360,10 @@
   "meaning": "納得させる / to make someone believe something"
  },
  {
+  "word": "correspondent",
+  "meaning": "通信員、文通相手 / a reporter; a person who writes letters"
+ },
+ {
   "word": "corridor",
   "meaning": "廊下 / a long passage in a building"
  },
@@ -386,6 +378,10 @@
  {
   "word": "courage",
   "meaning": "勇気 / the ability to face danger or fear"
+ },
+ {
+  "word": "courtyard",
+  "meaning": "中庭 / an open space surrounded by walls"
  },
  {
   "word": "cousin",
@@ -428,6 +424,10 @@
   "meaning": "残酷な / causing pain on purpose"
  },
  {
+  "word": "crush",
+  "meaning": "押しつぶす / to press hard and damage"
+ },
+ {
   "word": "curl",
   "meaning": "巻き毛、巻く / a spiral shape; to twist into that shape"
  },
@@ -440,20 +440,16 @@
   "meaning": "クッション / a soft pillow-like pad"
  },
  {
-  "word": "dare",
-  "meaning": "あえて~する / to be brave enough to do"
- },
- {
-  "word": "dash",
-  "meaning": "急いで行く、ダッシュ / to run quickly; a short line (-)"
- },
- {
   "word": "daylight",
   "meaning": "日光、日中 / the light of day"
  },
  {
   "word": "deadly",
   "meaning": "命にかかわる / able to cause death"
+ },
+ {
+  "word": "deaf",
+  "meaning": "耳が聞こえない / unable to hear"
  },
  {
   "word": "declare",
@@ -488,10 +484,6 @@
   "meaning": "依存 / relying on someone or something"
  },
  {
-  "word": "deserve",
-  "meaning": "~に値する / to earn or merit something"
- },
- {
   "word": "desirable",
   "meaning": "望ましい / worth having"
  },
@@ -520,6 +512,10 @@
   "meaning": "消える / to go out of sight"
  },
  {
+  "word": "disclose",
+  "meaning": "明らかにする / to make known, to reveal"
+ },
+ {
   "word": "discourse",
   "meaning": "談話 / a formal conversation or writing"
  },
@@ -536,20 +532,12 @@
   "meaning": "遠い / far away"
  },
  {
-  "word": "distinction",
-  "meaning": "区別、卓越 / a difference; excellence"
- },
- {
   "word": "distinguish",
   "meaning": "区別する / to tell apart"
  },
  {
   "word": "distress",
   "meaning": "苦悩 / great pain or worry"
- },
- {
-  "word": "divide",
-  "meaning": "分ける / to separate into parts"
  },
  {
   "word": "dome",
@@ -592,6 +580,10 @@
   "meaning": "選出する / to choose by voting"
  },
  {
+  "word": "elegance",
+  "meaning": "優雅さ / grace and stylishness"
+ },
+ {
   "word": "elephant",
   "meaning": "ゾウ / a very large gray animal with a trunk"
  },
@@ -620,16 +612,20 @@
   "meaning": "楽しみ / pleasure"
  },
  {
-  "word": "enormous",
-  "meaning": "巨大な / very large"
+  "word": "enthusiasm",
+  "meaning": "熱意 / strong excitement about something"
  },
  {
   "word": "esteem",
   "meaning": "尊重(する) / great respect"
  },
  {
-  "word": "evident",
-  "meaning": "明らかな / easy to see or understand"
+  "word": "etiquette",
+  "meaning": "礼儀作法 / the accepted rules of polite behavior"
+ },
+ {
+  "word": "evergreen",
+  "meaning": "常緑の / having green leaves all year"
  },
  {
   "word": "excite",
@@ -640,12 +636,12 @@
   "meaning": "興奮 / a strong feeling of eagerness"
  },
  {
-  "word": "excuse",
-  "meaning": "言い訳、許す / a reason given; to forgive"
- },
- {
   "word": "expectation",
   "meaning": "期待 / a belief about what will happen"
+ },
+ {
+  "word": "expedition",
+  "meaning": "遠征、探検 / a journey for a specific purpose"
  },
  {
   "word": "expose",
@@ -656,16 +652,8 @@
   "meaning": "薄れる / to slowly lose color or strength"
  },
  {
-  "word": "fairy",
-  "meaning": "妖精 / a small magical creature in stories"
- },
- {
   "word": "faithful",
   "meaning": "忠実な / loyal and true"
- },
- {
-  "word": "fatal",
-  "meaning": "致命的な / causing death"
  },
  {
   "word": "fatigue",
@@ -684,10 +672,6 @@
   "meaning": "羽 / one of the light parts covering a bird"
  },
  {
-  "word": "fence",
-  "meaning": "柵 / a barrier around an area"
- },
- {
   "word": "fireplace",
   "meaning": "暖炉 / a place in a room for a fire"
  },
@@ -700,16 +684,16 @@
   "meaning": "風味 / the taste of food"
  },
  {
-  "word": "flesh",
-  "meaning": "肉、肉体 / the soft part of a body"
- },
- {
   "word": "flour",
   "meaning": "小麦粉 / a fine powder made from grain, used for baking"
  },
  {
   "word": "flush",
   "meaning": "赤面する / to turn red in the face"
+ },
+ {
+  "word": "flute",
+  "meaning": "フルート / a thin musical wind instrument"
  },
  {
   "word": "fond",
@@ -724,12 +708,8 @@
   "meaning": "幸運にも / luckily"
  },
  {
-  "word": "fountain",
-  "meaning": "噴水 / a structure that shoots water into the air"
- },
- {
-  "word": "freely",
-  "meaning": "自由に / without limits"
+  "word": "fragment",
+  "meaning": "断片 / a small broken piece"
  },
  {
   "word": "freeze",
@@ -748,10 +728,6 @@
   "meaning": "揚げる / to cook in hot oil"
  },
  {
-  "word": "fur",
-  "meaning": "毛皮 / the soft hair covering an animal"
- },
- {
   "word": "fury",
   "meaning": "激怒 / very great anger"
  },
@@ -760,16 +736,12 @@
   "meaning": "衣服 / a piece of clothing"
  },
  {
+  "word": "gem",
+  "meaning": "宝石 / a precious stone"
+ },
+ {
   "word": "generous",
   "meaning": "気前のよい / willing to give freely"
- },
- {
-  "word": "genius",
-  "meaning": "天才 / someone with extraordinary ability"
- },
- {
-  "word": "gentle",
-  "meaning": "優しい、穏やかな / kind and calm"
  },
  {
   "word": "gentleman",
@@ -816,6 +788,10 @@
   "meaning": "うわさ話 / casual talk about other people"
  },
  {
+  "word": "govern",
+  "meaning": "統治する / to rule or control"
+ },
+ {
   "word": "gradually",
   "meaning": "徐々に / slowly, little by little"
  },
@@ -832,20 +808,20 @@
   "meaning": "感謝している / feeling thankful"
  },
  {
-  "word": "grave",
-  "meaning": "墓、重大な / a burial place; serious"
- },
- {
   "word": "grief",
   "meaning": "深い悲しみ / great sadness, often from a loss"
+ },
+ {
+  "word": "guilt",
+  "meaning": "罪悪感 / the feeling of having done wrong"
  },
  {
   "word": "habit",
   "meaning": "習慣 / something done often, almost without thinking"
  },
  {
-  "word": "ham",
-  "meaning": "ハム / meat from a pig's leg"
+  "word": "handful",
+  "meaning": "一握り / the amount that fits in one hand"
  },
  {
   "word": "handsome",
@@ -858,6 +834,10 @@
  {
   "word": "harsh",
   "meaning": "厳しい / severe and unpleasant"
+ },
+ {
+  "word": "hatch",
+  "meaning": "ふ化する、ハッチ / to break out of an egg; a small opening"
  },
  {
   "word": "hay",
@@ -894,10 +874,6 @@
  {
   "word": "hollow",
   "meaning": "空洞の / empty inside"
- },
- {
-  "word": "holly",
-  "meaning": "ヒイラギ / an evergreen plant with red berries"
  },
  {
   "word": "honestly",
@@ -988,6 +964,10 @@
   "meaning": "干渉 / the act of interfering"
  },
  {
+  "word": "interpret",
+  "meaning": "解釈する、通訳する / to explain the meaning of"
+ },
+ {
   "word": "interrupt",
   "meaning": "さえぎる / to break into someone's talk or action"
  },
@@ -996,8 +976,12 @@
   "meaning": "親密な / very close and personal"
  },
  {
-  "word": "invisible",
-  "meaning": "目に見えない / not able to be seen"
+  "word": "intrusion",
+  "meaning": "侵入 / an unwanted entering"
+ },
+ {
+  "word": "iris",
+  "meaning": "アイリス、虹彩 / a tall flower; the colored part of the eye"
  },
  {
   "word": "ivy",
@@ -1024,6 +1008,10 @@
   "meaning": "熱心な、鋭い / very eager; sharp"
  },
  {
+  "word": "keeper",
+  "meaning": "番人 / a person who looks after something"
+ },
+ {
   "word": "knit",
   "meaning": "編む / to make cloth by looping yarn"
  },
@@ -1034,10 +1022,6 @@
  {
   "word": "ladder",
   "meaning": "はしご / steps for climbing up or down"
- },
- {
-  "word": "lamb",
-  "meaning": "子羊 / a young sheep"
  },
  {
   "word": "lap",
@@ -1056,8 +1040,8 @@
   "meaning": "月桂樹 / an evergreen tree, symbol of honor"
  },
  {
-  "word": "lean",
-  "meaning": "もたれる、傾く / to rest against something; to bend"
+  "word": "leak",
+  "meaning": "漏れる / to let liquid or gas escape"
  },
  {
   "word": "leap",
@@ -1068,8 +1052,16 @@
   "meaning": "なめる / to touch with the tongue"
  },
  {
+  "word": "lifelong",
+  "meaning": "生涯の / lasting a whole life"
+ },
+ {
   "word": "lightly",
   "meaning": "軽く / with little force or weight"
+ },
+ {
+  "word": "likelihood",
+  "meaning": "可能性 / how probable something is"
  },
  {
   "word": "likewise",
@@ -1084,12 +1076,24 @@
   "meaning": "聞き手 / a person who listens"
  },
  {
+  "word": "litter",
+  "meaning": "ごみ、(動物の)一腹の子 / scattered rubbish; a group of baby animals"
+ },
+ {
   "word": "lively",
   "meaning": "活発な / full of energy"
  },
  {
+  "word": "locker",
+  "meaning": "ロッカー / a small locked storage box"
+ },
+ {
   "word": "loyal",
   "meaning": "忠実な / faithful and supportive"
+ },
+ {
+  "word": "luxurious",
+  "meaning": "豪華な / very comfortable and expensive"
  },
  {
   "word": "magnificent",
@@ -1104,12 +1108,12 @@
   "meaning": "未婚女性、初めての / a young unmarried woman; first (voyage etc.)"
  },
  {
-  "word": "marble",
-  "meaning": "大理石、ビー玉 / a hard stone used in sculpture; a small glass ball"
- },
- {
   "word": "marry",
   "meaning": "結婚する / to become someone's husband or wife"
+ },
+ {
+  "word": "marsh",
+  "meaning": "湿地 / low wet land"
  },
  {
   "word": "marvel",
@@ -1128,28 +1132,12 @@
   "meaning": "その間 / the time between two events"
  },
  {
-  "word": "mercy",
-  "meaning": "慈悲 / kindness shown to someone one could punish"
- },
- {
-  "word": "merit",
-  "meaning": "価値、値する / worth; to deserve"
- },
- {
-  "word": "merry",
-  "meaning": "陽気な / cheerful and happy"
- },
- {
-  "word": "mess",
-  "meaning": "散らかり / an untidy or dirty state"
- },
- {
   "word": "midst",
   "meaning": "真ん中 / the middle of something"
  },
  {
-  "word": "mild",
-  "meaning": "穏やかな / gentle, not severe"
+  "word": "miracle",
+  "meaning": "奇跡 / a wonderful, surprising event"
  },
  {
   "word": "mist",
@@ -1170,10 +1158,6 @@
  {
   "word": "mysterious",
   "meaning": "謎めいた / hard to explain or understand"
- },
- {
-  "word": "naughty",
-  "meaning": "いたずらな / badly behaved, usually of a child"
  },
  {
   "word": "nay",
@@ -1204,10 +1188,6 @@
   "meaning": "近所 (neighborhood) / the area around where one lives"
  },
  {
-  "word": "nerve",
-  "meaning": "神経、勇気 / a body fiber carrying signals; courage"
- },
- {
   "word": "nest",
   "meaning": "巣 / a place a bird builds to lay eggs"
  },
@@ -1216,28 +1196,36 @@
   "meaning": "上手に、感じよく / in a pleasant or skillful way"
  },
  {
+  "word": "noisy",
+  "meaning": "騒がしい / making a lot of sound"
+ },
+ {
   "word": "nonsense",
   "meaning": "ばかげたこと / words or ideas with no sense"
+ },
+ {
+  "word": "notable",
+  "meaning": "注目すべき / worth noticing"
  },
  {
   "word": "novelty",
   "meaning": "目新しさ / the quality of being new and interesting"
  },
  {
-  "word": "nut",
-  "meaning": "木の実 / a hard-shelled fruit or seed"
- },
- {
   "word": "objection",
   "meaning": "異議 / a reason for disagreeing"
  },
  {
-  "word": "occasional",
-  "meaning": "時々の / happening now and then"
+  "word": "objectionable",
+  "meaning": "不快な / causing disapproval"
  },
  {
-  "word": "onion",
-  "meaning": "タマネギ / a round vegetable with a strong smell"
+  "word": "occurrence",
+  "meaning": "出来事 / something that happens"
+ },
+ {
+  "word": "opponent",
+  "meaning": "相手、敵 / a person one competes or argues against"
  },
  {
   "word": "oppose",
@@ -1256,12 +1244,12 @@
   "meaning": "痛い、つらい / causing pain"
  },
  {
-  "word": "pale",
-  "meaning": "青白い / light in color; not bright"
+  "word": "painter",
+  "meaning": "画家 / a person who paints pictures"
  },
  {
-  "word": "panic",
-  "meaning": "パニック / sudden strong fear"
+  "word": "pale",
+  "meaning": "青白い / light in color; not bright"
  },
  {
   "word": "papa",
@@ -1292,12 +1280,32 @@
   "meaning": "舗道 / a paved path for walking"
  },
  {
+  "word": "peaceful",
+  "meaning": "平和な / calm, without conflict"
+ },
+ {
+  "word": "peach",
+  "meaning": "モモ / a soft round orange-pink fruit"
+ },
+ {
+  "word": "peel",
+  "meaning": "皮をむく / to remove the outer skin"
+ },
+ {
+  "word": "peg",
+  "meaning": "くぎ、洗濯ばさみ / a small pin used to fasten or hang things"
+ },
+ {
   "word": "pencil",
   "meaning": "鉛筆 / a thin tool for writing or drawing"
  },
  {
   "word": "performer",
   "meaning": "演者 / a person who performs for an audience"
+ },
+ {
+  "word": "permanently",
+  "meaning": "永続的に / for all time, not temporarily"
  },
  {
   "word": "picnic",
@@ -1320,12 +1328,12 @@
   "meaning": "海賊 / a person who robs ships at sea"
  },
  {
-  "word": "plump",
-  "meaning": "ふっくらした / pleasantly round and full"
+  "word": "plea",
+  "meaning": "嘆願 / an urgent emotional request"
  },
  {
-  "word": "poet",
-  "meaning": "詩人 / a person who writes poetry"
+  "word": "plump",
+  "meaning": "ふっくらした / pleasantly round and full"
  },
  {
   "word": "poison",
@@ -1352,8 +1360,8 @@
   "meaning": "所有する / to have or own"
  },
  {
-  "word": "potato",
-  "meaning": "ジャガイモ / a starchy root vegetable"
+  "word": "postscript",
+  "meaning": "追伸 / a note added after a letter is finished"
  },
  {
   "word": "prejudice",
@@ -1362,6 +1370,10 @@
  {
   "word": "presently",
   "meaning": "まもなく、現在 / soon; at this time"
+ },
+ {
+  "word": "prey",
+  "meaning": "獲物 / an animal hunted by another for food"
  },
  {
   "word": "prisoner",
@@ -1400,40 +1412,36 @@
   "meaning": "誇らしげに / with pride"
  },
  {
-  "word": "punch",
-  "meaning": "パンチする / to hit with a closed fist"
- },
- {
   "word": "pupil",
   "meaning": "生徒、瞳 / a student; the black center of the eye"
- },
- {
-  "word": "puppy",
-  "meaning": "子犬 / a young dog"
  },
  {
   "word": "purse",
   "meaning": "財布、ハンドバッグ / a small bag for money"
  },
  {
+  "word": "pursuit",
+  "meaning": "追跡、追求 / chasing something; working toward a goal"
+ },
+ {
   "word": "quietly",
   "meaning": "静かに / without making noise"
+ },
+ {
+  "word": "quilt",
+  "meaning": "キルト / a padded bed cover"
  },
  {
   "word": "rage",
   "meaning": "激怒 / very strong anger"
  },
  {
-  "word": "rational",
-  "meaning": "理性的な / based on reason"
- },
- {
   "word": "raven",
   "meaning": "ワタリガラス / a large black bird"
  },
  {
-  "word": "readily",
-  "meaning": "たやすく、快く / easily; willingly"
+  "word": "realise",
+  "meaning": "気づく (realize) / to become aware of"
  },
  {
   "word": "recognise",
@@ -1444,6 +1452,14 @@
   "meaning": "元気を回復させる / to make fresh again"
  },
  {
+  "word": "refuge",
+  "meaning": "避難所 / a place of safety"
+ },
+ {
+  "word": "refusal",
+  "meaning": "拒絶 / the act of refusing"
+ },
+ {
   "word": "regiment",
   "meaning": "連隊 / a large unit of soldiers"
  },
@@ -1452,8 +1468,8 @@
   "meaning": "後悔(する) / to feel sorry about something"
  },
  {
-  "word": "reject",
-  "meaning": "拒絶する / to refuse to accept"
+  "word": "reliance",
+  "meaning": "依存 / trust or dependence on someone"
  },
  {
   "word": "remainder",
@@ -1484,10 +1500,6 @@
   "meaning": "引退する / to stop working, usually due to age"
  },
  {
-  "word": "retreat",
-  "meaning": "撤退する / to move back and away"
- },
- {
   "word": "revelation",
   "meaning": "暴露、啓示 / a surprising fact made known"
  },
@@ -1500,12 +1512,8 @@
   "meaning": "ライフル銃 / a long gun"
  },
  {
-  "word": "rope",
-  "meaning": "ロープ、綱 / thick strong cord"
- },
- {
-  "word": "roughly",
-  "meaning": "おおよそ、荒っぽく / approximately; in a rough way"
+  "word": "rival",
+  "meaning": "ライバル / a person competing with another"
  },
  {
   "word": "rub",
@@ -1514,10 +1522,6 @@
  {
   "word": "rude",
   "meaning": "失礼な / not polite"
- },
- {
-  "word": "rug",
-  "meaning": "敷物 / a small carpet"
  },
  {
   "word": "rust",
@@ -1540,22 +1544,6 @@
   "meaning": "船員 / a person who works on a ship"
  },
  {
-  "word": "sake",
-  "meaning": "ため / for the purpose or benefit of"
- },
- {
-  "word": "sandwich",
-  "meaning": "サンドイッチ / food between two slices of bread"
- },
- {
-  "word": "satin",
-  "meaning": "サテン / a smooth shiny fabric"
- },
- {
-  "word": "satisfactory",
-  "meaning": "満足のいく / good enough"
- },
- {
   "word": "savage",
   "meaning": "野蛮な / wild and violent"
  },
@@ -1568,12 +1556,20 @@
   "meaning": "叫ぶ / to cry out loudly in fear or pain"
  },
  {
+  "word": "secondly",
+  "meaning": "第二に / as the second point"
+ },
+ {
   "word": "sensation",
   "meaning": "感覚、大評判 / a physical feeling; great excitement"
  },
  {
   "word": "sensible",
   "meaning": "分別のある / showing good judgment"
+ },
+ {
+  "word": "sentinel",
+  "meaning": "見張り / a guard who watches for danger"
  },
  {
   "word": "servant",
@@ -1588,24 +1584,12 @@
   "meaning": "厳しく / in a strict or harsh way"
  },
  {
-  "word": "shade",
-  "meaning": "陰、日よけ / shelter from the sun"
+  "word": "severity",
+  "meaning": "厳しさ / being severe or harsh"
  },
  {
-  "word": "shake",
-  "meaning": "振る、震える / to move quickly back and forth"
- },
- {
-  "word": "shame",
-  "meaning": "恥 / a painful feeling from doing something wrong"
- },
- {
-  "word": "shed",
-  "meaning": "小屋、こぼす / a small simple building; to let fall (tears)"
- },
- {
-  "word": "sheer",
-  "meaning": "まったくの、切り立った / complete; very steep"
+  "word": "shallow",
+  "meaning": "浅い / not deep"
  },
  {
   "word": "shine",
@@ -1624,16 +1608,20 @@
   "meaning": "恥ずかしがりの / nervous around other people"
  },
  {
-  "word": "silly",
-  "meaning": "ばかな / not sensible; foolish"
- },
- {
   "word": "sincerely",
   "meaning": "心から / in a genuine way"
  },
  {
   "word": "sixteen",
   "meaning": "16 / the number 16"
+ },
+ {
+  "word": "skate",
+  "meaning": "スケートをする / to glide on ice or wheels"
+ },
+ {
+  "word": "skinny",
+  "meaning": "やせた / very thin"
  },
  {
   "word": "slam",
@@ -1648,16 +1636,8 @@
   "meaning": "薄切り / a thin flat piece cut from something"
  },
  {
-  "word": "slope",
-  "meaning": "斜面 / a surface that goes up or down"
- },
- {
-  "word": "smell",
-  "meaning": "におい、匂いがする / what the nose senses"
- },
- {
-  "word": "sofa",
-  "meaning": "ソファ / a long soft seat for more than one person"
+  "word": "sore",
+  "meaning": "痛い / painful when touched"
  },
  {
   "word": "sour",
@@ -1670,6 +1650,10 @@
  {
   "word": "specially",
   "meaning": "特別に / for a particular purpose"
+ },
+ {
+  "word": "sphere",
+  "meaning": "球、領域 / a round shape; an area of activity"
  },
  {
   "word": "spike",
@@ -1708,6 +1692,10 @@
   "meaning": "厳格な / strict and serious"
  },
  {
+  "word": "sticky",
+  "meaning": "べたべたする / tending to stick to things"
+ },
+ {
   "word": "stiff",
   "meaning": "硬い / hard to bend or move"
  },
@@ -1728,12 +1716,12 @@
   "meaning": "わら、ストロー / dried plant stems; a drinking tube"
  },
  {
-  "word": "strive",
-  "meaning": "努力する / to try very hard"
+  "word": "strawberry",
+  "meaning": "イチゴ / a small red heart-shaped fruit"
  },
  {
-  "word": "sudden",
-  "meaning": "突然の / happening quickly without warning"
+  "word": "strive",
+  "meaning": "努力する / to try very hard"
  },
  {
   "word": "sufficiently",
@@ -1742,14 +1730,6 @@
  {
   "word": "sunlight",
   "meaning": "日光 / the light from the sun"
- },
- {
-  "word": "sunrise",
-  "meaning": "日の出 / the time the sun rises"
- },
- {
-  "word": "surround",
-  "meaning": "取り囲む / to be on all sides of"
  },
  {
   "word": "suspense",
@@ -1776,6 +1756,10 @@
   "meaning": "同情 / a feeling of care for someone's sadness"
  },
  {
+  "word": "symptom",
+  "meaning": "症状 / a sign of illness"
+ },
+ {
   "word": "tear",
   "meaning": "涙、引き裂く / a drop of water from crying; to rip"
  },
@@ -1788,32 +1772,16 @@
   "meaning": "傾向 / a way of behaving that is usual"
  },
  {
-  "word": "tent",
-  "meaning": "テント / a portable shelter of cloth"
- },
- {
   "word": "thorough",
   "meaning": "徹底的な / complete and careful"
- },
- {
-  "word": "thoroughly",
-  "meaning": "徹底的に / completely and carefully"
  },
  {
   "word": "thrust",
   "meaning": "押す、突き / to push suddenly with force"
  },
  {
-  "word": "thunder",
-  "meaning": "雷 / the loud sound after lightning"
- },
- {
   "word": "tick",
   "meaning": "チクタク音、印 / a clock's sound; a small mark (✓)"
- },
- {
-  "word": "tide",
-  "meaning": "潮 / the rise and fall of the sea"
  },
  {
   "word": "tightly",
@@ -1840,12 +1808,20 @@
   "meaning": "悲劇 / a very sad event or story"
  },
  {
+  "word": "traveller",
+  "meaning": "旅行者 (traveler) / a person who travels"
+ },
+ {
   "word": "tremendous",
   "meaning": "ものすごい / very great in size or amount"
  },
  {
   "word": "triumph",
   "meaning": "勝利、大勝利する / a great victory or success"
+ },
+ {
+  "word": "trumpet",
+  "meaning": "トランペット / a brass musical instrument"
  },
  {
   "word": "tutor",
@@ -1872,8 +1848,8 @@
   "meaning": "元に戻す / to reverse an action"
  },
  {
-  "word": "unexpected",
-  "meaning": "予期しない / surprising, not expected"
+  "word": "unfair",
+  "meaning": "不公平な / not fair or just"
  },
  {
   "word": "unfortunate",
@@ -1886,6 +1862,10 @@
  {
   "word": "unnecessary",
   "meaning": "不必要な / not needed"
+ },
+ {
+  "word": "unused",
+  "meaning": "使われていない / not in use; not accustomed to"
  },
  {
   "word": "upright",
@@ -1902,6 +1882,10 @@
  {
   "word": "useless",
   "meaning": "役に立たない / having no use"
+ },
+ {
+  "word": "usher",
+  "meaning": "案内係、案内する / a person who shows people to seats; to guide in"
  },
  {
   "word": "vanilla",
@@ -1924,6 +1908,10 @@
   "meaning": "通気口、発散する / an opening for air; to express strong feeling"
  },
  {
+  "word": "verb",
+  "meaning": "動詞 / a word describing an action or state"
+ },
+ {
   "word": "violet",
   "meaning": "スミレ、紫色 / a small purple flower; that color"
  },
@@ -1938,6 +1926,10 @@
  {
   "word": "voyage",
   "meaning": "航海 / a long journey by sea"
+ },
+ {
+  "word": "wagon",
+  "meaning": "荷馬車 / a four-wheeled cart"
  },
  {
   "word": "waist",
@@ -1976,6 +1968,10 @@
   "meaning": "完全に / entirely"
  },
  {
+  "word": "widow",
+  "meaning": "未亡人 / a woman whose husband has died"
+ },
+ {
   "word": "wit",
   "meaning": "機知 / clever and quick humor"
  },
@@ -1992,11 +1988,15 @@
   "meaning": "ミミズ / a small, long, soft-bodied creature"
  },
  {
-  "word": "worthy",
-  "meaning": "価値のある、立派な / deserving"
- },
- {
   "word": "wound",
   "meaning": "傷 / an injury that breaks the skin"
+ },
+ {
+  "word": "wrist",
+  "meaning": "手首 / the joint between the hand and arm"
+ },
+ {
+  "word": "yacht",
+  "meaning": "ヨット / a sailing boat used for pleasure"
  }
 ]
