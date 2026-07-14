@@ -90,6 +90,21 @@ export default function HomePage() {
         <p className="text-[13px] text-ink-soft leading-relaxed">
           Meet the words you study inside real classic books.
         </p>
+        <div className="flex items-center justify-center gap-2 text-[11px] text-ink-soft mt-1">
+          {["Choose words", "Read passages", "Collect books"].map((label, i) => (
+            <span key={label} className="flex items-center gap-2">
+              {i > 0 && (
+                <span className="text-gold/70" aria-hidden>
+                  →
+                </span>
+              )}
+              <span className="flex items-center gap-1">
+                <span className="font-serif text-gold">{i + 1}</span>
+                <span>{label}</span>
+              </span>
+            </span>
+          ))}
+        </div>
       </header>
 
       <section className="plate-frame rounded-sm p-6 flex flex-col gap-3">
