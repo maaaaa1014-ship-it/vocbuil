@@ -8,6 +8,7 @@ const KEYS = {
   firstBook: "vocbuil.firstBook.v1",
   pendingFirstSession: "vocbuil.pendingFirstSession.v1",
   wordHintSeen: "vocbuil.wordHintSeen.v1",
+  learnedLog: "vocbuil.learnedLog.v1",
 } as const;
 
 // The very first book a user reads unlocks after only 10 sentences, so the
@@ -93,6 +94,30 @@ export function setOnboarded() {
   writeJson(KEYS.onboarded, true);
 }
 
+// Words the user actually met in sessions: the featured word of each read
+// card plus any word they tapped to look up. Recorded once per session at
+// completion; deduped on (word, bookId), newest first.
+export type LearnedEntry = {
+  word: string;
+  meaning?: string;
+  bookId: string;
+  bookTitle: string;
+  date: string; // ISO yyyy-mm-dd
+};
+
+export function getLearnedLog(): LearnedEntry[] {
+  return readJson<LearnedEntry[]>(KEYS.learnedLog, []);
+}
+
+export function addLearnedWords(entries: LearnedEntry[]) {
+  const existing = getLearnedLog();
+  const incomingKeys = new Set(entries.map((e) => `${e.word}::${e.bookId}`));
+  const kept = existing.filter(
+    (e) => !incomingKeys.has(`${e.word}::${e.bookId}`)
+  );
+  writeJson(KEYS.learnedLog, [...entries, ...kept]);
+}
+
 // One-time coach mark on the first reading card: "tap a highlighted word".
 // Marked seen once the user taps a word or finishes their first session,
 // so it never nags after the interaction has been discovered.
@@ -155,6 +180,7 @@ export function resetAllProgress() {
   window.localStorage.removeItem(KEYS.celebrated);
   window.localStorage.removeItem(KEYS.firstBook);
   window.localStorage.removeItem(KEYS.pendingFirstSession);
+  window.localStorage.removeItem(KEYS.learnedLog);
 }
 
 export function resetEverything() {

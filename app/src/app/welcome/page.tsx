@@ -166,6 +166,9 @@ export default function WelcomePage() {
                 className="scene-blob w-36 h-36 -right-10 -top-14 bg-gold/25"
                 aria-hidden
               />
+              <span className="absolute top-3 right-3 rounded-full bg-gold/90 text-green text-[10px] font-semibold tracking-[0.15em] px-2.5 py-1">
+                RECOMMENDED
+              </span>
               <span className="block font-serif text-lg tracking-wider">
                 Intermediate — 500 words
               </span>
