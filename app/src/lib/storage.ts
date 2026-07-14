@@ -4,7 +4,15 @@ const KEYS = {
   wordlist: "vocbuil.wordlist.v1",
   readState: "vocbuil.readState.v1",
   celebrated: "vocbuil.celebrated.v1",
+  onboarded: "vocbuil.onboarded.v1",
+  firstBook: "vocbuil.firstBook.v1",
+  pendingFirstSession: "vocbuil.pendingFirstSession.v1",
 } as const;
+
+// The very first book a user reads unlocks after only 10 sentences, so the
+// onboarding session ends with a full unlock; every later book takes 30.
+export const FIRST_BOOK_GOAL = 10;
+export const BOOK_GOAL = 30;
 
 export type ReadState = Record<string, { sentences: string[]; lemmas: string[] }>;
 
@@ -47,6 +55,38 @@ export function markSentenceRead(bookId: string, sentence: string, lemma: string
   if (!entry.lemmas.includes(lemma)) entry.lemmas.push(lemma);
   state[bookId] = entry;
   writeJson(KEYS.readState, state);
+
+  // The first book ever read gets the reduced unlock goal (see FIRST_BOOK_GOAL).
+  if (!getFirstBook()) {
+    writeJson(KEYS.firstBook, bookId);
+  }
+}
+
+export function getFirstBook(): string | null {
+  return readJson<string | null>(KEYS.firstBook, null);
+}
+
+export function isOnboarded(): boolean {
+  return readJson<boolean>(KEYS.onboarded, false);
+}
+
+export function setOnboarded() {
+  writeJson(KEYS.onboarded, true);
+}
+
+// While onboarding, the first session is pinned to one featured book;
+// the pending flag stores its id and survives a mid-session quit.
+export function getPendingFirstSession(): string | null {
+  return readJson<string | null>(KEYS.pendingFirstSession, null);
+}
+
+export function setPendingFirstSession(bookId: string) {
+  writeJson(KEYS.pendingFirstSession, bookId);
+}
+
+export function clearPendingFirstSession() {
+  if (!isBrowser()) return;
+  window.localStorage.removeItem(KEYS.pendingFirstSession);
 }
 
 export function getReadSentenceSet(bookId: string): Set<string> {
@@ -54,12 +94,16 @@ export function getReadSentenceSet(bookId: string): Set<string> {
   return new Set(state[bookId]?.sentences ?? []);
 }
 
-export function getBookProgress(bookId: string, goal = 30) {
+export function getBookGoal(bookId: string): number {
+  return bookId === getFirstBook() ? FIRST_BOOK_GOAL : BOOK_GOAL;
+}
+
+export function getBookProgress(bookId: string) {
   const state = getReadState();
   const entry = state[bookId];
   const sentenceCount = entry?.sentences.length ?? 0;
   const lemmaCount = entry?.lemmas.length ?? 0;
-  const ratio = Math.min(sentenceCount / goal, 1);
+  const ratio = Math.min(sentenceCount / getBookGoal(bookId), 1);
   return { sentenceCount, lemmaCount, ratio };
 }
 
@@ -79,6 +123,8 @@ export function resetAllProgress() {
   if (!isBrowser()) return;
   window.localStorage.removeItem(KEYS.readState);
   window.localStorage.removeItem(KEYS.celebrated);
+  window.localStorage.removeItem(KEYS.firstBook);
+  window.localStorage.removeItem(KEYS.pendingFirstSession);
 }
 
 export function resetEverything() {

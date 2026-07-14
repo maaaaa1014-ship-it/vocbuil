@@ -5,7 +5,8 @@ import BottomNav from "@/components/BottomNav";
 
 export default function Shell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
-  const immersive = pathname?.startsWith("/session");
+  const immersive =
+    pathname?.startsWith("/session") || pathname?.startsWith("/welcome");
 
   return (
     <>

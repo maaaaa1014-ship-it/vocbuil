@@ -11,6 +11,8 @@
   --color-wine: #6e2b35;
   --color-gold: #a98637;
   --color-gold-soft: #c8b078;
+  --color-navy: #26425c;
+  --color-teal: #22544c;
 }
 
 @theme inline {
@@ -24,6 +26,8 @@
   --color-wine: var(--color-wine);
   --color-gold: var(--color-gold);
   --color-gold-soft: var(--color-gold-soft);
+  --color-navy: var(--color-navy);
+  --color-teal: var(--color-teal);
   --font-serif: var(--font-playfair), "Hiragino Mincho ProN", "Yu Mincho",
     "Noto Serif JP", serif;
   --font-sans: "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP",
@@ -94,6 +98,102 @@ body {
   color: var(--color-wine);
 }
 
+/* --- Full-bleed abstract scenes (onboarding / chapter screens) -------- */
+
+/* Deep-green canvas with large overlapping translucent circles, in the
+   spirit of calm-but-colorful abstract illustration. Shapes are pure CSS. */
+.scene {
+  position: relative;
+  overflow: hidden;
+  background: var(--color-green);
+  color: var(--color-paper);
+}
+.scene::before,
+.scene::after {
+  content: "";
+  position: absolute;
+  border-radius: 9999px;
+  pointer-events: none;
+}
+.scene::before {
+  width: 130vw;
+  height: 130vw;
+  right: -55vw;
+  top: -45vw;
+  background: radial-gradient(
+    circle at 35% 65%,
+    rgba(169, 134, 55, 0.5),
+    rgba(169, 134, 55, 0.12) 60%,
+    transparent 75%
+  );
+}
+.scene::after {
+  width: 110vw;
+  height: 110vw;
+  left: -50vw;
+  bottom: -55vw;
+  background: radial-gradient(
+    circle at 60% 30%,
+    rgba(110, 43, 53, 0.55),
+    rgba(38, 66, 92, 0.25) 55%,
+    transparent 75%
+  );
+}
+.scene > * {
+  position: relative;
+  z-index: 1;
+}
+
+.scene-blob {
+  position: absolute;
+  border-radius: 9999px;
+  pointer-events: none;
+}
+
+/* Soft abstract corner shapes for light pages */
+.paper-blobs {
+  position: relative;
+  overflow: hidden;
+}
+.paper-blobs::before,
+.paper-blobs::after {
+  content: "";
+  position: absolute;
+  border-radius: 9999px;
+  pointer-events: none;
+  z-index: 0;
+}
+.paper-blobs::before {
+  width: 70vw;
+  height: 70vw;
+  max-width: 22rem;
+  max-height: 22rem;
+  right: -30vw;
+  top: -32vw;
+  background: radial-gradient(
+    circle at 40% 60%,
+    rgba(34, 84, 76, 0.18),
+    transparent 70%
+  );
+}
+.paper-blobs::after {
+  width: 60vw;
+  height: 60vw;
+  max-width: 19rem;
+  max-height: 19rem;
+  left: -28vw;
+  bottom: -20vw;
+  background: radial-gradient(
+    circle at 60% 40%,
+    rgba(110, 43, 53, 0.14),
+    transparent 70%
+  );
+}
+.paper-blobs > * {
+  position: relative;
+  z-index: 1;
+}
+
 /* --- Animations ------------------------------------------------------ */
 
 @keyframes confetti-fall {
@@ -117,10 +217,41 @@ body {
   }
 }
 
+@keyframes play-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(169, 134, 55, 0.45);
+  }
+  50% {
+    transform: scale(1.04);
+    box-shadow: 0 0 0 14px rgba(169, 134, 55, 0);
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .animate-confetti {
   animation: confetti-fall linear forwards;
 }
 
 .animate-glow {
   animation: glow-pulse 2.4s ease-in-out infinite;
+}
+
+.animate-play-pulse {
+  animation: play-pulse 2.6s ease-in-out infinite;
+}
+
+.animate-fade-up {
+  animation: fade-up 0.55s ease-out both;
 }

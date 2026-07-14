@@ -6,7 +6,14 @@ import { useRouter } from "next/navigation";
 import SentenceCard from "@/components/SentenceCard";
 import { loadAllIndexes, loadBooks } from "@/lib/dataLoader";
 import { buildCandidateCards, pickSessionCards } from "@/lib/session";
-import { getReadState, getWordList, markSentenceRead } from "@/lib/storage";
+import {
+  clearPendingFirstSession,
+  getPendingFirstSession,
+  getReadState,
+  getWordList,
+  markSentenceRead,
+  setOnboarded,
+} from "@/lib/storage";
 import type { BookMeta, SessionCard as SessionCardType } from "@/lib/types";
 
 type LoadState = "loading" | "empty" | "ready";
@@ -19,6 +26,7 @@ export default function SessionPage() {
   const [cardIndex, setCardIndex] = useState(0);
   const [readCount, setReadCount] = useState(0);
   const [progressMsg, setProgressMsg] = useState("");
+  const [onboardingBook, setOnboardingBook] = useState<string | null>(null);
 
   useEffect(() => {
     let cancelled = false;
@@ -42,10 +50,26 @@ export default function SessionPage() {
         readState[bookId]?.sentences.includes(sentence) ?? false;
 
       const candidates = buildCandidateCards(words, indexes, bookList, isAlreadyRead);
-      const progressByBook = new Map(
-        Object.entries(readState).map(([bookId, entry]) => [bookId, entry.sentences.length])
-      );
-      const picked = pickSessionCards(candidates, 10, 3, progressByBook);
+
+      // Onboarding: the first session is pinned to the featured book so the
+      // 10 cards complete its reduced unlock goal in one sitting.
+      const pendingBook = getPendingFirstSession();
+      let picked: SessionCardType[];
+      if (pendingBook) {
+        picked = candidates
+          .filter((c) => c.bookId === pendingBook)
+          .sort((a, b) => a.position - b.position)
+          .slice(0, 10);
+        if (picked.length > 0) setOnboardingBook(pendingBook);
+      } else {
+        picked = [];
+      }
+      if (picked.length === 0) {
+        const progressByBook = new Map(
+          Object.entries(readState).map(([bookId, entry]) => [bookId, entry.sentences.length])
+        );
+        picked = pickSessionCards(candidates, 10, 3, progressByBook);
+      }
 
       setBooks(bookList);
       setCards(picked);
@@ -67,7 +91,12 @@ export default function SessionPage() {
     if (!currentCard) return;
     markSentenceRead(currentCard.bookId, currentCard.sentence, currentCard.lemma);
     setReadCount((n) => n + 1);
-    setCardIndex((i) => i + 1);
+    const next = cardIndex + 1;
+    if (next >= cards.length && onboardingBook) {
+      clearPendingFirstSession();
+      setOnboarded();
+    }
+    setCardIndex(next);
   }
 
   if (loadState === "loading") {
@@ -103,6 +132,73 @@ export default function SessionPage() {
   if (finished) {
     const uniqueBooks = new Set(cards.map((c) => c.bookId));
     const uniqueLemmas = new Set(cards.map((c) => c.lemma));
+
+    if (onboardingBook) {
+      const unlocked = bookById.get(onboardingBook);
+      return (
+        <main className="scene min-h-dvh flex flex-col justify-between px-8 py-14 text-center">
+          <div
+            className="absolute inset-0 overflow-hidden pointer-events-none"
+            aria-hidden
+          >
+            {Array.from({ length: 30 }).map((_, i) => (
+              <span
+                key={i}
+                className="animate-confetti absolute top-0 block w-1.5 h-3 rounded-sm"
+                style={{
+                  left: `${(i * 31) % 100}%`,
+                  backgroundColor: ["#a98637", "#c8b078", "#f5efdf", "#6e2b35"][i % 4],
+                  animationDuration: `${1.6 + (i % 5) * 0.3}s`,
+                  animationDelay: `${(i % 8) * 0.12}s`,
+                }}
+              />
+            ))}
+          </div>
+
+          <p className="font-serif text-xs tracking-[0.4em] text-gold-soft uppercase">
+            Chapter One — Complete
+          </p>
+
+          <div className="flex flex-col items-center gap-5 animate-fade-up">
+            <p className="text-gold text-2xl" aria-hidden>
+              ❦
+            </p>
+            <h1 className="font-serif text-2xl leading-relaxed">
+              最初の一冊が
+              <br />
+              目を覚ましました
+            </h1>
+            <div className="ornament-rule w-52 text-sm" aria-hidden>
+              ◆
+            </div>
+            <p className="font-serif text-lg italic text-paper/85" lang="en">
+              {unlocked?.title}
+            </p>
+            <p className="text-sm text-paper/70 leading-relaxed mt-1">
+              {readCount} の一節、{uniqueLemmas.size} の言葉との再会。
+              <br />
+              あなたの書架に、最初の彩りが差しました。
+            </p>
+          </div>
+
+          <div className="flex flex-col gap-3">
+            <Link
+              href="/shelf"
+              className="rounded-sm bg-gold text-green py-4 text-base font-serif font-semibold tracking-[0.25em] shadow-lg"
+            >
+              書架で確かめる
+            </Link>
+            <Link
+              href="/"
+              className="text-xs text-paper/60 underline underline-offset-4 py-2"
+            >
+              単語帖へ
+            </Link>
+          </div>
+        </main>
+      );
+    }
+
     return (
       <main className="mx-auto max-w-md px-5 pt-20 flex flex-col items-center gap-6 text-center">
         <p className="text-gold text-lg" aria-hidden>

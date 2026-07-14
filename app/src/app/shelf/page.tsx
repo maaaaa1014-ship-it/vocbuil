@@ -13,7 +13,7 @@ export default function ShelfPage() {
   }, []);
 
   return (
-    <main className="mx-auto max-w-md px-5 pt-12 pb-10 flex flex-col gap-8">
+    <main className="paper-blobs mx-auto max-w-md px-5 pt-12 pb-10 flex flex-col gap-8">
       <header className="text-center flex flex-col gap-3">
         <p className="font-serif text-[11px] tracking-[0.35em] text-gold uppercase">
           Private Library

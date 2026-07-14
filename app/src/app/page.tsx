@@ -4,7 +4,12 @@ import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { parseWordListCsv } from "@/lib/csv";
 import { loadPreset } from "@/lib/dataLoader";
-import { getWordList, setWordList as saveWordList } from "@/lib/storage";
+import {
+  getWordList,
+  isOnboarded,
+  setOnboarded,
+  setWordList as saveWordList,
+} from "@/lib/storage";
 import type { UserWord } from "@/lib/types";
 
 export default function HomePage() {
@@ -13,12 +18,20 @@ export default function HomePage() {
   const [words, setWords] = useState<UserWord[]>([]);
   const [status, setStatus] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
+  const [checked, setChecked] = useState(false);
 
   useEffect(() => {
+    // First visit goes through onboarding instead of this management page.
+    const stored = getWordList();
+    if (!isOnboarded() && stored.length === 0) {
+      router.replace("/welcome");
+      return;
+    }
     // Hydrate from localStorage after mount (unavailable during SSR).
     // eslint-disable-next-line react-hooks/set-state-in-effect
-    setWords(getWordList());
-  }, []);
+    setWords(stored);
+    setChecked(true);
+  }, [router]);
 
   function applyWords(newWords: UserWord[], message: string) {
     saveWordList(newWords);
@@ -55,10 +68,13 @@ export default function HomePage() {
 
   function handleClear() {
     applyWords([], "単語リストをクリアしました。");
+    setOnboarded();
   }
 
+  if (!checked) return null;
+
   return (
-    <main className="mx-auto max-w-md px-5 pt-12 pb-10 flex flex-col gap-9">
+    <main className="paper-blobs mx-auto max-w-md px-5 pt-12 pb-10 flex flex-col gap-9">
       <header className="text-center flex flex-col gap-3">
         <p className="font-serif text-[11px] tracking-[0.35em] text-gold uppercase">
           Reading &amp; Reunion
@@ -131,26 +147,31 @@ export default function HomePage() {
           />
         </div>
 
-        <div className="plate-frame rounded-sm p-6 flex flex-col gap-3">
-          <p className="text-sm text-ink-soft">プリセットで始める</p>
-          <div className="flex gap-3">
-            <button
-              type="button"
-              disabled={busy}
-              onClick={() => handlePreset("intermediate")}
-              className="flex-1 rounded-sm border border-green text-green py-2.5 text-sm font-serif tracking-widest disabled:opacity-50"
-            >
-              中級 五百語
-            </button>
-            <button
-              type="button"
-              disabled={busy}
-              onClick={() => handlePreset("advanced")}
-              className="flex-1 rounded-sm border border-wine text-wine py-2.5 text-sm font-serif tracking-widest disabled:opacity-50"
-            >
-              上級 五百語
-            </button>
-          </div>
+        <div className="flex flex-col gap-3">
+          <button
+            type="button"
+            disabled={busy}
+            onClick={() => handlePreset("intermediate")}
+            className="relative overflow-hidden rounded-md bg-teal text-paper text-left px-6 py-4 shadow-md disabled:opacity-60"
+          >
+            <span className="scene-blob w-28 h-28 -right-8 -top-10 bg-gold/25" aria-hidden />
+            <span className="block font-serif text-base tracking-wider">中級の500語</span>
+            <span className="block text-xs text-paper/75 mt-0.5">
+              物語によく現れる、たしかな言葉から
+            </span>
+          </button>
+          <button
+            type="button"
+            disabled={busy}
+            onClick={() => handlePreset("advanced")}
+            className="relative overflow-hidden rounded-md bg-wine text-paper text-left px-6 py-4 shadow-md disabled:opacity-60"
+          >
+            <span className="scene-blob w-28 h-28 -right-8 -bottom-10 bg-navy/50" aria-hidden />
+            <span className="block font-serif text-base tracking-wider">上級の500語</span>
+            <span className="block text-xs text-paper/75 mt-0.5">
+              物語を深く味わうための言葉を
+            </span>
+          </button>
         </div>
 
         {status && (
