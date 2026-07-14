@@ -1,7 +1,9 @@
 import type { BookIndex, BookMeta, PresetTier, UserWord } from "./types";
 
 let booksCache: BookMeta[] | null = null;
-const indexCache = new Map<string, BookIndex>();
+// Caches the in-flight promise (not just the result) so concurrent callers
+// -- e.g. React strict-mode double effects -- share one network request.
+const indexCache = new Map<string, Promise<BookIndex>>();
 const presetCache = new Map<string, UserWord[]>();
 
 export async function loadBooks(): Promise<BookMeta[]> {
@@ -12,14 +14,17 @@ export async function loadBooks(): Promise<BookMeta[]> {
   return booksCache;
 }
 
-export async function loadBookIndex(bookId: string): Promise<BookIndex> {
+export function loadBookIndex(bookId: string): Promise<BookIndex> {
   const cached = indexCache.get(bookId);
   if (cached) return cached;
-  const res = await fetch(`/data/index-${bookId}.json`);
-  if (!res.ok) throw new Error(`failed to load index for ${bookId}`);
-  const data = (await res.json()) as BookIndex;
-  indexCache.set(bookId, data);
-  return data;
+  const promise = (async () => {
+    const res = await fetch(`/data/index-${bookId}.json`);
+    if (!res.ok) throw new Error(`failed to load index for ${bookId}`);
+    return (await res.json()) as BookIndex;
+  })();
+  indexCache.set(bookId, promise);
+  promise.catch(() => indexCache.delete(bookId));
+  return promise;
 }
 
 export async function loadAllIndexes(

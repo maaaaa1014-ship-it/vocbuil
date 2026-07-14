@@ -9,10 +9,10 @@ type Props = {
   meanings: Map<string, string | undefined>;
   bookTitle: string;
   author: string;
-  // First-time coach mark support: pulse the tappable words and report
-  // the first tap so the parent can retire the hint.
+  // Word taps bubble up (with the tapped lemma) so the session can retire
+  // the first-time hint and record the lookup in the learned-words log.
   hintActive?: boolean;
-  onWordTap?: () => void;
+  onWordTap?: (lemma: string) => void;
 };
 
 export default function SentenceCard({
@@ -41,7 +41,7 @@ export default function SentenceCard({
               type="button"
               onClick={() => {
                 setActiveLemma(seg.lemma ?? null);
-                onWordTap?.();
+                if (seg.lemma) onWordTap?.(seg.lemma);
               }}
               className={`relative inline font-semibold text-wine underline decoration-gold decoration-2 underline-offset-4 cursor-pointer ${
                 hintActive ? "animate-word-hint" : ""

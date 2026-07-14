@@ -5,10 +5,12 @@ import { useRouter } from "next/navigation";
 import { parseWordListCsv } from "@/lib/csv";
 import { loadPreset } from "@/lib/dataLoader";
 import {
+  getLearnedLog,
   getWordList,
   isOnboarded,
   setOnboarded,
   setWordList as saveWordList,
+  type LearnedEntry,
 } from "@/lib/storage";
 import type { PresetTier, UserWord } from "@/lib/types";
 
@@ -19,6 +21,8 @@ export default function HomePage() {
   const [status, setStatus] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
   const [checked, setChecked] = useState(false);
+  const [learned, setLearned] = useState<LearnedEntry[]>([]);
+  const [showAllLearned, setShowAllLearned] = useState(false);
 
   useEffect(() => {
     // First visit goes through onboarding instead of this management page.
@@ -30,6 +34,7 @@ export default function HomePage() {
     // Hydrate from localStorage after mount (unavailable during SSR).
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setWords(stored);
+    setLearned(getLearnedLog());
     setChecked(true);
   }, [router]);
 
@@ -139,6 +144,37 @@ export default function HomePage() {
           </button>
         )}
       </section>
+
+      {learned.length > 0 && (
+        <section className="plate-frame rounded-sm p-6 flex flex-col gap-3">
+          <h2 className="font-serif text-lg text-wine tracking-wider">
+            Learned words{" "}
+            <span className="text-sm text-ink-soft font-sans">· {learned.length}</span>
+          </h2>
+          <ul className="flex flex-col gap-2.5">
+            {(showAllLearned ? learned : learned.slice(0, 10)).map((e) => (
+              <li key={`${e.word}-${e.bookId}`} className="leading-snug">
+                <span className="font-serif font-semibold text-wine">{e.word}</span>
+                {e.meaning && (
+                  <span className="text-xs text-ink-soft"> — {e.meaning}</span>
+                )}
+                <span className="block text-[11px] text-ink-soft/80 italic font-serif">
+                  {e.bookTitle} · {e.date}
+                </span>
+              </li>
+            ))}
+          </ul>
+          {learned.length > 10 && (
+            <button
+              type="button"
+              onClick={() => setShowAllLearned((v) => !v)}
+              className="self-start text-xs text-ink-soft underline underline-offset-2 decoration-gold/60"
+            >
+              {showAllLearned ? "Show less" : `Show all ${learned.length}`}
+            </button>
+          )}
+        </section>
+      )}
 
       <section className="flex flex-col gap-4">
         <h2 className="ornament-rule font-serif text-base text-ink tracking-[0.2em]">

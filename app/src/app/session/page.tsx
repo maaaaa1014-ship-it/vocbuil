@@ -1,13 +1,16 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import SentenceCard from "@/components/SentenceCard";
-import { loadAllIndexes, loadBooks } from "@/lib/dataLoader";
+import { loadAllIndexes, loadBookIndex, loadBooks } from "@/lib/dataLoader";
 import { buildCandidateCards, pickSessionCards } from "@/lib/session";
+import { buildSessionShareText, buildUnlockShareText, shareText } from "@/lib/share";
 import {
+  addLearnedWords,
   clearPendingFirstSession,
+  getBookProgress,
   getPendingFirstSession,
   getReadState,
   getWordList,
@@ -15,8 +18,9 @@ import {
   markSentenceRead,
   markWordHintSeen,
   setOnboarded,
+  type LearnedEntry,
 } from "@/lib/storage";
-import type { BookMeta, SessionCard as SessionCardType } from "@/lib/types";
+import type { BookIndex, BookMeta, SessionCard as SessionCardType } from "@/lib/types";
 
 type LoadState = "loading" | "empty" | "ready";
 
@@ -30,6 +34,13 @@ export default function SessionPage() {
   const [progressMsg, setProgressMsg] = useState("");
   const [onboardingBook, setOnboardingBook] = useState<string | null>(null);
   const [showWordHint, setShowWordHint] = useState(false);
+  const [learnedEntries, setLearnedEntries] = useState<LearnedEntry[]>([]);
+  const [unlockedBooks, setUnlockedBooks] = useState<BookMeta[]>([]);
+
+  // Words the user tapped to look up during this session (word -> bookId).
+  const tappedRef = useRef<Map<string, string>>(new Map());
+  // Books that were already fully unlocked before this session started.
+  const startUnlockedRef = useRef<Set<string>>(new Set());
 
   useEffect(() => {
     let cancelled = false;
@@ -44,30 +55,34 @@ export default function SessionPage() {
       setProgressMsg("Opening your books…");
       const bookList = await loadBooks();
       const readState = getReadState();
-      const indexes = await loadAllIndexes(bookList, (loaded, total) => {
-        if (!cancelled) setProgressMsg(`Loading books… (${loaded}/${total})`);
-      });
-      if (cancelled) return;
+      startUnlockedRef.current = new Set(
+        bookList.filter((b) => getBookProgress(b.id).ratio >= 1).map((b) => b.id)
+      );
 
       const isAlreadyRead = (bookId: string, sentence: string) =>
         readState[bookId]?.sentences.includes(sentence) ?? false;
 
-      const candidates = buildCandidateCards(words, indexes, bookList, isAlreadyRead);
-
-      // Onboarding: the first session is pinned to the featured book so the
-      // 10 cards complete its reduced unlock goal in one sitting.
+      // The onboarding session is pinned to one featured book, so only that
+      // book's index is needed -- one download instead of ten makes the
+      // time-to-first-card much shorter on a first visit.
       const pendingBook = getPendingFirstSession();
-      let picked: SessionCardType[];
+      let picked: SessionCardType[] = [];
       if (pendingBook) {
-        picked = candidates
-          .filter((c) => c.bookId === pendingBook)
+        const index = await loadBookIndex(pendingBook);
+        if (cancelled) return;
+        const single = new Map<string, BookIndex>([[pendingBook, index]]);
+        picked = buildCandidateCards(words, single, bookList, isAlreadyRead)
           .sort((a, b) => a.position - b.position)
           .slice(0, 10);
         if (picked.length > 0) setOnboardingBook(pendingBook);
-      } else {
-        picked = [];
       }
+
       if (picked.length === 0) {
+        const indexes = await loadAllIndexes(bookList, (loaded, total) => {
+          if (!cancelled) setProgressMsg(`Loading books… (${loaded}/${total})`);
+        });
+        if (cancelled) return;
+        const candidates = buildCandidateCards(words, indexes, bookList, isAlreadyRead);
         const progressByBook = new Map(
           Object.entries(readState).map(([bookId, entry]) => [bookId, entry.sentences.length])
         );
@@ -97,26 +112,80 @@ export default function SessionPage() {
     setShowWordHint(false);
   }
 
+  function handleWordTap(lemma: string) {
+    dismissWordHint();
+    if (currentCard) tappedRef.current.set(lemma, currentCard.bookId);
+  }
+
+  function finishSession() {
+    // Collect this session's words -- each card's featured word plus every
+    // word the user tapped -- into the learned-words log.
+    const date = new Date().toISOString().slice(0, 10);
+    const byKey = new Map<string, LearnedEntry>();
+    for (const card of cards) {
+      byKey.set(`${card.lemma}::${card.bookId}`, {
+        word: card.lemma,
+        meaning: card.meaning,
+        bookId: card.bookId,
+        bookTitle: bookById.get(card.bookId)?.title ?? card.bookId,
+        date,
+      });
+    }
+    for (const [word, bookId] of tappedRef.current) {
+      byKey.set(`${word}::${bookId}`, {
+        word,
+        meaning: meanings.get(word),
+        bookId,
+        bookTitle: bookById.get(bookId)?.title ?? bookId,
+        date,
+      });
+    }
+    const entries = [...byKey.values()];
+    addLearnedWords(entries);
+    setLearnedEntries(entries);
+
+    const newlyUnlocked = [...new Set(cards.map((c) => c.bookId))]
+      .filter(
+        (id) => !startUnlockedRef.current.has(id) && getBookProgress(id).ratio >= 1
+      )
+      .map((id) => bookById.get(id))
+      .filter((b): b is BookMeta => Boolean(b));
+    setUnlockedBooks(newlyUnlocked);
+
+    // Completing a session retires the first-time word hint even if the
+    // user never tapped a word: they've now seen 10 cards of it.
+    dismissWordHint();
+    if (onboardingBook) {
+      clearPendingFirstSession();
+      setOnboarded();
+    }
+  }
+
   function handleRead() {
     if (!currentCard) return;
     markSentenceRead(currentCard.bookId, currentCard.sentence, currentCard.lemma);
     setReadCount((n) => n + 1);
     const next = cardIndex + 1;
-    if (next >= cards.length) {
-      // Completing a session retires the first-time word hint even if the
-      // user never tapped a word: they've now seen 10 cards of it.
-      dismissWordHint();
-      if (onboardingBook) {
-        clearPendingFirstSession();
-        setOnboarded();
-      }
-    }
+    if (next >= cards.length) finishSession();
     setCardIndex(next);
+  }
+
+  function handleShareSession() {
+    const words = learnedEntries.map((e) => e.word);
+    const titles = [...new Set(learnedEntries.map((e) => e.bookTitle))];
+    void shareText(buildSessionShareText(words, titles));
+  }
+
+  function handleShareUnlock(title: string) {
+    void shareText(buildUnlockShareText(title));
   }
 
   if (loadState === "loading") {
     return (
       <main className="mx-auto max-w-md px-5 pt-24 flex flex-col items-center gap-4 text-center">
+        <p className="text-gold text-xl animate-play-pulse" aria-hidden>
+          ✦
+        </p>
         <p className="text-ink-soft text-sm">{progressMsg}</p>
       </main>
     );
@@ -149,12 +218,11 @@ export default function SessionPage() {
 
   if (finished) {
     const uniqueBooks = new Set(cards.map((c) => c.bookId));
-    const uniqueLemmas = new Set(cards.map((c) => c.lemma));
 
     if (onboardingBook) {
       const unlocked = bookById.get(onboardingBook);
       return (
-        <main className="scene min-h-dvh flex flex-col justify-between px-8 py-14 text-center">
+        <main className="scene min-h-dvh flex flex-col justify-between px-8 py-12 text-center">
           <div
             className="absolute inset-0 overflow-hidden pointer-events-none"
             aria-hidden
@@ -177,7 +245,7 @@ export default function SessionPage() {
             First book complete
           </p>
 
-          <div className="flex flex-col items-center gap-5 animate-fade-up" lang="en">
+          <div className="flex flex-col items-center gap-4 animate-fade-up" lang="en">
             <p className="text-gold text-2xl" aria-hidden>
               ❦
             </p>
@@ -190,22 +258,44 @@ export default function SessionPage() {
               ◆
             </div>
             <p className="font-serif text-lg italic text-paper/85">{unlocked?.title}</p>
-            <p className="text-sm text-paper/70 leading-relaxed mt-1">
-              You read {readCount} sentences and met {uniqueLemmas.size} of your
-              words in context.
+            <p className="text-sm text-paper/70 leading-relaxed">
+              You read {readCount} sentences and met {learnedEntries.length} of
+              your words in context.
             </p>
+            <div className="flex flex-wrap justify-center gap-1.5 max-w-xs">
+              {learnedEntries.slice(0, 8).map((e) => (
+                <span
+                  key={`${e.word}-${e.bookId}`}
+                  className="text-xs font-serif border border-paper/30 text-paper/85 rounded-full px-2.5 py-1"
+                >
+                  {e.word}
+                </span>
+              ))}
+              {learnedEntries.length > 8 && (
+                <span className="text-xs text-paper/60 px-1 py-1">
+                  +{learnedEntries.length - 8}
+                </span>
+              )}
+            </div>
           </div>
 
           <div className="flex flex-col gap-3" lang="en">
+            <button
+              type="button"
+              onClick={() => unlocked && handleShareUnlock(unlocked.title)}
+              className="rounded-sm bg-gold text-green py-4 text-base font-serif font-semibold tracking-[0.2em] shadow-lg"
+            >
+              Share ✦
+            </button>
             <Link
               href="/shelf"
-              className="rounded-sm bg-gold text-green py-4 text-base font-serif font-semibold tracking-[0.2em] shadow-lg"
+              className="rounded-sm border border-paper/40 text-paper py-3.5 text-sm font-serif tracking-[0.2em]"
             >
               See my collection
             </Link>
             <Link
               href="/"
-              className="text-xs text-paper/60 underline underline-offset-4 py-2"
+              className="text-xs text-paper/60 underline underline-offset-4 py-1"
             >
               Go to My Words
             </Link>
@@ -216,7 +306,7 @@ export default function SessionPage() {
 
     return (
       <main
-        className="mx-auto max-w-md px-5 pt-20 flex flex-col items-center gap-6 text-center"
+        className="mx-auto max-w-md px-5 pt-14 pb-10 flex flex-col items-center gap-5 text-center"
         lang="en"
       >
         <p className="text-gold text-lg" aria-hidden>
@@ -228,11 +318,58 @@ export default function SessionPage() {
         <div className="ornament-rule w-full text-xs" aria-hidden>
           ◆
         </div>
+
+        {unlockedBooks.map((b) => (
+          <div
+            key={b.id}
+            className="w-full rounded-sm bg-green text-paper px-5 py-4 flex flex-col gap-2 animate-fade-up"
+          >
+            <p className="text-xs tracking-[0.3em] uppercase text-gold-soft">
+              New in your collection
+            </p>
+            <p className="font-serif text-lg italic">{b.title}</p>
+            <button
+              type="button"
+              onClick={() => handleShareUnlock(b.title)}
+              className="self-center mt-1 rounded-sm border border-gold-soft/60 text-gold-soft px-5 py-2 text-xs font-serif tracking-[0.2em]"
+            >
+              Share this book ✦
+            </button>
+          </div>
+        ))}
+
         <p className="text-ink-soft text-sm leading-relaxed">
-          You read {readCount} sentences and met {uniqueLemmas.size} of your
-          words in {uniqueBooks.size} {uniqueBooks.size === 1 ? "book" : "books"}.
+          You read {readCount} sentences and met {learnedEntries.length} of
+          your words in {uniqueBooks.size} {uniqueBooks.size === 1 ? "book" : "books"}.
         </p>
-        <div className="flex flex-col gap-3 w-full mt-2">
+
+        <section className="plate-frame rounded-sm w-full p-5 flex flex-col gap-3 text-left">
+          <h2 className="font-serif text-base text-wine tracking-wider text-center">
+            Words you met
+          </h2>
+          <ul className="flex flex-col gap-2.5">
+            {learnedEntries.map((e) => (
+              <li key={`${e.word}-${e.bookId}`} className="leading-snug">
+                <span className="font-serif font-semibold text-wine">{e.word}</span>
+                {e.meaning && (
+                  <span className="text-xs text-ink-soft"> — {e.meaning}</span>
+                )}
+                <span className="block text-[11px] text-ink-soft/80 italic font-serif">
+                  {e.bookTitle}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <div className="flex flex-col gap-3 w-full mt-1">
+          <button
+            type="button"
+            onClick={handleShareSession}
+            className="rounded-sm bg-gold text-green py-3.5 text-sm font-serif font-semibold tracking-[0.2em] shadow-sm"
+          >
+            Share today&apos;s words ✦
+          </button>
           <Link
             href="/shelf"
             className="rounded-sm bg-green text-paper py-3.5 text-sm font-serif tracking-[0.2em]"
@@ -251,6 +388,7 @@ export default function SessionPage() {
   }
 
   const book = bookById.get(currentCard.bookId);
+  const remaining = cards.length - cardIndex;
 
   return (
     <main className="mx-auto max-w-md px-5 pt-6 pb-8 flex flex-col gap-6">
@@ -267,11 +405,20 @@ export default function SessionPage() {
         </p>
       </div>
 
-      <div className="w-full h-px bg-gold/25 relative">
-        <div
-          className="absolute inset-y-0 left-0 -top-px h-[3px] bg-gold transition-all duration-300"
-          style={{ width: `${(cardIndex / cards.length) * 100}%` }}
-        />
+      <div className="flex flex-col gap-1.5">
+        <div className="w-full h-px bg-gold/25 relative">
+          <div
+            className="absolute inset-y-0 left-0 -top-px h-[3px] bg-gold transition-all duration-300"
+            style={{ width: `${(cardIndex / cards.length) * 100}%` }}
+          />
+        </div>
+        {onboardingBook && (
+          <p className="text-[11px] text-ink-soft text-center" lang="en">
+            <span className="font-serif text-gold">{remaining}</span>{" "}
+            {remaining === 1 ? "sentence" : "sentences"} left to collect this
+            book
+          </p>
+        )}
       </div>
 
       {showWordHint && cardIndex === 0 && (
@@ -295,7 +442,7 @@ export default function SessionPage() {
         bookTitle={book?.title ?? currentCard.bookId}
         author={book?.author ?? ""}
         hintActive={showWordHint && cardIndex === 0}
-        onWordTap={dismissWordHint}
+        onWordTap={handleWordTap}
       />
 
       <button
