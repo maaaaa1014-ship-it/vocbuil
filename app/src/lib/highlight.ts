@@ -8,9 +8,11 @@ function escapeRegExp(value: string) {
   return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
 
-// Matches the lemma plus any trailing letters, so e.g. lemma "play" also
-// highlights "playing"/"played"/"plays" as they appear in the sentence.
-// Irregular inflections (run -> ran) won't be caught by this heuristic.
+// Inflection endings we accept after the lemma, so "play" also highlights
+// "plays/played/playing" but "turn" does NOT capture "turnip". Irregular
+// forms (run -> ran) are still missed; that is an accepted limitation.
+const SUFFIX = "(?:s|es|ed|d|ing|ings|er|ers|est|'s|s')?";
+
 export function highlightSentence(sentence: string, lemmas: string[]): HighlightSegment[] {
   const uniqueLemmas = Array.from(new Set(lemmas.filter(Boolean))).sort(
     (a, b) => b.length - a.length
@@ -20,21 +22,29 @@ export function highlightSentence(sentence: string, lemmas: string[]): Highlight
   }
 
   const pattern = new RegExp(
-    `\\b(${uniqueLemmas.map(escapeRegExp).join("|")})[a-zA-Z']*`,
+    `\\b(${uniqueLemmas.map(escapeRegExp).join("|")})${SUFFIX}\\b`,
     "gi"
   );
+
+  // A capitalized match that is not the sentence's first word is almost
+  // always a proper noun (e.g. "Peter" when the lemma is "pet"): skip it.
+  const firstLetterIndex = sentence.search(/[a-zA-Z]/);
 
   const segments: HighlightSegment[] = [];
   let lastIndex = 0;
   for (const match of sentence.matchAll(pattern)) {
     const start = match.index ?? 0;
+    const matched = match[0];
+    const isCapitalized = /^[A-Z]/.test(matched);
+    if (isCapitalized && start !== firstLetterIndex) continue;
+
     if (start > lastIndex) {
       segments.push({ text: sentence.slice(lastIndex, start), highlight: false });
     }
-    const lowerMatch = match[0].toLowerCase();
+    const lowerMatch = matched.toLowerCase();
     const matchedLemma = uniqueLemmas.find((w) => lowerMatch.startsWith(w));
-    segments.push({ text: match[0], highlight: true, lemma: matchedLemma });
-    lastIndex = start + match[0].length;
+    segments.push({ text: matched, highlight: true, lemma: matchedLemma });
+    lastIndex = start + matched.length;
   }
   if (lastIndex < sentence.length) {
     segments.push({ text: sentence.slice(lastIndex), highlight: false });

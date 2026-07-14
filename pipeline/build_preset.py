@@ -33,6 +33,7 @@ OUT_DIR = ROOT.parent / "app" / "public" / "data"
 FREQ_PATH = ROOT / "lemma_freq.json"
 PROPER_NOUN_RATIO_PATH = ROOT / "lemma_proper_noun_ratio.json"
 PROPER_NOUN_RATIO_THRESHOLD = 0.5
+MEANINGS_DIR = ROOT / "meanings"
 
 CANDIDATE_POOL_URL = (
     "https://raw.githubusercontent.com/first20hours/google-10000-english/"
@@ -84,6 +85,14 @@ def main():
     resp.raise_for_status()
     all_words = [w.strip().lower() for w in resp.text.splitlines() if w.strip()]
 
+    # Hand-written ja/en glosses maintained under pipeline/meanings/*.json.
+    # Merged into one dict; a word missing from every file ships without a
+    # meaning (the app tolerates that) but gets warned about here.
+    meanings: dict[str, str] = {}
+    if MEANINGS_DIR.is_dir():
+        for path in sorted(MEANINGS_DIR.glob("*.json")):
+            meanings.update(json.loads(path.read_text(encoding="utf-8")))
+
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     seen_in_earlier_tier: set[str] = set()
 
@@ -94,11 +103,24 @@ def main():
         )
         seen_in_earlier_tier |= set(preset)
 
+        missing = [w for w in preset if w not in meanings]
+        if missing:
+            print(
+                f"WARNING [{tier['name']}]: {len(missing)} words lack a gloss in "
+                f"pipeline/meanings/: {', '.join(missing[:20])}"
+                + (" ..." if len(missing) > 20 else ""),
+                file=sys.stderr,
+            )
+
+        entries = [
+            {"word": w, **({"meaning": meanings[w]} if w in meanings else {})}
+            for w in preset
+        ]
         out_path = OUT_DIR / f"preset-{tier['name']}.json"
-        out_path.write_text(json.dumps(preset, ensure_ascii=False, indent=2), encoding="utf-8")
+        out_path.write_text(json.dumps(entries, ensure_ascii=False, indent=1), encoding="utf-8")
         print(
-            f"wrote {out_path} ({len(preset)} words, from {candidate_count} candidates "
-            f"in rank {tier['rank_start'] + 1}-{tier['rank_end']})",
+            f"wrote {out_path} ({len(preset)} words, {len(preset) - len(missing)} with meanings, "
+            f"from {candidate_count} candidates in rank {tier['rank_start'] + 1}-{tier['rank_end']})",
             file=sys.stderr,
         )
 

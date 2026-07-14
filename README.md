@@ -1,6 +1,10 @@
-# vocbuil (再読)
+# vocbuil — 名作のかけら (Bookshard)
 
-勉強中の単語に、パブリックドメインの名著の中で再会する英語多読アプリ。
+勉強中の単語に、パブリックドメインの名著の中で再会する英語多読アプリ。読んだ本が自分のコレクションになっていく。
+
+デザインテーマは2種類あり、設定画面で切替できる(localStorageに保存):
+- **A: Library** — 深緑×アンティークゴールドの書斎調
+- **B: Crystal**(デフォルト) — ガラス・プリズム・淡色のクリスタル調
 
 - `pipeline/` — Python。Project Gutenberg由来の10冊のテキストを取得し、spaCyで文分割・レンマ化して単語索引を生成する。
 - `app/` — Next.js (TypeScript + Tailwind)。完全クライアントサイドで動作し、生成済みの索引JSONを静的アセットとして同梱する。ランタイムのAPIサーバーは持たない。
@@ -17,7 +21,7 @@ python3 build_preset.py     # app/public/data/preset-intermediate.json, preset-a
 
 生成物は `app/public/data/` に配置され、`app/` はそれを静的に読み込む。索引を作り直したときは `app/public/data/*.json` を再コミットする。
 
-テキストの取得元は gutenberg.org ではなく、同じパブリックドメイン作品のGitHubミラー(9冊は[GITenberg](https://github.com/GITenberg)、`A Little Princess`のみ[Standard Ebooks](https://github.com/standardebooks)のXHTML)。プリセット語彙は[Google 10000 English](https://github.com/first20hours/google-10000-english)の頻度リストをコーパス内出現頻度でフィルタしたもの(詳細は `pipeline/build_preset.py` のコメント参照)。
+テキストの取得元は gutenberg.org ではなく、同じパブリックドメイン作品のGitHubミラー(9冊は[GITenberg](https://github.com/GITenberg)、`A Little Princess`のみ[Standard Ebooks](https://github.com/standardebooks)のXHTML)。プリセット語彙は[Google 10000 English](https://github.com/first20hours/google-10000-english)の頻度リストをコーパス内出現頻度でフィルタしたもの(詳細は `pipeline/build_preset.py` のコメント参照)。プリセット各語の日英語釈は `pipeline/meanings/*.json` で管理しており、`build_preset.py` が出力時にマージする。
 
 ## app/
 

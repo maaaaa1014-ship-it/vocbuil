@@ -17,15 +17,18 @@ export default function SentenceCard({ sentence, lemmas, meanings, bookTitle, au
   const activeMeaning = activeLemma ? meanings.get(activeLemma) : undefined;
 
   return (
-    <div className="rounded-2xl bg-white/70 border border-ink/10 shadow-sm p-6 flex flex-col gap-4">
-      <p className="font-serif text-xl leading-relaxed text-ink" lang="en">
+    <div className="plate-frame rounded-sm p-7 flex flex-col gap-5">
+      <p
+        className="drop-cap font-serif text-[21px] leading-[1.75] text-ink"
+        lang="en"
+      >
         {segments.map((seg, i) =>
           seg.highlight ? (
             <button
               key={i}
               type="button"
               onClick={() => setActiveLemma(seg.lemma ?? null)}
-              className="relative inline font-semibold text-green underline decoration-gold decoration-2 underline-offset-4 cursor-pointer"
+              className="relative inline font-semibold text-wine underline decoration-gold decoration-2 underline-offset-4 cursor-pointer"
             >
               {seg.text}
             </button>
@@ -37,18 +40,24 @@ export default function SentenceCard({ sentence, lemmas, meanings, bookTitle, au
 
       {activeLemma && (
         <div
-          className="rounded-lg bg-green text-paper text-sm px-4 py-2 flex items-start justify-between gap-3"
+          className="rounded-sm bg-wine text-paper text-sm px-4 py-3 flex items-start justify-between gap-3 cursor-pointer"
           onClick={() => setActiveLemma(null)}
         >
-          <span>
-            <span className="font-semibold">{activeLemma}</span>
-            {activeMeaning ? ` — ${activeMeaning}` : "（意味の登録なし）"}
+          <span className="leading-relaxed">
+            <span className="font-serif font-semibold tracking-wide">{activeLemma}</span>
+            {activeMeaning ? ` — ${activeMeaning}` : " — no meaning saved"}
           </span>
-          <span className="text-paper/60 text-xs">×</span>
+          <span className="text-paper/60 text-xs mt-0.5">×</span>
         </div>
       )}
 
-      <p className="text-xs text-ink-soft text-right italic">
+      <div className="flex items-center gap-3" aria-hidden>
+        <span className="flex-1 h-px bg-gold/30" />
+        <span className="text-gold text-xs">❦</span>
+        <span className="flex-1 h-px bg-gold/30" />
+      </div>
+
+      <p className="text-xs text-ink-soft text-center italic font-serif -mt-2">
         {bookTitle} — {author}
       </p>
     </div>
