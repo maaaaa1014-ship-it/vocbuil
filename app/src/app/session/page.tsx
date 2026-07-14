@@ -260,6 +260,7 @@ export default function SessionPage() {
       </div>
 
       <SentenceCard
+        key={currentCard.id}
         sentence={currentCard.sentence}
         lemmas={[...meanings.keys()]}
         meanings={meanings}
