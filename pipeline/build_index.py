@@ -15,6 +15,7 @@ from pathlib import Path
 
 import spacy
 from spacy.lang.en.stop_words import STOP_WORDS
+from spacy.language import Language
 
 from books import BOOKS
 
@@ -48,9 +49,26 @@ def restore_abbreviations(text: str) -> str:
     return text.replace(_PLACEHOLDER, ".")
 
 
+@Language.component("paragraph_boundaries")
+def _paragraph_boundaries(doc):
+    # The rule-based sentencizer only breaks on terminal punctuation, so a
+    # title page or chapter heading with no period (e.g. "PRIDE AND
+    # PREJUDICE\n\nBy Jane Austen\n\nChapter 1\n\nIt is a truth...") can end
+    # up glued onto the sentence that follows it. Force an extra sentence
+    # boundary at every blank-line paragraph break to prevent that.
+    for token in doc[:-1]:
+        # Newline runs tokenize as their own whitespace-only token rather
+        # than living in the previous token's trailing whitespace_.
+        is_blank_line_break = token.is_space and token.text.count("\n") >= 2
+        if is_blank_line_break or token.whitespace_.count("\n") >= 2:
+            doc[token.i + 1].is_sent_start = True
+    return doc
+
+
 def build_nlp():
     nlp = spacy.blank("en")
     nlp.add_pipe("sentencizer")
+    nlp.add_pipe("paragraph_boundaries")
     nlp.add_pipe("lemmatizer", config={"mode": "lookup"})
     nlp.initialize()
     return nlp
@@ -60,6 +78,23 @@ def clean_sentence_text(raw: str) -> str:
     text = restore_abbreviations(raw)
     text = re.sub(r"\s+", " ", text).strip()
     return text
+
+
+_HEADING_PATTERN = re.compile(r"^(chapter|part|book|volume)\b", re.I)
+
+
+def is_usable_neighbor(text: str) -> bool:
+    if not text:
+        return False
+    words = re.findall(r"[A-Za-z']+", text)
+    if len(words) < 4:
+        return False
+    if _HEADING_PATTERN.search(text):
+        return False
+    alpha_words = [w for w in words if w.isalpha()]
+    if alpha_words and sum(1 for w in alpha_words if w.isupper()) / len(alpha_words) > 0.6:
+        return False  # mostly-uppercase heading/title line
+    return True
 
 
 def main():
@@ -81,7 +116,10 @@ def main():
         print(f"[{book.id}] parsing {total_words} words ...", file=sys.stderr)
         doc = nlp(protected_text)
         total_len = len(protected_text) or 1
-        sents = list(doc.sents)
+        # Paragraph breaks (see paragraph_boundaries above) leave a
+        # whitespace-only "sentence" between real ones; drop those so
+        # neighbor look-ups below land on actual adjacent content.
+        sents = [s for s in doc.sents if clean_sentence_text(s.text)]
 
         index: dict[str, list[dict]] = {}
         sentence_count = 0
@@ -95,16 +133,22 @@ def main():
             if not sentence_text:
                 continue
 
-            # Show the qualifying sentence plus its neighbor in the source
+            # Show the qualifying sentence plus a neighbor from the source
             # text, so each card reads as a short passage with context
             # instead of one isolated line. The matched word still lives in
             # `sentence_text`; the neighbor only adds surrounding context.
-            neighbor = sents[i + 1] if i + 1 < len(sents) else sents[i - 1] if i > 0 else None
-            neighbor_text = clean_sentence_text(neighbor.text) if neighbor is not None else ""
-            if neighbor is not None and neighbor.start > sent.start:
-                passage_text = f"{sentence_text} {neighbor_text}".strip()
-            elif neighbor_text:
-                passage_text = f"{neighbor_text} {sentence_text}".strip()
+            # Prefer the next sentence, falling back to the previous one if
+            # the next isn't usable (e.g. a chapter heading); skip a
+            # neighbor entirely rather than glue in a heading fragment.
+            next_sent = sents[i + 1] if i + 1 < len(sents) else None
+            prev_sent = sents[i - 1] if i > 0 else None
+            next_text = clean_sentence_text(next_sent.text) if next_sent else ""
+            prev_text = clean_sentence_text(prev_sent.text) if prev_sent else ""
+
+            if is_usable_neighbor(next_text):
+                passage_text = f"{sentence_text} {next_text}".strip()
+            elif is_usable_neighbor(prev_text):
+                passage_text = f"{prev_text} {sentence_text}".strip()
             else:
                 passage_text = sentence_text
 

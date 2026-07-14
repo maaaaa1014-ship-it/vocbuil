@@ -10,13 +10,14 @@ import {
   setPendingFirstSession,
   setWordList,
 } from "@/lib/storage";
-import type { BookMeta } from "@/lib/types";
+import type { BookMeta, PresetTier } from "@/lib/types";
 
 // Curated first book per level: large enough index to guarantee a full
 // 10-card session, and a fitting first encounter for each audience.
-const FEATURED_BOOK: Record<"intermediate" | "advanced", string> = {
+const FEATURED_BOOK: Record<PresetTier, string> = {
   intermediate: "anne-of-green-gables",
   advanced: "pride-and-prejudice",
+  expert: "the-secret-garden",
 };
 
 type Step = 0 | 1 | 2;
@@ -46,7 +47,7 @@ export default function WelcomePage() {
     if (isOnboarded()) router.replace("/");
   }, [router]);
 
-  async function chooseLevel(tier: "intermediate" | "advanced") {
+  async function chooseLevel(tier: PresetTier) {
     setBusy(true);
     try {
       const [preset, books] = await Promise.all([loadPreset(tier), loadBooks()]);
@@ -153,6 +154,24 @@ export default function WelcomePage() {
               </span>
               <span className="block text-xs text-paper/75 mt-1">
                 Less common words for deeper reading
+              </span>
+            </button>
+
+            <button
+              type="button"
+              disabled={busy}
+              onClick={() => chooseLevel("expert")}
+              className="relative overflow-hidden rounded-md bg-ink text-left px-6 py-5 shadow-lg disabled:opacity-60"
+            >
+              <span
+                className="scene-blob w-36 h-36 -right-10 -top-14 bg-gold/20"
+                aria-hidden
+              />
+              <span className="block font-serif text-lg tracking-wider">
+                Expert — 500 words
+              </span>
+              <span className="block text-xs text-paper/75 mt-1">
+                Rare, literary vocabulary
               </span>
             </button>
 

@@ -33,6 +33,14 @@ END_PATTERNS = [
     re.compile(r"^End of (the |The )?Project Gutenberg", re.I),
 ]
 
+# Transcriber-credit lines some Gutenberg editions leave right after the
+# START marker (before the actual title page / first chapter). These are
+# not part of the book and, since they have no terminal punctuation, can
+# otherwise get glued onto the first real sentence by the sentencizer.
+FRONT_MATTER_PATTERNS = [
+    re.compile(r"^Produced by .*$", re.I),
+]
+
 
 def strip_gutenberg_boilerplate(text: str) -> str:
     lines = text.splitlines()
@@ -49,7 +57,12 @@ def strip_gutenberg_boilerplate(text: str) -> str:
             end_idx = i
             break
 
-    body = "\n".join(lines[start_idx:end_idx])
+    body_lines = [
+        line
+        for line in lines[start_idx:end_idx]
+        if not any(p.search(line.strip()) for p in FRONT_MATTER_PATTERNS)
+    ]
+    body = "\n".join(body_lines)
     return body.strip() + "\n"
 
 

@@ -3,14 +3,14 @@
     "id": "anne-of-green-gables",
     "title": "Anne of Green Gables",
     "author": "Lucy Maud Montgomery",
-    "totalWords": 102527,
+    "totalWords": 102520,
     "cover": "anne-of-green-gables.jpg"
   },
   {
     "id": "pride-and-prejudice",
     "title": "Pride and Prejudice",
     "author": "Jane Austen",
-    "totalWords": 121571,
+    "totalWords": 121567,
     "cover": "pride-and-prejudice.jpg"
   },
   {
@@ -66,7 +66,7 @@
     "id": "the-wind-in-the-willows",
     "title": "The Wind in the Willows",
     "author": "Kenneth Grahame",
-    "totalWords": 58432,
+    "totalWords": 58428,
     "cover": "the-wind-in-the-willows.jpg"
   }
 ]

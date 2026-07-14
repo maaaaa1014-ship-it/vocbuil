@@ -636,10 +636,6 @@
   "meaning": "特に / more than usual"
  },
  {
-  "word": "etc",
-  "meaning": "~など / and other similar things"
- },
- {
   "word": "evening",
   "meaning": "夕方、晩 / the end of the day"
  },
@@ -1006,6 +1002,10 @@
  {
   "word": "improve",
   "meaning": "改善する / to make or become better"
+ },
+ {
+  "word": "improvement",
+  "meaning": "改善 / a change that makes something better"
  },
  {
   "word": "inch",

@@ -10,7 +10,7 @@ import {
   setOnboarded,
   setWordList as saveWordList,
 } from "@/lib/storage";
-import type { UserWord } from "@/lib/types";
+import type { PresetTier, UserWord } from "@/lib/types";
 
 export default function HomePage() {
   const router = useRouter();
@@ -55,7 +55,7 @@ export default function HomePage() {
     }
   }
 
-  async function handlePreset(tier: "intermediate" | "advanced") {
+  async function handlePreset(tier: PresetTier) {
     setBusy(true);
     try {
       const preset = await loadPreset(tier);
@@ -174,6 +174,20 @@ export default function HomePage() {
             </span>
             <span className="block text-xs text-paper/75 mt-0.5">
               Less common words for deeper reading
+            </span>
+          </button>
+          <button
+            type="button"
+            disabled={busy}
+            onClick={() => handlePreset("expert")}
+            className="relative overflow-hidden rounded-md bg-ink text-paper text-left px-6 py-4 shadow-md disabled:opacity-60"
+          >
+            <span className="scene-blob w-28 h-28 -right-8 -top-10 bg-gold/20" aria-hidden />
+            <span className="block font-serif text-base tracking-wider">
+              Expert — 500 words
+            </span>
+            <span className="block text-xs text-paper/75 mt-0.5">
+              Rare, literary vocabulary
             </span>
           </button>
         </div>
