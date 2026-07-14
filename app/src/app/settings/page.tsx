@@ -7,29 +7,32 @@ export default function SettingsPage() {
   const [message, setMessage] = useState<string | null>(null);
 
   function handleResetProgress() {
-    if (!window.confirm("読書の進捗(書架のアンロック状況)をリセットします。よろしいですか？")) {
+    if (!window.confirm("Reset your reading progress? Your word list will stay.")) {
       return;
     }
     resetAllProgress();
-    setMessage("読書の進捗をリセットしました。");
+    setMessage("Reading progress reset.");
   }
 
   function handleResetEverything() {
-    if (!window.confirm("単語リストと読書の進捗をすべて削除します。よろしいですか？")) {
+    if (!window.confirm("Delete your word list and all reading progress?")) {
       return;
     }
     resetEverything();
-    setMessage("すべてのデータをリセットしました。");
+    setMessage("All data reset.");
   }
 
   return (
-    <main className="mx-auto max-w-md px-5 pt-12 pb-10 flex flex-col gap-8">
+    <main
+      className="mx-auto max-w-md px-5 pt-12 pb-10 flex flex-col gap-8"
+      lang="en"
+    >
       <header className="text-center flex flex-col gap-3">
         <p className="font-serif text-[11px] tracking-[0.35em] text-gold uppercase">
           Preferences
         </p>
-        <h1 className="font-serif text-4xl font-semibold text-green tracking-[0.3em] pl-[0.3em]">
-          設定
+        <h1 className="font-serif text-4xl font-semibold text-green tracking-[0.1em]">
+          Settings
         </h1>
         <div className="ornament-rule text-sm" aria-hidden>
           ❦
@@ -39,33 +42,34 @@ export default function SettingsPage() {
       <section className="plate-frame rounded-sm p-6 flex flex-col gap-5">
         <div>
           <h2 className="font-serif text-lg text-wine tracking-wider mb-1">
-            読書の進捗をリセット
+            Reset reading progress
           </h2>
           <p className="text-sm text-ink-soft mb-3 leading-relaxed">
-            書架の各表紙のアンロック状況と既読の一節をリセットします。単語リストは残ります。
+            This clears your bookshelf progress and read sentences. Your word
+            list stays.
           </p>
           <button
             type="button"
             onClick={handleResetProgress}
             className="rounded-sm border border-green text-green px-6 py-2.5 text-sm font-serif tracking-widest"
           >
-            進捗をリセット
+            Reset progress
           </button>
         </div>
 
         <div className="border-t border-gold/30 pt-5">
           <h2 className="font-serif text-lg text-wine tracking-wider mb-1">
-            すべてリセット
+            Reset everything
           </h2>
           <p className="text-sm text-ink-soft mb-3 leading-relaxed">
-            単語リストと読書の進捗をすべて削除し、最初の状態に戻します。
+            This deletes your word list and all reading progress.
           </p>
           <button
             type="button"
             onClick={handleResetEverything}
             className="rounded-sm bg-wine text-paper px-6 py-2.5 text-sm font-serif tracking-widest"
           >
-            すべてリセット
+            Reset all
           </button>
         </div>
       </section>
@@ -74,7 +78,8 @@ export default function SettingsPage() {
 
       <section className="text-center text-xs text-ink-soft leading-relaxed">
         <p>
-          すべてのデータはこの端末内(localStorage)にのみ保存され、外部には送信されません。
+          All data is stored only on this device (localStorage). Nothing is
+          sent anywhere.
         </p>
       </section>
     </main>

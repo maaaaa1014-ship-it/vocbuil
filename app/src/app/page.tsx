@@ -45,9 +45,9 @@ export default function HomePage() {
       const text = await file.text();
       const parsed = parseWordListCsv(text);
       if (parsed.length === 0) {
-        setStatus("CSVから単語を読み取れませんでした。1列目に英単語があるか確認してください。");
+        setStatus("Could not read any words. Check that column 1 has English words.");
       } else {
-        applyWords(parsed, `CSVから ${parsed.length} 語を読み込みました。`);
+        applyWords(parsed, `Loaded ${parsed.length} words from your CSV.`);
       }
     } finally {
       setBusy(false);
@@ -59,25 +59,27 @@ export default function HomePage() {
     setBusy(true);
     try {
       const preset = await loadPreset(tier);
-      const label = tier === "intermediate" ? "中級" : "上級";
-      applyWords(preset, `${label}プリセット(${preset.length}語)を読み込みました。`);
+      applyWords(preset, `Loaded ${preset.length} ${tier} words.`);
     } finally {
       setBusy(false);
     }
   }
 
   function handleClear() {
-    applyWords([], "単語リストをクリアしました。");
+    applyWords([], "Word list cleared.");
     setOnboarded();
   }
 
   if (!checked) return null;
 
   return (
-    <main className="paper-blobs mx-auto max-w-md px-5 pt-12 pb-10 flex flex-col gap-9">
+    <main
+      className="paper-blobs mx-auto max-w-md px-5 pt-12 pb-10 flex flex-col gap-9"
+      lang="en"
+    >
       <header className="text-center flex flex-col gap-3">
         <p className="font-serif text-[11px] tracking-[0.35em] text-gold uppercase">
-          Reading &amp; Reunion
+          Words in Context
         </p>
         <h1 className="font-serif text-4xl font-semibold text-green tracking-[0.3em] pl-[0.3em]">
           再読
@@ -86,16 +88,14 @@ export default function HomePage() {
           ❦
         </div>
         <p className="text-[13px] text-ink-soft leading-relaxed">
-          勉強中の単語に、名著の一節でもういちど出会う
+          Meet the words you study inside real classic books.
         </p>
       </header>
 
       <section className="plate-frame rounded-sm p-6 flex flex-col gap-3">
-        <h2 className="font-serif text-lg text-wine tracking-wider">単語帖</h2>
+        <h2 className="font-serif text-lg text-wine tracking-wider">My Words</h2>
         <p className="text-sm text-ink-soft">
-          {words.length > 0
-            ? `${words.length} 語が登録されています。`
-            : "まだ単語が登録されていません。"}
+          {words.length > 0 ? `${words.length} words saved.` : "No words yet."}
         </p>
         {words.length > 0 && (
           <div className="flex flex-wrap gap-1.5">
@@ -109,7 +109,7 @@ export default function HomePage() {
             ))}
             {words.length > 12 && (
               <span className="text-xs text-ink-soft px-1 py-1">
-                他 {words.length - 12} 語
+                +{words.length - 12} more
               </span>
             )}
           </div>
@@ -120,19 +120,19 @@ export default function HomePage() {
             onClick={handleClear}
             className="self-start text-xs text-ink-soft underline underline-offset-2 decoration-gold/60"
           >
-            リストをクリア
+            Clear list
           </button>
         )}
       </section>
 
       <section className="flex flex-col gap-4">
         <h2 className="ornament-rule font-serif text-base text-ink tracking-[0.2em]">
-          単語を用意する
+          Add words
         </h2>
 
         <div className="plate-frame rounded-sm p-6 flex flex-col gap-3">
           <p className="text-sm text-ink-soft">
-            CSVをアップロード(1列目=英単語、2列目=意味)
+            Upload a CSV (column 1: word, column 2: meaning)
           </p>
           <input
             ref={fileInputRef}
@@ -155,9 +155,11 @@ export default function HomePage() {
             className="relative overflow-hidden rounded-md bg-teal text-paper text-left px-6 py-4 shadow-md disabled:opacity-60"
           >
             <span className="scene-blob w-28 h-28 -right-8 -top-10 bg-gold/25" aria-hidden />
-            <span className="block font-serif text-base tracking-wider">中級の500語</span>
+            <span className="block font-serif text-base tracking-wider">
+              Intermediate — 500 words
+            </span>
             <span className="block text-xs text-paper/75 mt-0.5">
-              物語によく現れる、たしかな言葉から
+              Common words you will see often in novels
             </span>
           </button>
           <button
@@ -167,9 +169,11 @@ export default function HomePage() {
             className="relative overflow-hidden rounded-md bg-wine text-paper text-left px-6 py-4 shadow-md disabled:opacity-60"
           >
             <span className="scene-blob w-28 h-28 -right-8 -bottom-10 bg-navy/50" aria-hidden />
-            <span className="block font-serif text-base tracking-wider">上級の500語</span>
+            <span className="block font-serif text-base tracking-wider">
+              Advanced — 500 words
+            </span>
             <span className="block text-xs text-paper/75 mt-0.5">
-              物語を深く味わうための言葉を
+              Less common words for deeper reading
             </span>
           </button>
         </div>
@@ -183,9 +187,9 @@ export default function HomePage() {
         type="button"
         disabled={words.length === 0}
         onClick={() => router.push("/session")}
-        className="rounded-sm bg-green text-paper py-4 text-base font-serif tracking-[0.25em] shadow-sm disabled:opacity-40 disabled:cursor-not-allowed"
+        className="rounded-sm bg-green text-paper py-4 text-base font-serif tracking-[0.2em] shadow-sm disabled:opacity-40 disabled:cursor-not-allowed"
       >
-        読書をはじめる
+        Start reading
       </button>
     </main>
   );

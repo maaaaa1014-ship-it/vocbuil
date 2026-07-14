@@ -4,9 +4,9 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const TABS = [
-  { href: "/", label: "単語帖" },
-  { href: "/shelf", label: "書架" },
-  { href: "/settings", label: "設定" },
+  { href: "/", label: "Words" },
+  { href: "/shelf", label: "Shelf" },
+  { href: "/settings", label: "Settings" },
 ] as const;
 
 export default function BottomNav() {

@@ -101,7 +101,9 @@ export default function BookCover({ book }: { book: BookMeta }) {
             style={{ width: `${r * 100}%` }}
           />
         </div>
-        <p className="text-[11px] text-ink-soft">再会した単語 {progress.lemmaCount}</p>
+        <p className="text-[11px] text-ink-soft" lang="en">
+          Words met: {progress.lemmaCount}
+        </p>
       </div>
     </div>
   );

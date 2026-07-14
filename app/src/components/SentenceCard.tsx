@@ -45,7 +45,7 @@ export default function SentenceCard({ sentence, lemmas, meanings, bookTitle, au
         >
           <span className="leading-relaxed">
             <span className="font-serif font-semibold tracking-wide">{activeLemma}</span>
-            {activeMeaning ? ` — ${activeMeaning}` : "（意味の登録なし）"}
+            {activeMeaning ? ` — ${activeMeaning}` : " — no meaning saved"}
           </span>
           <span className="text-paper/60 text-xs mt-0.5">×</span>
         </div>

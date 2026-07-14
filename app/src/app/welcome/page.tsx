@@ -76,7 +76,7 @@ export default function WelcomePage() {
           <div />
           <div className="flex flex-col items-center gap-6">
             <p className="font-serif text-[11px] tracking-[0.4em] text-gold-soft uppercase">
-              Reading &amp; Reunion
+              Words in Context
             </p>
             <h1 className="font-serif text-5xl font-semibold tracking-[0.3em] pl-[0.3em]">
               再読
@@ -84,10 +84,10 @@ export default function WelcomePage() {
             <div className="ornament-rule w-40 text-base" aria-hidden>
               ❦
             </div>
-            <p className="text-[15px] leading-relaxed text-paper/85">
-              勉強中の単語と、
+            <p className="text-[15px] leading-relaxed text-paper/85" lang="en">
+              Meet the words you study
               <br />
-              名著の一節でもういちど出会う。
+              inside real classic books.
             </p>
           </div>
           <div className="flex flex-col items-center gap-6">
@@ -95,28 +95,28 @@ export default function WelcomePage() {
             <button
               type="button"
               onClick={() => setStep(1)}
-              className="w-full rounded-sm bg-gold text-green py-4 text-base font-serif font-semibold tracking-[0.25em] shadow-lg"
+              className="w-full rounded-sm bg-gold text-green py-4 text-base font-serif font-semibold tracking-[0.2em] shadow-lg"
+              lang="en"
             >
-              旅をはじめる
+              Get started
             </button>
             <button
               type="button"
               onClick={skipToHome}
               className="text-xs text-paper/60 underline underline-offset-4"
+              lang="en"
             >
-              スキップして単語帖へ
+              Skip for now
             </button>
           </div>
         </div>
       )}
 
       {step === 1 && (
-        <div className="flex-1 flex flex-col justify-between px-6 py-14 animate-fade-up">
+        <div className="flex-1 flex flex-col justify-between px-6 py-14 animate-fade-up" lang="en">
           <div className="text-center flex flex-col gap-2">
-            <h1 className="font-serif text-2xl tracking-wider">
-              どんな言葉と再会しますか？
-            </h1>
-            <p className="text-sm text-paper/70">あとからいつでも変えられます</p>
+            <h1 className="font-serif text-2xl tracking-wider">Choose your words</h1>
+            <p className="text-sm text-paper/70">You can change this later.</p>
           </div>
 
           <div className="flex flex-col gap-4">
@@ -131,10 +131,10 @@ export default function WelcomePage() {
                 aria-hidden
               />
               <span className="block font-serif text-lg tracking-wider">
-                中級の500語
+                Intermediate — 500 words
               </span>
               <span className="block text-xs text-paper/75 mt-1">
-                物語によく現れる、たしかな言葉から
+                Common words you will see often in novels
               </span>
             </button>
 
@@ -149,10 +149,10 @@ export default function WelcomePage() {
                 aria-hidden
               />
               <span className="block font-serif text-lg tracking-wider">
-                上級の500語
+                Advanced — 500 words
               </span>
               <span className="block text-xs text-paper/75 mt-1">
-                物語を深く味わうための言葉を
+                Less common words for deeper reading
               </span>
             </button>
 
@@ -161,45 +161,41 @@ export default function WelcomePage() {
               onClick={skipToHome}
               className="rounded-md border border-paper/30 text-paper/80 px-6 py-4 text-sm text-center"
             >
-              自分の単語CSVを使う
+              Use my own CSV list
             </button>
           </div>
 
           <div className="flex flex-col items-center gap-4">
             <Dots step={1} />
-            {busy && <p className="text-xs text-paper/60">準備しています…</p>}
+            {busy && <p className="text-xs text-paper/60">Loading…</p>}
           </div>
         </div>
       )}
 
       {step === 2 && featured && (
-        <div className="flex-1 flex flex-col justify-between px-8 py-14 text-center animate-fade-up">
+        <div
+          className="flex-1 flex flex-col justify-between px-8 py-14 text-center animate-fade-up"
+          lang="en"
+        >
           <p className="font-serif text-xs tracking-[0.4em] text-gold-soft uppercase">
-            Chapter One
+            Your first book
           </p>
 
           <div className="flex flex-col items-center gap-5">
-            <p className="font-serif text-sm tracking-[0.3em] text-paper/70">
-              第一章
-            </p>
             <div className="ornament-rule w-52 text-base" aria-hidden>
               ❧
             </div>
-            <h1 className="font-serif text-3xl leading-snug" lang="en">
-              {featured.title}
-            </h1>
-            <p className="font-serif text-sm italic text-paper/70" lang="en">
-              {featured.author}
-            </p>
+            <h1 className="font-serif text-3xl leading-snug">{featured.title}</h1>
+            <p className="font-serif text-sm italic text-paper/70">{featured.author}</p>
             <div className="ornament-rule w-52 text-base" aria-hidden>
               ❧
             </div>
             <p className="text-sm leading-relaxed text-paper/85 mt-2">
-              あなたの単語が眠るこの本から、
+              Your words are waiting in this book.
               <br />
-              {FIRST_BOOK_GOAL}の一節をお届けします。
+              Read {FIRST_BOOK_GOAL} sentences, and this book
               <br />
-              読み終えると、最初の一冊が目を覚まします。
+              becomes the first one on your shelf.
             </p>
           </div>
 
@@ -207,7 +203,7 @@ export default function WelcomePage() {
             <button
               type="button"
               onClick={startFirstSession}
-              aria-label="最初のセッションをはじめる"
+              aria-label="Start reading"
               className="animate-play-pulse w-20 h-20 rounded-full bg-gold text-green flex items-center justify-center shadow-xl"
             >
               <span className="text-3xl translate-x-0.5" aria-hidden>

@@ -13,18 +13,23 @@ export default function ShelfPage() {
   }, []);
 
   return (
-    <main className="paper-blobs mx-auto max-w-md px-5 pt-12 pb-10 flex flex-col gap-8">
+    <main
+      className="paper-blobs mx-auto max-w-md px-5 pt-12 pb-10 flex flex-col gap-8"
+      lang="en"
+    >
       <header className="text-center flex flex-col gap-3">
         <p className="font-serif text-[11px] tracking-[0.35em] text-gold uppercase">
-          Private Library
+          My Bookshelf
         </p>
-        <h1 className="font-serif text-4xl font-semibold text-green tracking-[0.3em] pl-[0.3em]">
-          書架
+        <h1 className="font-serif text-4xl font-semibold text-green tracking-[0.1em]">
+          Bookshelf
         </h1>
         <div className="ornament-rule text-sm" aria-hidden>
           ❦
         </div>
-        <p className="text-[13px] text-ink-soft">読むほどに、表紙が目を覚ます</p>
+        <p className="text-[13px] text-ink-soft">
+          Every book you read becomes yours.
+        </p>
       </header>
 
       <div className="grid grid-cols-2 gap-x-5 gap-y-8">
@@ -34,7 +39,7 @@ export default function ShelfPage() {
       </div>
 
       {books.length === 0 && (
-        <p className="text-center text-sm text-ink-soft">読み込み中…</p>
+        <p className="text-center text-sm text-ink-soft">Loading…</p>
       )}
     </main>
   );

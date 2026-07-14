@@ -38,11 +38,11 @@ export default function SessionPage() {
         return;
       }
 
-      setProgressMsg("本を開いています…");
+      setProgressMsg("Opening your books…");
       const bookList = await loadBooks();
       const readState = getReadState();
       const indexes = await loadAllIndexes(bookList, (loaded, total) => {
-        if (!cancelled) setProgressMsg(`索引を読み込み中… (${loaded}/${total})`);
+        if (!cancelled) setProgressMsg(`Loading books… (${loaded}/${total})`);
       });
       if (cancelled) return;
 
@@ -109,19 +109,22 @@ export default function SessionPage() {
 
   if (loadState === "empty") {
     return (
-      <main className="mx-auto max-w-md px-5 pt-24 flex flex-col items-center gap-5 text-center">
+      <main
+        className="mx-auto max-w-md px-5 pt-24 flex flex-col items-center gap-5 text-center"
+        lang="en"
+      >
         <h1 className="font-serif text-2xl text-green tracking-wider">
-          一致するセンテンスがありません
+          No sentences found
         </h1>
         <p className="text-sm text-ink-soft leading-relaxed">
-          登録した単語がまだ本の中で見つからなかったか、すでに読み終えています。
-          単語リストを増やすか、書架で進捗を確認してみてください。
+          Your words were not found in the books, or you have already read
+          every matching sentence. Try adding more words.
         </p>
         <Link
           href="/"
           className="rounded-sm bg-green text-paper px-8 py-3 text-sm font-serif tracking-widest"
         >
-          単語帖に戻る
+          Back to My Words
         </Link>
       </main>
     );
@@ -155,44 +158,41 @@ export default function SessionPage() {
             ))}
           </div>
 
-          <p className="font-serif text-xs tracking-[0.4em] text-gold-soft uppercase">
-            Chapter One — Complete
+          <p className="font-serif text-xs tracking-[0.4em] text-gold-soft uppercase" lang="en">
+            First book complete
           </p>
 
-          <div className="flex flex-col items-center gap-5 animate-fade-up">
+          <div className="flex flex-col items-center gap-5 animate-fade-up" lang="en">
             <p className="text-gold text-2xl" aria-hidden>
               ❦
             </p>
             <h1 className="font-serif text-2xl leading-relaxed">
-              最初の一冊が
+              This book is now
               <br />
-              目を覚ましました
+              on your shelf.
             </h1>
             <div className="ornament-rule w-52 text-sm" aria-hidden>
               ◆
             </div>
-            <p className="font-serif text-lg italic text-paper/85" lang="en">
-              {unlocked?.title}
-            </p>
+            <p className="font-serif text-lg italic text-paper/85">{unlocked?.title}</p>
             <p className="text-sm text-paper/70 leading-relaxed mt-1">
-              {readCount} の一節、{uniqueLemmas.size} の言葉との再会。
-              <br />
-              あなたの書架に、最初の彩りが差しました。
+              You read {readCount} sentences and met {uniqueLemmas.size} of your
+              words in context.
             </p>
           </div>
 
-          <div className="flex flex-col gap-3">
+          <div className="flex flex-col gap-3" lang="en">
             <Link
               href="/shelf"
-              className="rounded-sm bg-gold text-green py-4 text-base font-serif font-semibold tracking-[0.25em] shadow-lg"
+              className="rounded-sm bg-gold text-green py-4 text-base font-serif font-semibold tracking-[0.2em] shadow-lg"
             >
-              書架で確かめる
+              See my shelf
             </Link>
             <Link
               href="/"
               className="text-xs text-paper/60 underline underline-offset-4 py-2"
             >
-              単語帖へ
+              Go to My Words
             </Link>
           </div>
         </main>
@@ -200,33 +200,35 @@ export default function SessionPage() {
     }
 
     return (
-      <main className="mx-auto max-w-md px-5 pt-20 flex flex-col items-center gap-6 text-center">
+      <main
+        className="mx-auto max-w-md px-5 pt-20 flex flex-col items-center gap-6 text-center"
+        lang="en"
+      >
         <p className="text-gold text-lg" aria-hidden>
           ❦
         </p>
         <h1 className="font-serif text-3xl text-green tracking-[0.15em]">
-          おつかれさまでした
+          Session complete
         </h1>
         <div className="ornament-rule w-full text-xs" aria-hidden>
           ◆
         </div>
         <p className="text-ink-soft text-sm leading-relaxed">
-          {readCount} の一節を読み、
-          <br />
-          {uniqueLemmas.size} 語・{uniqueBooks.size} 冊の本と再会しました。
+          You read {readCount} sentences and met {uniqueLemmas.size} of your
+          words in {uniqueBooks.size} {uniqueBooks.size === 1 ? "book" : "books"}.
         </p>
         <div className="flex flex-col gap-3 w-full mt-2">
           <Link
             href="/shelf"
-            className="rounded-sm bg-green text-paper py-3.5 text-sm font-serif tracking-[0.25em]"
+            className="rounded-sm bg-green text-paper py-3.5 text-sm font-serif tracking-[0.2em]"
           >
-            書架を見る
+            See my shelf
           </Link>
           <Link
             href="/"
-            className="rounded-sm border border-green text-green py-3.5 text-sm font-serif tracking-[0.25em]"
+            className="rounded-sm border border-green text-green py-3.5 text-sm font-serif tracking-[0.2em]"
           >
-            単語帖に戻る
+            Back to My Words
           </Link>
         </div>
       </main>
@@ -241,8 +243,9 @@ export default function SessionPage() {
         <Link
           href="/"
           className="text-xs text-ink-soft underline underline-offset-2 decoration-gold/60"
+          lang="en"
         >
-          ✕ やめる
+          ✕ Quit
         </Link>
         <p className="text-xs text-ink-soft font-serif tracking-widest">
           {cardIndex + 1} / {cards.length}
@@ -269,7 +272,7 @@ export default function SessionPage() {
         onClick={handleRead}
         className="rounded-sm bg-green text-paper py-4 text-base font-serif tracking-[0.25em] shadow-sm mt-4"
       >
-        読めた ✓
+        Got it ✓
       </button>
     </main>
   );

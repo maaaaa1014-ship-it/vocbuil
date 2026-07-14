@@ -10,8 +10,9 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "再読 - 単語と再会する多読アプリ",
-  description: "勉強中の単語に、パブリックドメインの名著の中で再会する多読アプリ",
+  title: "再読 — Meet your words in real books",
+  description:
+    "Learn English words in context. Read sentences from classic books, and every book you read becomes yours.",
 };
 
 export const viewport: Viewport = {
@@ -26,7 +27,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ja" className={`${playfair.variable} h-full`}>
+    <html lang="en" className={`${playfair.variable} h-full`}>
       <body className="min-h-full flex flex-col bg-paper text-ink antialiased">
         <Shell>{children}</Shell>
       </body>
