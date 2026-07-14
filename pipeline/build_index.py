@@ -81,11 +81,12 @@ def main():
         print(f"[{book.id}] parsing {total_words} words ...", file=sys.stderr)
         doc = nlp(protected_text)
         total_len = len(protected_text) or 1
+        sents = list(doc.sents)
 
         index: dict[str, list[dict]] = {}
         sentence_count = 0
 
-        for sent in doc.sents:
+        for i, sent in enumerate(sents):
             words = [t for t in sent if t.is_alpha]
             if not (MIN_WORDS <= len(words) <= MAX_WORDS):
                 continue
@@ -93,6 +94,19 @@ def main():
             sentence_text = clean_sentence_text(sent.text)
             if not sentence_text:
                 continue
+
+            # Show the qualifying sentence plus its neighbor in the source
+            # text, so each card reads as a short passage with context
+            # instead of one isolated line. The matched word still lives in
+            # `sentence_text`; the neighbor only adds surrounding context.
+            neighbor = sents[i + 1] if i + 1 < len(sents) else sents[i - 1] if i > 0 else None
+            neighbor_text = clean_sentence_text(neighbor.text) if neighbor is not None else ""
+            if neighbor is not None and neighbor.start > sent.start:
+                passage_text = f"{sentence_text} {neighbor_text}".strip()
+            elif neighbor_text:
+                passage_text = f"{neighbor_text} {sentence_text}".strip()
+            else:
+                passage_text = sentence_text
 
             position = round(sent.start_char / total_len, 4)
             sentence_count += 1
@@ -118,7 +132,7 @@ def main():
                 bucket = index.setdefault(lemma, [])
                 if len(bucket) >= MAX_SENTENCES_PER_LEMMA_PER_BOOK:
                     continue
-                bucket.append({"sentence": sentence_text, "position": position})
+                bucket.append({"sentence": passage_text, "position": position})
 
         out_path = OUT_DIR / f"index-{book.id}.json"
         out_path.write_text(
