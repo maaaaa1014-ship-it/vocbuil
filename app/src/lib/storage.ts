@@ -34,7 +34,15 @@ export function setTheme(theme: Theme) {
   document.documentElement.dataset.theme = theme;
 }
 
-export type ReadState = Record<string, { sentences: string[]; lemmas: string[] }>;
+// `sentences` holds every sentence the user has SEEN in this book (a card's
+// core sentence and its context neighbor both count) so no sentence
+// resurfaces inside a later passage. `cards` counts completed cards and
+// drives unlock progress; older data without it falls back to
+// sentences.length, which used to be one entry per card.
+export type ReadState = Record<
+  string,
+  { sentences: string[]; lemmas: string[]; cards?: number }
+>;
 
 function isBrowser() {
   return typeof window !== "undefined";
@@ -68,10 +76,13 @@ export function getReadState(): ReadState {
   return readJson<ReadState>(KEYS.readState, {});
 }
 
-export function markSentenceRead(bookId: string, sentence: string, lemma: string) {
+export function markCardRead(bookId: string, sentenceKeys: string[], lemma: string) {
   const state = getReadState();
   const entry = state[bookId] ?? { sentences: [], lemmas: [] };
-  if (!entry.sentences.includes(sentence)) entry.sentences.push(sentence);
+  entry.cards = (entry.cards ?? entry.sentences.length) + 1;
+  for (const key of sentenceKeys) {
+    if (key && !entry.sentences.includes(key)) entry.sentences.push(key);
+  }
   if (!entry.lemmas.includes(lemma)) entry.lemmas.push(lemma);
   state[bookId] = entry;
   writeJson(KEYS.readState, state);
@@ -156,7 +167,7 @@ export function getBookGoal(bookId: string): number {
 export function getBookProgress(bookId: string) {
   const state = getReadState();
   const entry = state[bookId];
-  const sentenceCount = entry?.sentences.length ?? 0;
+  const sentenceCount = entry?.cards ?? entry?.sentences.length ?? 0;
   const lemmaCount = entry?.lemmas.length ?? 0;
   const ratio = Math.min(sentenceCount / getBookGoal(bookId), 1);
   return { sentenceCount, lemmaCount, ratio };

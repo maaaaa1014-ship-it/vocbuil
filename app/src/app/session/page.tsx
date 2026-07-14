@@ -15,7 +15,7 @@ import {
   getReadState,
   getWordList,
   isWordHintSeen,
-  markSentenceRead,
+  markCardRead,
   markWordHintSeen,
   setOnboarded,
   type LearnedEntry,
@@ -59,8 +59,14 @@ export default function SessionPage() {
         bookList.filter((b) => getBookProgress(b.id).ratio >= 1).map((b) => b.id)
       );
 
-      const isAlreadyRead = (bookId: string, sentence: string) =>
-        readState[bookId]?.sentences.includes(sentence) ?? false;
+      // A sentence counts as seen if it was stored as a key directly, or —
+      // for data recorded before cores and neighbors were tracked
+      // separately — if it appears inside a stored full-passage string.
+      const isSeen = (bookId: string, key: string) => {
+        const stored = readState[bookId]?.sentences;
+        if (!stored) return false;
+        return stored.some((x) => x === key || x.includes(key));
+      };
 
       // The onboarding session is pinned to one featured book, so only that
       // book's index is needed -- one download instead of ten makes the
@@ -71,7 +77,7 @@ export default function SessionPage() {
         const index = await loadBookIndex(pendingBook);
         if (cancelled) return;
         const single = new Map<string, BookIndex>([[pendingBook, index]]);
-        picked = buildCandidateCards(words, single, bookList, isAlreadyRead)
+        picked = buildCandidateCards(words, single, bookList, isSeen)
           .sort((a, b) => a.position - b.position)
           .slice(0, 10);
         if (picked.length > 0) setOnboardingBook(pendingBook);
@@ -82,9 +88,12 @@ export default function SessionPage() {
           if (!cancelled) setProgressMsg(`Loading books… (${loaded}/${total})`);
         });
         if (cancelled) return;
-        const candidates = buildCandidateCards(words, indexes, bookList, isAlreadyRead);
+        const candidates = buildCandidateCards(words, indexes, bookList, isSeen);
         const progressByBook = new Map(
-          Object.entries(readState).map(([bookId, entry]) => [bookId, entry.sentences.length])
+          Object.entries(readState).map(([bookId, entry]) => [
+            bookId,
+            entry.cards ?? entry.sentences.length,
+          ])
         );
         picked = pickSessionCards(candidates, 10, 3, progressByBook);
       }
@@ -163,7 +172,13 @@ export default function SessionPage() {
 
   function handleRead() {
     if (!currentCard) return;
-    markSentenceRead(currentCard.bookId, currentCard.sentence, currentCard.lemma);
+    // Both the core sentence and its context neighbor count as seen, so
+    // neither can resurface inside a different passage later.
+    markCardRead(
+      currentCard.bookId,
+      [currentCard.core, ...(currentCard.neighbor ? [currentCard.neighbor] : [])],
+      currentCard.lemma
+    );
     setReadCount((n) => n + 1);
     const next = cardIndex + 1;
     if (next >= cards.length) finishSession();
@@ -441,6 +456,7 @@ export default function SessionPage() {
         meanings={meanings}
         bookTitle={book?.title ?? currentCard.bookId}
         author={book?.author ?? ""}
+        featured={{ form: currentCard.form, lemma: currentCard.lemma }}
         hintActive={showWordHint && cardIndex === 0}
         onWordTap={handleWordTap}
       />
