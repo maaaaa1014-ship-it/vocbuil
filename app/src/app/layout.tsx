@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Playfair_Display } from "next/font/google";
 import "./globals.css";
 import Shell from "@/components/Shell";
+import { Analytics } from "@vercel/analytics/next";
 
 const playfair = Playfair_Display({
   variable: "--font-playfair",
@@ -37,6 +38,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col bg-paper text-ink antialiased">
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
         <Shell>{children}</Shell>
+        <Analytics />
       </body>
     </html>
   );
