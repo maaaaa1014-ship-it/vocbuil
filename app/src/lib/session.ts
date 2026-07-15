@@ -65,13 +65,17 @@ export function shuffle<T>(items: T[]): T[] {
 
 // Builds one session of up to `count` cards drawn from at most `maxBooks`
 // books, so the reader stays with a story instead of hopping between all ten.
-// Books the user has already started take priority (the story continues
-// across sessions); cards within a book always run in source-text order.
+// Books the user has already started (but not yet unlocked) take priority so
+// the story continues across sessions; fully unlocked books sink to the
+// bottom of the pick order so other books get a turn instead of the same
+// finished book being picked forever. Cards within a book always run in
+// source-text order.
 export function pickSessionCards(
   candidates: SessionCard[],
   count = 10,
   maxBooks = 3,
-  progressByBook: Map<string, number> = new Map()
+  progressByBook: Map<string, number> = new Map(),
+  completedBookIds: Set<string> = new Set()
 ): SessionCard[] {
   const byBook = new Map<string, SessionCard[]>();
   for (const card of candidates) {
@@ -83,11 +87,16 @@ export function pickSessionCards(
     bucket.sort((a, b) => a.position - b.position);
   }
 
-  // Shuffle for tie-breaking variety, then float in-progress books to the
-  // front (Array.prototype.sort is stable, so the shuffle survives ties).
-  const bookIds = shuffle([...byBook.keys()]).sort(
-    (a, b) => (progressByBook.get(b) ?? 0) - (progressByBook.get(a) ?? 0)
-  );
+  // Shuffle for tie-breaking variety, then float in-progress-but-unfinished
+  // books to the front (Array.prototype.sort is stable, so the shuffle
+  // survives ties). Fully unlocked books are set aside and appended last,
+  // so they are only picked once every other book has been offered.
+  const shuffled = shuffle([...byBook.keys()]);
+  const unfinished = shuffled
+    .filter((id) => !completedBookIds.has(id))
+    .sort((a, b) => (progressByBook.get(b) ?? 0) - (progressByBook.get(a) ?? 0));
+  const finished = shuffled.filter((id) => completedBookIds.has(id));
+  const bookIds = [...unfinished, ...finished];
   const chosenBooks = bookIds.slice(0, maxBooks);
 
   // First pass: give each book an even share; second pass: top up from the
