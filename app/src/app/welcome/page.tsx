@@ -22,21 +22,6 @@ const FEATURED_BOOK: Record<PresetTier, string> = {
 
 type Step = 0 | 1 | 2;
 
-function Dots({ step }: { step: Step }) {
-  return (
-    <div className="flex justify-center gap-2" aria-hidden>
-      {[0, 1, 2].map((i) => (
-        <span
-          key={i}
-          className={`w-1.5 h-1.5 rounded-full transition-colors ${
-            i === step ? "bg-gold" : "bg-paper/30"
-          }`}
-        />
-      ))}
-    </div>
-  );
-}
-
 export default function WelcomePage() {
   const router = useRouter();
   const [step, setStep] = useState<Step>(0);
@@ -127,7 +112,6 @@ export default function WelcomePage() {
           </div>
 
           <div className="flex flex-col items-center gap-5">
-            <Dots step={0} />
             <button
               type="button"
               onClick={() => setStep(1)}
@@ -223,7 +207,6 @@ export default function WelcomePage() {
           </div>
 
           <div className="flex flex-col items-center gap-4">
-            <Dots step={1} />
             {busy && <p className="text-xs text-paper/60">Loading…</p>}
           </div>
         </div>
@@ -267,7 +250,6 @@ export default function WelcomePage() {
                 ▶
               </span>
             </button>
-            <Dots step={2} />
           </div>
         </div>
       )}

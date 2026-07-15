@@ -14,16 +14,6 @@ function escapeRegExp(value: string) {
 // card's exact surface form, passed here via `exactForms`.
 const SUFFIX = "(?:s|es|ed|d|ing|ings|er|ers|est|'s|s')?";
 
-// A capitalized match is treated as a proper noun ("Peter" via lemma "pet")
-// unless it starts a sentence: it is the passage's first word, or the text
-// before it ends with sentence punctuation (possibly followed by quotes).
-function isSentenceInitial(sentence: string, start: number): boolean {
-  let i = start - 1;
-  while (i >= 0 && /[\s"'“”‘’]/.test(sentence[i])) i--;
-  if (i < 0) return true;
-  return /[.!?]/.test(sentence[i]);
-}
-
 export function highlightSentence(
   sentence: string,
   lemmas: string[],
@@ -53,9 +43,12 @@ export function highlightSentence(
     const lowerMatch = matched.toLowerCase();
     const isExactForm = formByLower.has(lowerMatch);
     const isCapitalized = /^[A-Z]/.test(matched);
-    // The exact form is known to be this card's studied word in this very
-    // sentence, so the proper-noun guard never applies to it.
-    if (isCapitalized && !isExactForm && !isSentenceInitial(sentence, start)) {
+    // A capitalized word is most likely a proper noun ("Peter" would match
+    // lemma "pet" + "er"), including at sentence starts, so the suffix
+    // heuristic never highlights it. The card's exact studied form is the
+    // one exception: the index guarantees it is this card's real word,
+    // capitalized or not.
+    if (isCapitalized && !isExactForm) {
       continue;
     }
 
