@@ -95,7 +95,13 @@ export default function SessionPage() {
             entry.cards ?? entry.sentences.length,
           ])
         );
-        picked = pickSessionCards(candidates, 10, 3, progressByBook);
+        picked = pickSessionCards(
+          candidates,
+          10,
+          3,
+          progressByBook,
+          startUnlockedRef.current
+        );
       }
 
       setBooks(bookList);

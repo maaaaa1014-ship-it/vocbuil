@@ -9,10 +9,28 @@ const playfair = Playfair_Display({
   weight: ["500", "600", "700"],
 });
 
+const SITE_URL = "https://vocbuil.vercel.app";
+const SITE_TITLE = "名作のかけら Bookshard — Collect the classics, word by word";
+const SITE_DESCRIPTION =
+  "Learn English words in context. Read sentences from classic books, and build your own collection of literary treasures.";
+
 export const metadata: Metadata = {
-  title: "名作のかけら Bookshard — Collect the classics, word by word",
-  description:
-    "Learn English words in context. Read sentences from classic books, and build your own collection of literary treasures.",
+  metadataBase: new URL(SITE_URL),
+  title: SITE_TITLE,
+  description: SITE_DESCRIPTION,
+  openGraph: {
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    url: SITE_URL,
+    siteName: "名作のかけら Bookshard",
+    locale: "ja_JP",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+  },
 };
 
 export const viewport: Viewport = {
