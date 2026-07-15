@@ -25,21 +25,16 @@ export function buildCandidateCards(
       const entries = index[w.word];
       if (!entries) continue;
       // Only one card per (book, word), so the same word never repeats
-      // within a book's session. Never re-feature a core sentence the user
-      // has already seen (as a core or as a neighbor, in any past session
-      // or in this batch); among the fresh ones, prefer an entry whose
-      // context sentence is also completely fresh.
-      const fresh = entries.filter(
-        (e) => !isSeen(book.id, e.s) && !usedKeys.has(`${book.id}::${e.s}`)
+      // within a book's session. Every sentence a card displays -- core AND
+      // context neighbor -- must be completely fresh (never shown in any
+      // past session nor reserved by this batch); a word with no fully
+      // fresh entry in this book is skipped rather than allowed to repeat
+      // a sentence the user has already read.
+      const isFresh = (key: string) =>
+        !isSeen(book.id, key) && !usedKeys.has(`${book.id}::${key}`);
+      const entry = entries.find(
+        (e) => isFresh(e.s) && (!e.n || isFresh(e.n))
       );
-      const entry =
-        fresh.find(
-          (e) =>
-            !e.n ||
-            (!isSeen(book.id, e.n) && !usedKeys.has(`${book.id}::${e.n}`))
-        ) ??
-        fresh.find((e) => !e.n || !usedKeys.has(`${book.id}::${e.n}`)) ??
-        fresh[0];
       if (!entry) continue;
       usedKeys.add(`${book.id}::${entry.s}`);
       if (entry.n) usedKeys.add(`${book.id}::${entry.n}`);
