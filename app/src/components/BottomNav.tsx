@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 const TABS = [
   { href: "/", label: "Words" },
   { href: "/shelf", label: "Collection" },
+  { href: "/search", label: "Search" },
   { href: "/settings", label: "Settings" },
 ] as const;
 
@@ -25,7 +26,7 @@ export default function BottomNav() {
             <li key={tab.href}>
               <Link
                 href={tab.href}
-                className={`flex flex-col items-center gap-0.5 px-6 py-1.5 font-serif text-sm tracking-widest transition-colors ${
+                className={`flex flex-col items-center gap-0.5 px-4 py-1.5 font-serif text-[13px] tracking-wide transition-colors ${
                   active ? "text-wine" : "text-ink-soft"
                 }`}
               >

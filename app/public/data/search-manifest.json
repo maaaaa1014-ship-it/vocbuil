@@ -1,0 +1,52 @@
+[
+  {
+    "id": "anne-of-green-gables",
+    "title": "Anne of Green Gables",
+    "author": "Lucy Maud Montgomery"
+  },
+  {
+    "id": "pride-and-prejudice",
+    "title": "Pride and Prejudice",
+    "author": "Jane Austen"
+  },
+  {
+    "id": "the-secret-garden",
+    "title": "The Secret Garden",
+    "author": "Frances Hodgson Burnett"
+  },
+  {
+    "id": "a-little-princess",
+    "title": "A Little Princess",
+    "author": "Frances Hodgson Burnett"
+  },
+  {
+    "id": "the-wonderful-wizard-of-oz",
+    "title": "The Wonderful Wizard of Oz",
+    "author": "L. Frank Baum"
+  },
+  {
+    "id": "peter-pan",
+    "title": "Peter Pan",
+    "author": "J. M. Barrie"
+  },
+  {
+    "id": "alices-adventures-in-wonderland",
+    "title": "Alice's Adventures in Wonderland",
+    "author": "Lewis Carroll"
+  },
+  {
+    "id": "heidi",
+    "title": "Heidi",
+    "author": "Johanna Spyri"
+  },
+  {
+    "id": "daddy-long-legs",
+    "title": "Daddy-Long-Legs",
+    "author": "Jean Webster"
+  },
+  {
+    "id": "the-wind-in-the-willows",
+    "title": "The Wind in the Willows",
+    "author": "Kenneth Grahame"
+  }
+]
