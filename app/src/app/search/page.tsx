@@ -66,7 +66,7 @@ export default function SearchPage() {
           ✦
         </div>
         <p className="text-[13px] text-ink-soft leading-relaxed">
-          Search any word or phrase across 10 classic novels, and see how it is
+          Search any word or phrase across 13 classic novels, and see how it is
           really used — even phrasal verbs like <em>put me off</em>.
         </p>
       </header>

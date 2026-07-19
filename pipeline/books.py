@@ -110,6 +110,34 @@ BOOKS: list[Book] = [
         source_type="gutenberg_txt",
         source="https://raw.githubusercontent.com/GITenberg/The-Wind-in-the-Willows_289/master/289.txt",
     ),
+    Book(
+        id="around-the-world-in-eighty-days",
+        title="Around the World in Eighty Days",
+        author="Jules Verne",
+        gutenberg_id=103,
+        source_type="gutenberg_txt",
+        source="https://raw.githubusercontent.com/GITenberg/Around-the-World-in-80-Days_103/master/103.txt",
+    ),
+    Book(
+        id="the-blue-castle",
+        title="The Blue Castle",
+        author="Lucy Maud Montgomery",
+        gutenberg_id=67979,
+        # Gutenberg #67979 was added too recently to be in the GITenberg
+        # mirror, so its text is assembled from Standard Ebooks' XHTML
+        # chapters (same approach as A Little Princess). 45 chapters.
+        source_type="standard_ebooks_xhtml",
+        source="standardebooks/l-m-montgomery_the-blue-castle",
+        chapters=tuple(f"chapter-{i}.xhtml" for i in range(1, 46)),
+    ),
+    Book(
+        id="a-damsel-in-distress",
+        title="A Damsel in Distress",
+        author="P. G. Wodehouse",
+        gutenberg_id=2233,
+        source_type="gutenberg_txt",
+        source="https://raw.githubusercontent.com/GITenberg/A-Damsel-in-Distress_2233/master/2233.txt",
+    ),
 ]
 
 BOOKS_BY_ID = {b.id: b for b in BOOKS}

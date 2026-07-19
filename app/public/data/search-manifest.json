@@ -48,5 +48,20 @@
     "id": "the-wind-in-the-willows",
     "title": "The Wind in the Willows",
     "author": "Kenneth Grahame"
+  },
+  {
+    "id": "around-the-world-in-eighty-days",
+    "title": "Around the World in Eighty Days",
+    "author": "Jules Verne"
+  },
+  {
+    "id": "the-blue-castle",
+    "title": "The Blue Castle",
+    "author": "Lucy Maud Montgomery"
+  },
+  {
+    "id": "a-damsel-in-distress",
+    "title": "A Damsel in Distress",
+    "author": "P. G. Wodehouse"
   }
 ]

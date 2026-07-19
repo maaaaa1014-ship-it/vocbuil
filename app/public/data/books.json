@@ -68,5 +68,26 @@
     "author": "Kenneth Grahame",
     "totalWords": 58428,
     "cover": "the-wind-in-the-willows.jpg"
+  },
+  {
+    "id": "around-the-world-in-eighty-days",
+    "title": "Around the World in Eighty Days",
+    "author": "Jules Verne",
+    "totalWords": 63286,
+    "cover": "around-the-world-in-eighty-days.jpg"
+  },
+  {
+    "id": "the-blue-castle",
+    "title": "The Blue Castle",
+    "author": "Lucy Maud Montgomery",
+    "totalWords": 68240,
+    "cover": "the-blue-castle.jpg"
+  },
+  {
+    "id": "a-damsel-in-distress",
+    "title": "A Damsel in Distress",
+    "author": "P. G. Wodehouse",
+    "totalWords": 76640,
+    "cover": "a-damsel-in-distress.jpg"
   }
 ]
