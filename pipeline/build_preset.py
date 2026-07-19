@@ -29,6 +29,14 @@ from the much wider tail beyond that (min 2 occurrences, since genuinely
 rare words don't recur often by definition), so expert ends up harder
 than advanced simply because it pulls from rarer rank territory.
 
+Note on the shipped preset-*.json: they are a hand-glossed curriculum
+(every word carries a Japanese meaning from pipeline/meanings/). The
+committed lists are a reviewed snapshot. Books added to the corpus after
+that review shift which words clear the min-occurrence filter, so a fresh
+run pulls in new corpus words that have no gloss yet -- re-run and commit
+the output only after adding glosses for the words this prints as missing,
+so no preset word ever ships without a meaning.
+
 Usage: python3 build_preset.py
 """
 

@@ -25,6 +25,9 @@ const PAINTING_PALETTES: Record<string, [string, string, string]> = {
   "heidi": ["#3a5f4d", "#5f8a6e", "#7fa6c9"],
   "daddy-long-legs": ["#4a3524", "#7a5a3a", "#a97a4b"],
   "the-wind-in-the-willows": ["#2f4a3d", "#5a6b3f", "#8a9b5e"],
+  "around-the-world-in-eighty-days": ["#274156", "#3f6b82", "#d4b06a"],
+  "the-blue-castle": ["#26385f", "#4a6ea3", "#9db6d8"],
+  "a-damsel-in-distress": ["#4a2f3a", "#7a4a5a", "#c9a668"],
 };
 const DEFAULT_PALETTE: [string, string, string] = ["#3a5a40", "#8a9b6e", "#c9a668"];
 

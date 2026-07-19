@@ -41,8 +41,17 @@ FRONT_MATTER_PATTERNS = [
     re.compile(r"^Produced by .*$", re.I),
 ]
 
+# Some Gutenberg editions open with a bracketed transcriber's note (a
+# multi-line block ending in "]") explaining edition corrections. It is
+# real English prose, so unlike a heading it would otherwise show up as
+# genuine-looking sentences in the search corpus -- strip the whole block.
+TRANSCRIBER_NOTE_RE = re.compile(
+    r"\[\s*Transcriber'?s?\s+Note.*?\]", re.I | re.S
+)
+
 
 def strip_gutenberg_boilerplate(text: str) -> str:
+    text = TRANSCRIBER_NOTE_RE.sub("", text)
     lines = text.splitlines()
 
     start_idx = 0
